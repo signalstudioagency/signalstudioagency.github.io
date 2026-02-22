@@ -78,10 +78,12 @@
     .nav{
       display:flex; align-items:center; justify-content:space-between;
       padding:14px 0;
+      gap:12px;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
       font-weight:900; letter-spacing:.6px;
+      white-space:nowrap;
     }
     .dot{
       width:10px; height:10px; border-radius:99px;
@@ -95,8 +97,33 @@
       font-size:14px;
     }
     .menu a:hover{color:var(--text)}
-    .nav-actions{display:flex; align-items:center; gap:10px}
+    .nav-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
     .hamb{display:none}
+
+    /* Language switch */
+    .lang{
+      display:inline-flex; align-items:center;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      padding:4px;
+      gap:4px;
+    }
+    .lang button{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font-weight:900;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      cursor:pointer;
+    }
+    .lang button.active{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
 
     .hero{padding:70px 0 34px;}
     .hero-card{
@@ -172,8 +199,7 @@
     .list li::before{content:"• "; color:rgba(155,255,180,.9)}
 
     .three{grid-template-columns:repeat(3, 1fr)}
-    .two{grid-template-columns:repeat(2, 1fr)}
-    .four{grid-template-columns:repeat(4, 1fr)}
+    .contact-grid{grid-template-columns: 1.1fr .9fr}
 
     /* Pricing */
     .pricing-top{
@@ -209,7 +235,6 @@
     .fine{font-size:12.5px; color:var(--muted2); margin-top:6px}
 
     /* Contact */
-    .contact-grid{grid-template-columns: 1.1fr .9fr}
     .form{display:grid; gap:10px}
     input, textarea{
       width:100%;
@@ -237,15 +262,12 @@
       .hero-inner{grid-template-columns:1fr; align-items:start}
       h1{font-size:38px}
       .three{grid-template-columns:1fr}
-      .two{grid-template-columns:1fr}
-      .four{grid-template-columns:1fr 1fr}
       .contact-grid{grid-template-columns:1fr}
       .menu{display:none}
       .hamb{display:inline-flex}
     }
     @media (max-width: 520px){
       h1{font-size:34px}
-      .four{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -261,16 +283,21 @@
       </a>
 
       <nav class="menu" aria-label="Навигация">
-        <a href="projects.html">Projects</a>
-        <a href="#system">What we do</a>
-        <a href="#pricing">Pricing</a>
-        <a href="team.html">Team</a>
-        <a href="#contact">Contact</a>
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="#system" data-i18n="nav.system">What we do</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="team.html" data-i18n="nav.team">Team</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <a class="btn" href="projects.html">View work</a>
-        <a class="btn primary" href="#contact">Request concept</a>
+        <div class="lang" aria-label="Language switch">
+          <button type="button" id="langRU" class="active">RU</button>
+          <button type="button" id="langUK">UKR</button>
+        </div>
+
+        <a class="btn" href="projects.html" data-i18n="cta.viewWork">View work</a>
+        <a class="btn primary" href="#contact" data-i18n="cta.requestConcept">Request concept</a>
         <button class="btn hamb" id="hamb" aria-label="Открыть меню">Menu</button>
       </div>
     </div>
@@ -285,26 +312,26 @@
       <div class="hero-card">
         <div class="hero-inner">
           <div>
-            <span class="tag">AI Campaign Studio • Fashion / Jewelry / Beauty</span>
-            <h1>Кампании, которые выглядят как €20k продакшн — но собираются AI-системой.</h1>
-            <p class="lead">
+            <span class="tag" data-i18n="hero.tag">AI Campaign Studio • Fashion / Jewelry / Beauty</span>
+            <h1 data-i18n="hero.h1">Кампании, которые выглядят как €20k продакшн — но собираются AI-системой.</h1>
+            <p class="lead" data-i18n="hero.lead">
               Мы строим визуальные кампании и контент-движки: cinematic hero-кадры, адаптации под платформы и motion-ready фреймы.
               Без хаоса съёмок. Быстро. Дорого по ощущению.
             </p>
             <div class="hero-actions">
-              <a class="btn primary" href="#contact">Request campaign concept</a>
-              <a class="btn" href="projects.html">View case studies</a>
-              <a class="btn" href="#pricing">See packages</a>
+              <a class="btn primary" href="#contact" data-i18n="cta.requestConcept">Request campaign concept</a>
+              <a class="btn" href="projects.html" data-i18n="cta.viewCases">View case studies</a>
+              <a class="btn" href="#pricing" data-i18n="cta.seePackages">See packages</a>
             </div>
-            <div class="hero-note">Ответ в течение 24 часов. Пилотный концепт-кадр — по запросу (с водяным знаком).</div>
+            <div class="hero-note" data-i18n="hero.note">Ответ в течение 24 часов. Пилотный концепт-кадр — по запросу (с водяным знаком).</div>
           </div>
 
           <aside class="hero-right" aria-label="Ключевые показатели">
             <div class="kpis">
-              <div class="kpi"><b>3–7 дней</b><span>типичный цикл кампании</span></div>
-              <div class="kpi"><b>30+ вариаций</b><span>в одном визуальном языке</span></div>
-              <div class="kpi"><b>9:16 / 1:1 / 4:5</b><span>форматы под платформы</span></div>
-              <div class="kpi"><b>Motion-ready</b><span>фреймы для видео</span></div>
+              <div class="kpi"><b data-i18n="kpi1.b">3–7 дней</b><span data-i18n="kpi1.s">типичный цикл кампании</span></div>
+              <div class="kpi"><b data-i18n="kpi2.b">30+ вариаций</b><span data-i18n="kpi2.s">в одном визуальном языке</span></div>
+              <div class="kpi"><b data-i18n="kpi3.b">9:16 / 1:1 / 4:5</b><span data-i18n="kpi3.s">форматы под платформы</span></div>
+              <div class="kpi"><b data-i18n="kpi4.b">Motion-ready</b><span data-i18n="kpi4.s">фреймы для видео</span></div>
             </div>
           </aside>
         </div>
@@ -317,40 +344,40 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2>What we do</h2>
-          <p>Мы не “генерим картинки”. Мы строим кампании: концепт → визуальный язык → серия → упаковка под запуск.</p>
+          <h2 data-i18n="system.h2">What we do</h2>
+          <p data-i18n="system.p">Мы не “генерим картинки”. Мы строим кампании: концепт → визуальный язык → серия → упаковка под запуск.</p>
         </div>
-        <a class="btn" href="projects.html">See work</a>
+        <a class="btn" href="projects.html" data-i18n="cta.seeWork">See work</a>
       </div>
 
       <div class="grid three">
         <div class="card">
-          <h3>01 — Strategy & Concept</h3>
-          <p>DNA бренда, narrative, референсы, правила света и материалов.</p>
+          <h3 data-i18n="s1.h3">01 — Strategy & Concept</h3>
+          <p data-i18n="s1.p">DNA бренда, narrative, референсы, правила света и материалов.</p>
           <ul class="list">
-            <li>brand snapshot + moodline</li>
-            <li>hero-сцены + shot-лист</li>
-            <li>визуальные правила для серии</li>
+            <li data-i18n="s1.li1">brand snapshot + moodline</li>
+            <li data-i18n="s1.li2">hero-сцены + shot-лист</li>
+            <li data-i18n="s1.li3">визуальные правила для серии</li>
           </ul>
         </div>
 
         <div class="card">
-          <h3>02 — AI Production</h3>
-          <p>Hero-кадры, продуктовые крупные планы, модели, материал — с контролем качества.</p>
+          <h3 data-i18n="s2.h3">02 — AI Production</h3>
+          <p data-i18n="s2.p">Hero-кадры, продуктовые крупные планы, модели, материал — с контролем качества.</p>
           <ul class="list">
-            <li>editorial + product visuals</li>
-            <li>consistency и ретушь</li>
-            <li>multi-format output</li>
+            <li data-i18n="s2.li1">editorial + product visuals</li>
+            <li data-i18n="s2.li2">consistency и ретушь</li>
+            <li data-i18n="s2.li3">multi-format output</li>
           </ul>
         </div>
 
         <div class="card">
-          <h3>03 — Content Engine</h3>
-          <p>Пакет под запуск: посты/сторис/ads + motion-ready фреймы для Reels.</p>
+          <h3 data-i18n="s3.h3">03 — Content Engine</h3>
+          <p data-i18n="s3.p">Пакет под запуск: посты/сторис/ads + motion-ready фреймы для Reels.</p>
           <ul class="list">
-            <li>адаптации под платформы</li>
-            <li>вариации в одном стиле</li>
-            <li>готово к публикации</li>
+            <li data-i18n="s3.li1">адаптации под платформы</li>
+            <li data-i18n="s3.li2">вариации в одном стиле</li>
+            <li data-i18n="s3.li3">готово к публикации</li>
           </ul>
         </div>
       </div>
@@ -362,13 +389,13 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2>Packages</h2>
-          <p>Пакеты — это кампанийный результат: hero + адаптации + контроль “дорогости”.</p>
+          <h2 data-i18n="pricing.h2">Packages</h2>
+          <p data-i18n="pricing.p">Пакеты — это кампанийный результат: hero + адаптации + контроль “дорогости”.</p>
         </div>
       </div>
 
       <div class="pricing-top">
-        <span class="tag">Оплата по счёту (invoice). Старт после оплаты. Для €1890 возможна схема 50/50.</span>
+        <span class="tag" data-i18n="pricing.note">Оплата по счёту (invoice). Старт после оплаты. Для €1890 возможна схема 50/50.</span>
         <div class="toggle" aria-label="Валюта">
           <div class="chip active" data-currency="EUR">EUR</div>
           <div class="chip" data-currency="UAH">UAH</div>
@@ -377,112 +404,114 @@
 
       <div class="grid three">
         <div class="card price-card" data-price-eur="390" data-price-uah="15900">
-          <div class="tag">Pilot</div>
-          <h3>CAMPAIGN START</h3>
-          <div class="price"><span class="price-value">€390</span><small>entry</small></div>
-          <p>Тест идеи / быстрый дроп / первые рекламные креативы.</p>
+          <div class="tag" data-i18n="p1.tag">Pilot</div>
+          <h3 data-i18n="p1.h3">CAMPAIGN START</h3>
+          <div class="price"><span class="price-value">€390</span><small data-i18n="p1.small">entry</small></div>
+          <p data-i18n="p1.p">Тест идеи / быстрый дроп / первые рекламные креативы.</p>
           <ul class="list">
-            <li>8 AI visuals</li>
-            <li>1 visual direction</li>
-            <li>2 раунда правок</li>
-            <li>срок: 4 дня</li>
-            <li>формат: 9:16 или 1:1</li>
+            <li data-i18n="p1.li1">8 AI visuals</li>
+            <li data-i18n="p1.li2">1 visual direction</li>
+            <li data-i18n="p1.li3">2 раунда правок</li>
+            <li data-i18n="p1.li4">срок: 4 дня</li>
+            <li data-i18n="p1.li5">формат: 9:16 или 1:1</li>
           </ul>
           <div class="price-actions">
-            <a class="btn primary" href="#contact">Request START</a>
-            <a class="btn" href="projects.html">See work</a>
+            <a class="btn primary" href="#contact" data-i18n="p1.cta">Request START</a>
+            <a class="btn" href="projects.html" data-i18n="cta.seeWork">See work</a>
           </div>
-          <div class="fine">Лучший вход без риска.</div>
+          <div class="fine" data-i18n="p1.fine">Лучший вход без риска.</div>
         </div>
 
         <div class="card price-card" data-price-eur="990" data-price-uah="39900">
-          <div class="tag">Best for growth</div>
-          <h3>CAMPAIGN PRO</h3>
-          <div class="price"><span class="price-value">€990</span><small>mid</small></div>
-          <p>Мини-кампания под соцсети и рекламу.</p>
+          <div class="tag" data-i18n="p2.tag">Best for growth</div>
+          <h3 data-i18n="p2.h3">CAMPAIGN PRO</h3>
+          <div class="price"><span class="price-value">€990</span><small data-i18n="p2.small">mid</small></div>
+          <p data-i18n="p2.p">Мини-кампания под соцсети и рекламу.</p>
           <ul class="list">
-            <li>18 visuals</li>
-            <li>адаптации: 9:16 + 1:1</li>
-            <li>concept (1 page)</li>
-            <li>3 motion-ready frames</li>
-            <li>срок: 5–7 дней</li>
+            <li data-i18n="p2.li1">18 visuals</li>
+            <li data-i18n="p2.li2">адаптации: 9:16 + 1:1</li>
+            <li data-i18n="p2.li3">concept (1 page)</li>
+            <li data-i18n="p2.li4">3 motion-ready frames</li>
+            <li data-i18n="p2.li5">срок: 5–7 дней</li>
           </ul>
           <div class="price-actions">
-            <a class="btn primary" href="#contact">Request PRO</a>
-            <a class="btn" href="projects.html">View projects</a>
+            <a class="btn primary" href="#contact" data-i18n="p2.cta">Request PRO</a>
+            <a class="btn" href="projects.html" data-i18n="cta.viewProjects">View projects</a>
           </div>
-          <div class="fine">Самый продающий пакет.</div>
+          <div class="fine" data-i18n="p2.fine">Самый продающий пакет.</div>
         </div>
 
         <div class="card price-card" data-price-eur="1890" data-price-uah="75900">
-          <div class="tag">Launch system</div>
-          <h3>CAMPAIGN SYSTEM</h3>
-          <div class="price"><span class="price-value">€1890</span><small>premium</small></div>
-          <p>Система под запуск: язык + объём + подготовка к видео.</p>
+          <div class="tag" data-i18n="p3.tag">Launch system</div>
+          <h3 data-i18n="p3.h3">CAMPAIGN SYSTEM</h3>
+          <div class="price"><span class="price-value">€1890</span><small data-i18n="p3.small">premium</small></div>
+          <p data-i18n="p3.p">Система под запуск: язык + объём + подготовка к видео.</p>
           <ul class="list">
-            <li>30+ visuals</li>
-            <li>9:16 / 1:1 / 4:5</li>
-            <li>narrative + shot-list</li>
-            <li>1 video storyboard</li>
-            <li>5 motion-ready frames</li>
-            <li>срок: 7–10 дней</li>
+            <li data-i18n="p3.li1">30+ visuals</li>
+            <li data-i18n="p3.li2">9:16 / 1:1 / 4:5</li>
+            <li data-i18n="p3.li3">narrative + shot-list</li>
+            <li data-i18n="p3.li4">1 video storyboard</li>
+            <li data-i18n="p3.li5">5 motion-ready frames</li>
+            <li data-i18n="p3.li6">срок: 7–10 дней</li>
           </ul>
           <div class="price-actions">
-            <a class="btn primary" href="#contact">Request SYSTEM</a>
-            <a class="btn" href="#contact">Custom €3k–€7k</a>
+            <a class="btn primary" href="#contact" data-i18n="p3.cta1">Request SYSTEM</a>
+            <a class="btn" href="#contact" data-i18n="p3.cta2">Custom €3k–€7k</a>
           </div>
-          <div class="fine">Для серьёзных запусков.</div>
+          <div class="fine" data-i18n="p3.fine">Для серьёзных запусков.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA / CONTACT -->
+  <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2>Contact</h2>
-          <p>Бренд / продукт / цель / референсы — мы ответим планом и направлением.</p>
+          <h2 data-i18n="contact.h2">Contact</h2>
+          <p data-i18n="contact.p">Бренд / продукт / цель / референсы — мы ответим планом и направлением.</p>
         </div>
       </div>
 
       <div class="grid contact-grid">
         <div class="card">
-          <h3>Request a campaign concept</h3>
+          <h3 data-i18n="contact.formTitle">Request a campaign concept</h3>
           <form class="form" id="contactForm">
-            <input type="text" id="brand" placeholder="Brand name / Instagram" required />
-            <input type="email" id="email" placeholder="Email" required />
-            <input type="text" id="goal" placeholder="Goal (drop / ads / launch / lookbook)" />
-            <textarea id="message" placeholder="Short brief: product, audience, desired vibe, references/links"></textarea>
-            <button class="btn primary" type="submit">Send request</button>
-            <div class="fine">Сейчас отправка через mailto. Если хотите — подключим Formspree/Netlify Forms.</div>
+            <input type="text" id="brand" data-i18n-ph="ph.brand" placeholder="Brand name / Instagram" required />
+            <input type="email" id="email" data-i18n-ph="ph.email" placeholder="Email" required />
+            <input type="text" id="goal" data-i18n-ph="ph.goal" placeholder="Goal (drop / ads / launch / lookbook)" />
+            <textarea id="message" data-i18n-ph="ph.msg" placeholder="Short brief: product, audience, desired vibe, references/links"></textarea>
+            <button class="btn primary" type="submit" data-i18n="contact.send">Send request</button>
+            <div class="fine" data-i18n="contact.fine">Сейчас отправка через mailto. Если хотите — подключим Formspree/Netlify Forms.</div>
           </form>
         </div>
 
         <div class="panel">
-          <h3 style="margin:0 0 10px">Links</h3>
+          <h3 style="margin:0 0 10px" data-i18n="contact.linksH">Links</h3>
           <p style="margin:0; color:var(--muted)">
-            Work: <a href="projects.html" style="text-decoration:underline">projects.html</a><br/>
-            Team: <a href="team.html" style="text-decoration:underline">team.html</a>
+            <span data-i18n="contact.work">Work</span>:
+            <a href="projects.html" style="text-decoration:underline">projects.html</a><br/>
+            <span data-i18n="contact.team">Team</span>:
+            <a href="team.html" style="text-decoration:underline">team.html</a>
           </p>
 
           <div style="height:12px"></div>
 
-          <h3 style="margin:0 0 10px">Payment</h3>
-          <p class="fine" style="margin:0">
+          <h3 style="margin:0 0 10px" data-i18n="contact.payH">Payment</h3>
+          <p class="fine" style="margin:0" data-i18n="contact.payP">
             Оплата по счёту (invoice). Старт после оплаты. NDA — по запросу.
           </p>
 
           <div style="height:12px"></div>
 
-          <h3 style="margin:0 0 10px">Add your contacts</h3>
-          <p class="fine" style="margin:0">
+          <h3 style="margin:0 0 10px" data-i18n="contact.addH">Add your contacts</h3>
+          <p class="fine" style="margin:0" data-i18n="contact.addP">
             Вставь сюда: email / Instagram / Telegram/Signal.
           </p>
 
           <div style="height:12px"></div>
-          <a class="btn" href="projects.html">View projects</a>
+          <a class="btn" href="projects.html" data-i18n="cta.viewProjects">View projects</a>
         </div>
       </div>
     </div>
@@ -492,10 +521,10 @@
     <div class="wrap">
       <div>© <span id="year"></span> SIGNAL STUDIO. AI Campaign Studio.</div>
       <div style="display:flex; gap:14px; flex-wrap:wrap">
-        <a href="projects.html">Projects</a>
-        <a href="team.html">Team</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="team.html" data-i18n="nav.team">Team</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
     </div>
   </div>
@@ -503,9 +532,204 @@
 </main>
 
 <script>
-  // mobile menu toggle (shows links on small screens)
-  const hamb = document.getElementById('hamb');
-  hamb?.addEventListener('click', () => {
+  // -------------------------------
+  // Language system (RU/UKR)
+  // -------------------------------
+  const i18n = {
+    ru: {
+      "nav.projects":"Projects",
+      "nav.system":"What we do",
+      "nav.pricing":"Pricing",
+      "nav.team":"Team",
+      "nav.contact":"Contact",
+
+      "cta.viewWork":"View work",
+      "cta.requestConcept":"Request concept",
+      "cta.viewCases":"View case studies",
+      "cta.seePackages":"See packages",
+      "cta.seeWork":"See work",
+      "cta.viewProjects":"View projects",
+
+      "hero.tag":"AI Campaign Studio • Fashion / Jewelry / Beauty",
+      "hero.h1":"Кампании, которые выглядят как €20k продакшн — но собираются AI-системой.",
+      "hero.lead":"Мы строим визуальные кампании и контент-движки: cinematic hero-кадры, адаптации под платформы и motion-ready фреймы. Без хаоса съёмок. Быстро. Дорого по ощущению.",
+      "hero.note":"Ответ в течение 24 часов. Пилотный концепт-кадр — по запросу (с водяным знаком).",
+
+      "kpi1.b":"3–7 дней","kpi1.s":"типичный цикл кампании",
+      "kpi2.b":"30+ вариаций","kpi2.s":"в одном визуальном языке",
+      "kpi3.b":"9:16 / 1:1 / 4:5","kpi3.s":"форматы под платформы",
+      "kpi4.b":"Motion-ready","kpi4.s":"фреймы для видео",
+
+      "system.h2":"What we do",
+      "system.p":"Мы не “генерим картинки”. Мы строим кампании: концепт → визуальный язык → серия → упаковка под запуск.",
+
+      "s1.h3":"01 — Strategy & Concept",
+      "s1.p":"DNA бренда, narrative, референсы, правила света и материалов.",
+      "s1.li1":"brand snapshot + moodline",
+      "s1.li2":"hero-сцены + shot-лист",
+      "s1.li3":"визуальные правила для серии",
+
+      "s2.h3":"02 — AI Production",
+      "s2.p":"Hero-кадры, продуктовые крупные планы, модели, материал — с контролем качества.",
+      "s2.li1":"editorial + product visuals",
+      "s2.li2":"consistency и ретушь",
+      "s2.li3":"multi-format output",
+
+      "s3.h3":"03 — Content Engine",
+      "s3.p":"Пакет под запуск: посты/сторис/ads + motion-ready фреймы для Reels.",
+      "s3.li1":"адаптации под платформы",
+      "s3.li2":"вариации в одном стиле",
+      "s3.li3":"готово к публикации",
+
+      "pricing.h2":"Packages",
+      "pricing.p":"Пакеты — это кампанийный результат: hero + адаптации + контроль “дорогости”.",
+      "pricing.note":"Оплата по счёту (invoice). Старт после оплаты. Для €1890 возможна схема 50/50.",
+
+      "p1.tag":"Pilot","p1.h3":"CAMPAIGN START","p1.small":"entry",
+      "p1.p":"Тест идеи / быстрый дроп / первые рекламные креативы.",
+      "p1.li1":"8 AI visuals","p1.li2":"1 visual direction","p1.li3":"2 раунда правок","p1.li4":"срок: 4 дня","p1.li5":"формат: 9:16 или 1:1",
+      "p1.cta":"Request START","p1.fine":"Лучший вход без риска.",
+
+      "p2.tag":"Best for growth","p2.h3":"CAMPAIGN PRO","p2.small":"mid",
+      "p2.p":"Мини-кампания под соцсети и рекламу.",
+      "p2.li1":"18 visuals","p2.li2":"адаптации: 9:16 + 1:1","p2.li3":"concept (1 page)","p2.li4":"3 motion-ready frames","p2.li5":"срок: 5–7 дней",
+      "p2.cta":"Request PRO","p2.fine":"Самый продающий пакет.",
+
+      "p3.tag":"Launch system","p3.h3":"CAMPAIGN SYSTEM","p3.small":"premium",
+      "p3.p":"Система под запуск: язык + объём + подготовка к видео.",
+      "p3.li1":"30+ visuals","p3.li2":"9:16 / 1:1 / 4:5","p3.li3":"narrative + shot-list","p3.li4":"1 video storyboard","p3.li5":"5 motion-ready frames","p3.li6":"срок: 7–10 дней",
+      "p3.cta1":"Request SYSTEM","p3.cta2":"Custom €3k–€7k","p3.fine":"Для серьёзных запусков.",
+
+      "contact.h2":"Contact",
+      "contact.p":"Бренд / продукт / цель / референсы — мы ответим планом и направлением.",
+      "contact.formTitle":"Request a campaign concept",
+      "contact.send":"Send request",
+      "contact.fine":"Сейчас отправка через mailto. Если хотите — подключим Formspree/Netlify Forms.",
+      "contact.linksH":"Links",
+      "contact.work":"Work",
+      "contact.team":"Team",
+      "contact.payH":"Payment",
+      "contact.payP":"Оплата по счёту (invoice). Старт после оплаты. NDA — по запросу.",
+      "contact.addH":"Add your contacts",
+      "contact.addP":"Вставь сюда: email / Instagram / Telegram/Signal.",
+
+      "ph.brand":"Brand name / Instagram",
+      "ph.email":"Email",
+      "ph.goal":"Goal (drop / ads / launch / lookbook)",
+      "ph.msg":"Short brief: product, audience, desired vibe, references/links"
+    },
+    uk: {
+      "nav.projects":"Проєкти",
+      "nav.system":"Що ми робимо",
+      "nav.pricing":"Пакети",
+      "nav.team":"Команда",
+      "nav.contact":"Контакт",
+
+      "cta.viewWork":"Переглянути роботи",
+      "cta.requestConcept":"Запитати концепт",
+      "cta.viewCases":"Дивитися кейси",
+      "cta.seePackages":"Пакети",
+      "cta.seeWork":"Дивитися роботи",
+      "cta.viewProjects":"Дивитися проєкти",
+
+      "hero.tag":"AI Campaign Studio • Fashion / Jewelry / Beauty",
+      "hero.h1":"Кампанії, що виглядають як €20k продакшн — але збираються AI-системою.",
+      "hero.lead":"Ми будуємо візуальні кампанії та контент-движки: cinematic hero-кадри, адаптації під платформи та motion-ready фрейми. Без хаосу зйомок. Швидко. Дорого за відчуттям.",
+      "hero.note":"Відповідь протягом 24 годин. Пілотний концепт-кадр — за запитом (з водяним знаком).",
+
+      "kpi1.b":"3–7 днів","kpi1.s":"типовий цикл кампанії",
+      "kpi2.b":"30+ варіацій","kpi2.s":"в одному візуальному коді",
+      "kpi3.b":"9:16 / 1:1 / 4:5","kpi3.s":"формати під платформи",
+      "kpi4.b":"Motion-ready","kpi4.s":"фрейми для відео",
+
+      "system.h2":"Що ми робимо",
+      "system.p":"Ми не “генеруємо картинки”. Ми будуємо кампанії: концепт → візуальна мова → серія → пакування під запуск.",
+
+      "s1.h3":"01 — Стратегія & Концепт",
+      "s1.p":"DNA бренду, наратив, референси, правила світла та матеріалів.",
+      "s1.li1":"brand snapshot + moodline",
+      "s1.li2":"hero-сцени + shot-лист",
+      "s1.li3":"візуальні правила для серії",
+
+      "s2.h3":"02 — AI Production",
+      "s2.p":"Hero-кадри, продуктові крупні плани, моделі, матеріал — з контролем якості.",
+      "s2.li1":"editorial + product visuals",
+      "s2.li2":"consistency і ретуш",
+      "s2.li3":"multi-format output",
+
+      "s3.h3":"03 — Content Engine",
+      "s3.p":"Пакет під запуск: пости/сторіс/ads + motion-ready фрейми для Reels.",
+      "s3.li1":"адаптації під платформи",
+      "s3.li2":"варіації в одному стилі",
+      "s3.li3":"готово до публікації",
+
+      "pricing.h2":"Пакети",
+      "pricing.p":"Пакети — це результат кампанії: hero + адаптації + контроль відчуття “дорого”.",
+      "pricing.note":"Оплата за рахунком (invoice). Старт після оплати. Для €1890 можлива схема 50/50.",
+
+      "p1.tag":"Пілот","p1.h3":"CAMPAIGN START","p1.small":"entry",
+      "p1.p":"Тест ідеї / швидкий дроп / перші рекламні креативи.",
+      "p1.li1":"8 AI visuals","p1.li2":"1 visual direction","p1.li3":"2 раунди правок","p1.li4":"термін: 4 дні","p1.li5":"формат: 9:16 або 1:1",
+      "p1.cta":"Запитати START","p1.fine":"Найкращий вхід без ризику.",
+
+      "p2.tag":"Для росту","p2.h3":"CAMPAIGN PRO","p2.small":"mid",
+      "p2.p":"Міні-кампанія під соцмережі та рекламу.",
+      "p2.li1":"18 visuals","p2.li2":"адаптації: 9:16 + 1:1","p2.li3":"concept (1 page)","p2.li4":"3 motion-ready frames","p2.li5":"термін: 5–7 днів",
+      "p2.cta":"Запитати PRO","p2.fine":"Найпродаючіший пакет.",
+
+      "p3.tag":"Система запуску","p3.h3":"CAMPAIGN SYSTEM","p3.small":"premium",
+      "p3.p":"Система під запуск: мова + обсяг + підготовка до відео.",
+      "p3.li1":"30+ visuals","p3.li2":"9:16 / 1:1 / 4:5","p3.li3":"narrative + shot-list","p3.li4":"1 video storyboard","p3.li5":"5 motion-ready frames","p3.li6":"термін: 7–10 днів",
+      "p3.cta1":"Запитати SYSTEM","p3.cta2":"Custom €3k–€7k","p3.fine":"Для серйозних запусків.",
+
+      "contact.h2":"Контакт",
+      "contact.p":"Бренд / продукт / ціль / референси — відповімо планом і напрямом.",
+      "contact.formTitle":"Запитати концепт кампанії",
+      "contact.send":"Надіслати запит",
+      "contact.fine":"Зараз відправка через mailto. Якщо хочете — підключимо Formspree/Netlify Forms.",
+      "contact.linksH":"Посилання",
+      "contact.work":"Роботи",
+      "contact.team":"Команда",
+      "contact.payH":"Оплата",
+      "contact.payP":"Оплата за рахунком (invoice). Старт після оплати. NDA — за запитом.",
+      "contact.addH":"Додайте контакти",
+      "contact.addP":"Встав тут: email / Instagram / Telegram/Signal.",
+
+      "ph.brand":"Назва бренду / Instagram",
+      "ph.email":"Email",
+      "ph.goal":"Ціль (дроп / реклама / запуск / лукбук)",
+      "ph.msg":"Короткий бриф: продукт, аудиторія, бажаний вайб, посилання/референси"
+    }
+  };
+
+  function applyLang(lang){
+    const dict = i18n[lang] || i18n.ru;
+    document.documentElement.lang = (lang === 'uk') ? 'uk' : 'ru';
+
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-ph');
+      if(dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+
+    document.getElementById('langRU')?.classList.toggle('active', lang !== 'uk');
+    document.getElementById('langUK')?.classList.toggle('active', lang === 'uk');
+    localStorage.setItem('site_lang', lang);
+  }
+
+  function initLang(){
+    const saved = localStorage.getItem('site_lang');
+    applyLang(saved === 'uk' ? 'uk' : 'ru');
+  }
+</script>
+
+<script>
+  // mobile menu toggle
+  document.getElementById('hamb')?.addEventListener('click', () => {
     const nav = document.querySelector('nav.menu');
     if (!nav) return;
     const isHidden = getComputedStyle(nav).display === 'none';
@@ -554,9 +778,15 @@
       `Brief:\n${message}\n\n` +
       `— Sent from SIGNAL STUDIO website`
     );
-
     window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
   });
+
+  // Language buttons
+  document.getElementById('langRU')?.addEventListener('click', ()=>applyLang('ru'));
+  document.getElementById('langUK')?.addEventListener('click', ()=>applyLang('uk'));
+
+  // init
+  initLang();
 </script>
 
 </body>

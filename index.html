@@ -12,7 +12,6 @@
       --panel: rgba(255,255,255,.03);
       --panel2: rgba(0,0,0,.22);
       --line: rgba(255,255,255,.10);
-      --line2: rgba(255,255,255,.14);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.62);
       --muted2: rgba(255,255,255,.40);
@@ -36,7 +35,6 @@
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-
     .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 74px;}
 
     /* Topbar */
@@ -153,9 +151,7 @@
     .panelTop h2{margin:0; font-size:16px; font-weight:980}
     .panelTop p{margin:8px 0 0; color:var(--muted); font-weight:760}
 
-    .offer{
-      padding:14px 16px 16px;
-    }
+    .offer{padding:14px 16px 16px;}
     .offerBox{
       border:1px solid rgba(255,255,255,.10);
       background: var(--panel2);
@@ -164,12 +160,7 @@
     }
     .offerTitle{font-weight:1000; letter-spacing:.2px}
     .offerSub{color:var(--muted); margin-top:6px; font-weight:760}
-    .timer{
-      margin-top:10px;
-      font-size: 22px;
-      font-weight:1100;
-      letter-spacing: .8px;
-    }
+    .timer{margin-top:10px; font-size: 22px; font-weight:1100; letter-spacing: .8px;}
 
     .proof{
       margin-top:12px;
@@ -196,11 +187,7 @@
     .sectionHead h3{margin:0; font-size:18px; letter-spacing:.2px; font-weight:980}
     .sectionHead p{margin:8px 0 0; color:var(--muted); max-width: 92ch; font-weight:720}
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
-    }
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:12px;}
     .card{
       grid-column: span 4;
       border:1px solid var(--line);
@@ -251,7 +238,6 @@
     }
     @media (max-width: 980px){ .gallery{grid-template-columns: repeat(6, 1fr);} }
     @media (max-width: 640px){ .gallery{grid-template-columns: repeat(2, 1fr);} }
-
     .shot{
       border-radius: 18px;
       overflow:hidden;
@@ -271,12 +257,7 @@
     .shot:hover img{transform: scale(1.06)}
 
     /* Packages */
-    .price{
-      font-size: 24px;
-      font-weight:1100;
-      margin:10px 0 0;
-      letter-spacing:.2px;
-    }
+    .price{font-size: 24px; font-weight:1100; margin:10px 0 0; letter-spacing:.2px;}
     .badge{
       display:inline-flex;
       margin-top:10px;
@@ -301,7 +282,7 @@
     .list li::before{content:"•"; position:absolute; left:0; top:0; color: rgba(255,255,255,.55)}
     .note{margin-top:10px; color:var(--muted2); font-weight:760}
 
-    /* Contact + Payment */
+    /* Payment + Contact */
     .wideBox{
       grid-column: span 12;
       border:1px solid var(--line);
@@ -371,8 +352,10 @@
         <span>Signal Studio</span>
       </a>
 
+      <!-- IMPORTANT CHANGE:
+           Projects now ALWAYS goes to projects.html (not #cases) -->
       <nav>
-        <a href="#cases" data-en="Projects" data-ua="Проєкти">Projects</a>
+        <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
         <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
         <a href="#packages" data-en="Packages" data-ua="Пакети">Packages</a>
         <a href="#contact" data-en="Contact" data-ua="Контакт">Contact</a>
@@ -410,7 +393,8 @@
              href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
              data-en="Email BRIEF" data-ua="Надіслати BRIEF">Email BRIEF</a>
 
-          <a class="btn secondary" href="#cases"
+          <!-- Make this go to the Projects page (not scroll) -->
+          <a class="btn secondary" href="projects.html"
              data-en="View Projects" data-ua="Дивитись проєкти">View Projects</a>
 
           <a class="btn secondary" href="team.html"
@@ -500,7 +484,8 @@
             We build campaign drops and visual systems that look like premium production — and work in ads.
           </p>
         </div>
-        <a class="smalllink" href="#cases" data-en="See mini-cases →" data-ua="Дивитись мінікейси →">See mini-cases →</a>
+        <!-- Link out to projects page, not scroll -->
+        <a class="smalllink" href="projects.html" data-en="See projects →" data-ua="Дивитись проєкти →">See projects →</a>
       </div>
 
       <div class="grid">
@@ -528,7 +513,7 @@
       </div>
     </section>
 
-    <!-- MINI CASES -->
+    <!-- MINI CASES (still on home) -->
     <section id="cases">
       <div class="sectionHead">
         <div>
@@ -839,7 +824,7 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Language switch EN/UA (uses innerHTML to avoid the "<p class=" garbage issue)
+    // Language switch EN/UA
     const langEN = document.getElementById('langEN');
     const langUA = document.getElementById('langUA');
     let LANG = 'en';
@@ -847,7 +832,6 @@
     function applyLang(){
       document.querySelectorAll('[data-en]').forEach(el=>{
         const v = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
-        // keep markup safe (we control the strings)
         el.innerHTML = v;
       });
 
@@ -865,7 +849,7 @@
     langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
     applyLang();
 
-    // Daily timer (keep, but no "resets" wording)
+    // Daily timer
     const KEY = "signalstudio_daily_bonus_v2";
     function getResetTs(){
       const saved = localStorage.getItem(KEY);

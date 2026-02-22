@@ -1,600 +1,630 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects — Signal Studio</title>
-  <meta name="description" content="Selected projects by Signal Studio. Fashion & beauty AI advertising visuals: goal → concept → deliverables." />
+  <meta name="description" content="Signal Studio — AI advertising visuals for fashion & beauty. Projects." />
 
   <style>
     :root{
-      --bg:#0b0c0f;
-      --fg:#f6f6f7;
-      --muted:#a7a9b2;
-      --line:rgba(255,255,255,.12);
-      --soft:rgba(255,255,255,.04);
-      --r:18px;
-      --max:1200px;
+      --bg:#07090c;
+      --panel:#0c1016;
+      --panel2:#0b0f15;
+      --line:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.60);
+      --muted2:rgba(255,255,255,.42);
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius:22px;
+      --radius2:18px;
+      --pad:18px;
+      --max:1120px;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
-      margin:0;font-family:Arial, sans-serif;color:var(--fg);
-      background:
-        radial-gradient(1100px 700px at 15% -10%, rgba(255,255,255,.11), transparent 55%),
-        radial-gradient(1000px 600px at 90% 0%, rgba(255,255,255,.08), transparent 50%),
-        linear-gradient(180deg,#08090c,#0b0c0f 35%,#07070a);
+      margin:0;
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
+                  radial-gradient(900px 600px at 90% 20%, rgba(255,255,255,.05), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      font: 14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      letter-spacing:.2px;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 90px}
-
-    header{
-      display:flex;justify-content:space-between;align-items:center;gap:12px;
-      position:sticky;top:0;z-index:50;
-      padding:14px 0;
-      background:linear-gradient(180deg, rgba(11,12,15,.92), rgba(11,12,15,.65));
+    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 70px;}
+    .topbar{
+      position:sticky; top:0; z-index:30;
       backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.07);
+      background: linear-gradient(to bottom, rgba(7,9,12,.88), rgba(7,9,12,.50));
+      border-bottom:1px solid var(--line);
     }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.02em}
+    .topbar .inner{
+      max-width:var(--max); margin:0 auto; padding: 14px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.6px;
+    }
     .dot{
-      width:10px;height:10px;border-radius:50%;
-      background:rgba(255,255,255,.75);
-      box-shadow:0 0 18px rgba(255,255,255,.25);
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.08);
     }
-    nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    nav a{
-      color:var(--muted);font-size:14px;
-      padding:8px 10px;border-radius:999px;border:1px solid transparent;
-    }
-    nav a:hover{color:var(--fg);border-color:rgba(255,255,255,.10);background:rgba(255,255,255,.03)}
-    .lang{
-      display:inline-flex;gap:6px;align-items:center;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      padding:6px 8px;border-radius:999px;
-    }
-    .lang button{
-      border:0;background:transparent;color:var(--muted);
-      padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:bold
-    }
-    .lang button.active{background:rgba(255,255,255,.10);color:var(--fg)}
-
-    .hero{padding:28px 0 10px}
-    h1{margin:0;font-size:44px;letter-spacing:-.02em;line-height:1.05}
-    @media (max-width:860px){h1{font-size:34px}}
-    .sub{margin:10px 0 0;color:var(--muted);line-height:1.6;max-width:900px}
-
-    .bar{
-      margin-top:18px;
-      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      border-radius:18px;
-      padding:12px;
-    }
-    .filters{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{
-      padding:8px 10px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
+    nav{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
       color:var(--muted);
-      font-size:13px;
+      font-weight:600;
+    }
+    nav a{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    nav a:hover{border-color:var(--line); color:var(--text)}
+    .lang{
+      display:flex; gap:8px; align-items:center;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:8px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      font-weight:700;
       cursor:pointer;
       user-select:none;
     }
-    .chip.active{color:var(--fg);background:rgba(255,255,255,.10)}
-    .cta{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{
-      display:inline-block;padding:10px 14px;border-radius:999px;
+    .pill.active{
+      color:var(--bg);
+      background: rgba(255,255,255,.92);
+      border-color:transparent;
+    }
+
+    header.hero{
+      padding: 26px 0 10px;
+    }
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      color:var(--muted);
       border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      font-weight:bold;
-      font-size:14px;
+      background: rgba(255,255,255,.03);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:700;
     }
-    .btnPrimary{background:#fff;color:#000;border-color:#fff}
-    .btn:hover{transform:translateY(-1px)}
-
-    /* Case cards */
-    .cases{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
-    .case{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      border-radius:18px;
-      padding:16px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
+    h1{
+      margin:14px 0 8px;
+      font-size: clamp(28px, 4.2vw, 46px);
+      line-height:1.05;
+      letter-spacing:-.6px;
     }
-    @media (max-width:980px){.case{grid-template-columns:1fr}}
-    .label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7f838e}
-    .title{margin:8px 0 10px;font-size:20px}
-    .muted{color:var(--muted);line-height:1.6}
-    .list{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.7}
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width: 70ch;
+      font-size: 15px;
+    }
 
-    /* Gallery inside case */
+    .controls{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 12px;
+      border-radius: var(--radius);
+    }
+    .filters{
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+    }
+    .chip{
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      color:var(--muted);
+      font-weight:800;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip.active{
+      color:var(--bg);
+      background: rgba(255,255,255,.92);
+      border-color:transparent;
+    }
+    .meta{
+      color:var(--muted2);
+      font-weight:700;
+    }
+
     .grid{
+      margin-top:14px;
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:8px;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
     }
-    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
-    .shot{
-      position:relative;
+    .card{
+      grid-column: span 4;
+      border-radius: var(--radius);
       overflow:hidden;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.02);
-      aspect-ratio: 3/4;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      box-shadow: var(--shadow);
+      position:relative;
+      cursor:pointer;
+      min-height: 240px;
     }
-    .shot img{
-      width:100%;height:100%;object-fit:cover;display:block;
-      transform:scale(1.02);
-      transition:transform .35s ease, filter .35s ease;
-      filter:saturate(1.02) contrast(1.02);
+    @media (max-width: 980px){ .card{grid-column: span 6;} }
+    @media (max-width: 640px){ .card{grid-column: span 12;} }
+
+    .thumb{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      transform: scale(1.01);
+      filter: contrast(1.03) saturate(1.02);
     }
-    .shot:hover img{transform:scale(1.08);filter:saturate(1.06) contrast(1.06)}
-    .shot span{
-      position:absolute;left:8px;bottom:8px;
-      font-size:11px;color:#e7e7ea;
-      background:rgba(0,0,0,.45);
-      border:1px solid rgba(255,255,255,.12);
-      padding:5px 7px;border-radius:999px;
-      backdrop-filter: blur(8px);
+    .overlay{
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.62));
+      opacity:.95;
+      pointer-events:none;
+    }
+    .cap{
+      position:absolute;
+      left:14px; right:14px; bottom:12px;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+    }
+    .cap .left{
+      display:flex; flex-direction:column; gap:3px;
+      min-width:0;
+    }
+    .tag{
+      display:inline-flex;
+      width:fit-content;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.80);
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+    }
+    .ttl{
+      font-weight:900;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .note{
+      color: rgba(255,255,255,.70);
+      font-weight:700;
+      font-size:12px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .cap .num{
+      color: rgba(255,255,255,.75);
+      font-weight:900;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      padding:6px 9px;
+      background: rgba(0,0,0,.18);
+      flex:0 0 auto;
     }
 
-    .bigCta{
-      margin-top:22px;
-      border:1px solid rgba(255,255,255,.12);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border-radius:18px;
-      padding:18px;
-      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    .section{
+      margin-top: 24px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 16px;
+      border-radius: var(--radius);
+    }
+    .section h2{
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .section p{
+      margin:0;
+      color:var(--muted);
+      max-width: 88ch;
     }
 
-    footer{margin-top:60px;padding-top:22px;border-top:1px solid rgba(255,255,255,.10);color:#666;font-size:14px}
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0; z-index:60;
+      display:none;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(10px);
+      align-items:center; justify-content:center;
+      padding: 18px;
+    }
+    .lightbox.open{display:flex;}
+    .lbPanel{
+      width:min(980px, 100%);
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,14,20,.92);
+      box-shadow: 0 30px 120px rgba(0,0,0,.65);
+    }
+    .lbTop{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      font-weight:800;
+    }
+    .lbBtn{
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.86);
+      padding:8px 10px;
+      border-radius: 999px;
+      font-weight:900;
+      user-select:none;
+    }
+    .lbBody{
+      position:relative;
+      background:#05070a;
+    }
+    .lbImg{
+      width:100%;
+      max-height: 78vh;
+      object-fit: contain;
+      display:block;
+    }
+    footer{
+      margin-top: 26px;
+      color: var(--muted2);
+      font-weight:700;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="dot"></div>
-        <div>Signal Studio</div>
-      </div>
+  <div class="topbar">
+    <div class="inner">
+      <a class="brand" href="index.html" title="Signal Studio">
+        <span class="dot"></span>
+        <span>Signal Studio</span>
+      </a>
 
       <nav>
         <a href="index.html" data-en="Home" data-ua="Головна">Home</a>
-        <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
+        <a href="projects.html" data-en="Projects" data-ua="Проєкти" style="color:var(--text)">Projects</a>
         <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
+        <a href="index.html#packages" data-en="Packages" data-ua="Пакети">Packages</a>
         <a href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
-        <a href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email" data-ua="Пошта">Email</a>
-
-        <div class="lang" aria-label="Language switch">
-          <button id="btnEN" class="active" type="button">EN</button>
-          <button id="btnUA" type="button">UA</button>
-        </div>
       </nav>
+
+      <div class="lang">
+        <div class="pill active" id="langEN">EN</div>
+        <div class="pill" id="langUA">UA</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="kicker" data-en="PROJECTS / SELECTED WORK" data-ua="ПРОЄКТИ / ВИБРАНІ РОБОТИ">PROJECTS / SELECTED WORK</div>
+      <h1 data-en="Editorial-grade visuals built for ads." data-ua="Візуали editorial-рівня, створені під рекламу.">
+        Editorial-grade visuals built for ads.
+      </h1>
+      <p class="sub"
+        data-en="This page is a curated showcase. For each project we build a concept and variations — not random AI images."
+        data-ua="Це curated-вітрина. У кожному проєкті ми будуємо концепт і варіації — а не випадкові AI-картинки.">
+        This page is a curated showcase. For each project we build a concept and variations — not random AI images.
+      </p>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1
-        data-en="Projects that feel premium — and are built to sell."
-        data-ua="Проєкти, які виглядають преміально — і зроблені, щоб продавати.">
-        Projects that feel premium — and are built to sell.
-      </h1>
+    <section class="controls">
+      <div class="filters" id="filters">
+        <div class="chip active" data-filter="all" data-en="All" data-ua="Усі">All</div>
+        <div class="chip" data-filter="beauty" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
+        <div class="chip" data-filter="fashion" data-en="Fashion" data-ua="Фешн">Fashion</div>
+        <div class="chip" data-filter="jewelry" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
+        <div class="chip" data-filter="story" data-en="Story" data-ua="Історія">Story</div>
+      </div>
 
-      <p class="sub"
-        data-en="Each case is a system: Goal → Insight → Concept → Deliverables. Not ‘AI art’. Commercial direction."
-        data-ua="Кожен кейс — це система: Ціль → Інсайт → Концепт → Deliverables. Не «AI-арт». Комерційна режисура.">
-        Each case is a system: Goal → Insight → Concept → Deliverables. Not ‘AI art’. Commercial direction.
-      </p>
+      <div class="meta" id="count" data-en="12 items" data-ua="12 робіт">12 items</div>
+    </section>
 
-      <div class="bar">
-        <div class="filters">
-          <div class="chip active" data-filter="all" data-en="All" data-ua="Усі">All</div>
-          <div class="chip" data-filter="beauty" data-en="Beauty" data-ua="Beauty">Beauty</div>
-          <div class="chip" data-filter="fashion" data-en="Fashion" data-ua="Fashion">Fashion</div>
-          <div class="chip" data-filter="jewelry" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
+    <!-- GRID -->
+    <section class="grid" id="grid">
+      <!-- BEAUTY -->
+      <div class="card" data-cat="beauty" data-src="p03.jpg" data-title-en="Golden Skin Oil" data-title-ua="Golden Skin Oil" data-note-en="Beauty launch visuals" data-note-ua="Візуали для запуску бʼюті">
+        <img class="thumb" src="p03.jpg" alt="p03" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
+            <div class="ttl" data-en="Golden Skin Oil" data-ua="Golden Skin Oil">Golden Skin Oil</div>
+            <div class="note" data-en="Beauty launch visuals" data-ua="Візуали для запуску бʼюті">Beauty launch visuals</div>
+          </div>
+          <div class="num">p03</div>
         </div>
+      </div>
 
-        <div class="cta">
-          <a class="btn btnPrimary" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
-          <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF"
-             data-en="Email us" data-ua="Написати на пошту">Email us</a>
+      <div class="card" data-cat="beauty" data-src="p04.jpg" data-title-en="Texture Proof" data-title-ua="Текстура / Proof" data-note-en="Light + skin detail" data-note-ua="Світло + шкіра">
+        <img class="thumb" src="p04.jpg" alt="p04" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
+            <div class="ttl" data-en="Texture Proof" data-ua="Текстура / Proof">Texture Proof</div>
+            <div class="note" data-en="Light + skin detail" data-ua="Світло + шкіра">Light + skin detail</div>
+          </div>
+          <div class="num">p04</div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="beauty" data-src="p12.jpg" data-title-en="Clean Skin Portrait" data-title-ua="Портрет шкіри" data-note-en="Beauty confidence" data-note-ua="Бʼюті-довіра">
+        <img class="thumb" src="p12.jpg" alt="p12" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
+            <div class="ttl" data-en="Clean Skin Portrait" data-ua="Портрет шкіри">Clean Skin Portrait</div>
+            <div class="note" data-en="Beauty confidence" data-ua="Бʼюті-довіра">Beauty confidence</div>
+          </div>
+          <div class="num">p12</div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="beauty" data-src="p05.jpg" data-title-en="Warm Sun Mood" data-title-ua="Теплий настрій" data-note-en="Campaign atmosphere" data-note-ua="Атмосфера кампейну">
+        <img class="thumb" src="p05.jpg" alt="p05" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
+            <div class="ttl" data-en="Warm Sun Mood" data-ua="Теплий настрій">Warm Sun Mood</div>
+            <div class="note" data-en="Campaign atmosphere" data-ua="Атмосфера кампейну">Campaign atmosphere</div>
+          </div>
+          <div class="num">p05</div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="beauty" data-src="p01.jpg" data-title-en="Poolside Product Shot" data-title-ua="Продукт біля басейну" data-note-en="Lifestyle beauty frame" data-note-ua="Лайфстайл кадр">
+        <img class="thumb" src="p01.jpg" alt="p01" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
+            <div class="ttl" data-en="Poolside Product Shot" data-ua="Продукт біля басейну">Poolside Product Shot</div>
+            <div class="note" data-en="Lifestyle beauty frame" data-ua="Лайфстайл кадр">Lifestyle beauty frame</div>
+          </div>
+          <div class="num">p01</div>
+        </div>
+      </div>
+
+      <!-- FASHION -->
+      <div class="card" data-cat="fashion" data-src="p07.jpg" data-title-en="Accessory Editorial" data-title-ua="Аксесуар editorial" data-note-en="Minimal luxury styling" data-note-ua="Мінімал-люкс стайлінг">
+        <img class="thumb" src="p07.jpg" alt="p07" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
+            <div class="ttl" data-en="Accessory Editorial" data-ua="Аксесуар editorial">Accessory Editorial</div>
+            <div class="note" data-en="Minimal luxury styling" data-ua="Мінімал-люкс стайлінг">Minimal luxury styling</div>
+          </div>
+          <div class="num">p07</div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="fashion" data-src="p06.jpg" data-title-en="Accessory Variation" data-title-ua="Варіація аксесуара" data-note-en="Same concept, new angle" data-note-ua="Той самий концепт, інший кут">
+        <img class="thumb" src="p06.jpg" alt="p06" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
+            <div class="ttl" data-en="Accessory Variation" data-ua="Варіація аксесуара">Accessory Variation</div>
+            <div class="note" data-en="Same concept, new angle" data-ua="Той самий концепт, інший кут">Same concept, new angle</div>
+          </div>
+          <div class="num">p06</div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="fashion" data-src="p11.jpg" data-title-en="Editorial Gesture" data-title-ua="Editorial жест" data-note-en="High-fashion frame" data-note-ua="Кадр high-fashion">
+        <img class="thumb" src="p11.jpg" alt="p11" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
+            <div class="ttl" data-en="Editorial Gesture" data-ua="Editorial жест">Editorial Gesture</div>
+            <div class="note" data-en="High-fashion frame" data-ua="Кадр high-fashion">High-fashion frame</div>
+          </div>
+          <div class="num">p11</div>
+        </div>
+      </div>
+
+      <!-- JEWELRY -->
+      <div class="card" data-cat="jewelry" data-src="p10.jpg" data-title-en="Evening Jewelry Hero" data-title-ua="Ювелірний hero" data-note-en="Desire-focused shot" data-note-ua="Кадр про бажання">
+        <img class="thumb" src="p10.jpg" alt="p10" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
+            <div class="ttl" data-en="Evening Jewelry Hero" data-ua="Ювелірний hero">Evening Jewelry Hero</div>
+            <div class="note" data-en="Desire-focused shot" data-ua="Кадр про бажання">Desire-focused shot</div>
+          </div>
+          <div class="num">p10</div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="jewelry" data-src="p09.jpg" data-title-en="Glam Atmosphere" data-title-ua="Glam атмосфера" data-note-en="Cinematic luxury mood" data-note-ua="Кінематографічний люкс">
+        <img class="thumb" src="p09.jpg" alt="p09" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
+            <div class="ttl" data-en="Glam Atmosphere" data-ua="Glam атмосфера">Glam Atmosphere</div>
+            <div class="note" data-en="Cinematic luxury mood" data-ua="Кінематографічний люкс">Cinematic luxury mood</div>
+          </div>
+          <div class="num">p09</div>
+        </div>
+      </div>
+
+      <div class="card" data-cat="jewelry" data-src="p08.jpg" data-title-en="Candlelight Detail" data-title-ua="Деталь при свічках" data-note-en="Intimate product moment" data-note-ua="Інтимний момент продукту">
+        <img class="thumb" src="p08.jpg" alt="p08" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
+            <div class="ttl" data-en="Candlelight Detail" data-ua="Деталь при свічках">Candlelight Detail</div>
+            <div class="note" data-en="Intimate product moment" data-ua="Інтимний момент продукту">Intimate product moment</div>
+          </div>
+          <div class="num">p08</div>
+        </div>
+      </div>
+
+      <!-- STORY -->
+      <div class="card" data-cat="story" data-src="p02.jpg" data-title-en="Lifestyle Story Frame" data-title-ua="Лайфстайл-історія" data-note-en="Cinematic editorial scene" data-note-ua="Кінематографічна сцена">
+        <img class="thumb" src="p02.jpg" alt="p02" loading="lazy" />
+        <div class="overlay"></div>
+        <div class="cap">
+          <div class="left">
+            <div class="tag" data-en="Story" data-ua="Історія">Story</div>
+            <div class="ttl" data-en="Lifestyle Story Frame" data-ua="Лайфстайл-історія">Lifestyle Story Frame</div>
+            <div class="note" data-en="Cinematic editorial scene" data-ua="Кінематографічна сцена">Cinematic editorial scene</div>
+          </div>
+          <div class="num">p02</div>
         </div>
       </div>
     </section>
 
-    <!-- POSITIONING + WHAT WE DO -->
-    <section class="cases" style="margin-top:14px">
-      <article class="case" style="grid-template-columns:1.2fr .8fr" data-tags="all">
-        <div>
-          <div class="label" data-en="POSITIONING" data-ua="ПОЗИЦІОНУВАННЯ">POSITIONING</div>
-          <div class="title"
-            data-en="We build premium ad systems — not AI pictures."
-            data-ua="Ми будуємо преміальні рекламні системи — не AI-картинки.">
-            We build premium ad systems — not AI pictures.
-          </div>
-
-          <p class="muted"
-            data-en="If the idea looks like Pinterest — we kill it. Our work is designed to be: shareable, believable, and performance-ready for Meta/TikTok."
-            data-ua="Якщо ідея виглядає як Pinterest — ми її вбиваємо. Наші роботи створені, щоб їх: шерили, їм вірили, і щоб вони працювали в рекламі Meta/TikTok.">
-            If the idea looks like Pinterest — we kill it. Our work is designed to be: shareable, believable, and performance-ready for Meta/TikTok.
-          </p>
-
-          <ul class="list">
-            <li data-en="You get: concept, art direction, production and ad variations"
-                data-ua="Ти отримуєш: концепт, арт-дирекшн, продакшн і рекламні варіації">
-              You get: concept, art direction, production and ad variations
-            </li>
-            <li data-en="Result: a brand that looks expensive and sells"
-                data-ua="Результат: бренд виглядає дорого і продає">
-              Result: a brand that looks expensive and sells
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="label" data-en="WHAT WE CREATE" data-ua="ЩО МИ СТВОРЮЄМО">WHAT WE CREATE</div>
-          <ul class="list">
-            <li data-en="Product visuals (ads / website / socials)" data-ua="Product-візуали (реклама / сайт / соцмережі)">Product visuals (ads / website / socials)</li>
-            <li data-en="Campaign concepts + storyboards" data-ua="Концепти кампаній + сторіборди">Campaign concepts + storyboards</li>
-            <li data-en="Performance ad sets (A/B angles)" data-ua="Набори під рекламу (A/B подача)">Performance ad sets (A/B angles)</li>
-            <li data-en="Reels/TikTok scripts (short, punchy)" data-ua="Сценарії Reels/TikTok (коротко, з панчем)">Reels/TikTok scripts (short, punchy)</li>
-          </ul>
-
-          <div class="cta" style="margin-top:12px">
-            <a class="btn btnPrimary" href="index.html#contact"
-               data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
-            <a class="btn" href="team.html"
-               data-en="See our system (Team)" data-ua="Подивитись нашу систему (Команда)">See our system (Team)</a>
-          </div>
-        </div>
-      </article>
+    <section class="section" style="margin-top:18px">
+      <h2 data-en="Note" data-ua="Примітка">Note</h2>
+      <p
+        data-en="Some projects are concept studies (spec work). We can share brand-specific case details privately after an NDA."
+        data-ua="Частина проєктів — концепт-роботи (spec). Деталі бренд-кейсів можемо показати приватно після NDA.">
+        Some projects are concept studies (spec work). We can share brand-specific case details privately after an NDA.
+      </p>
     </section>
 
-    <!-- MINI CASES (THE IMPORTANT PART) -->
-    <section class="cases" id="cases">
-
-      <!-- MINI CASE 1 — BEAUTY -->
-      <article class="case" data-tags="beauty">
-        <div>
-          <div class="label" data-en="Beauty • Mini Case" data-ua="Beauty • Міні-кейс">Beauty • Mini Case</div>
-
-          <div class="title"
-            data-en="Glow System — Skincare Launch Visuals"
-            data-ua="Glow System — візуали для запуску skincare">
-            Glow System — Skincare Launch Visuals
-          </div>
-
-          <p class="muted"
-            data-en="Goal: launch a new skincare product with visuals that feel like a €50k studio production — but optimized for Meta ads."
-            data-ua="Ціль: запустити новий продукт з візуалами рівня €50k студії — але під рекламу Meta.">
-            Goal: launch a new skincare product with visuals that feel like a €50k studio production — but optimized for Meta ads.
-          </p>
-
-          <ul class="list">
-            <li data-en="Insight: in beauty, trust comes from texture, light and skin realism. If it looks artificial — it doesn’t sell."
-                data-ua="Інсайт: у beauty довіра формується через текстуру, світло і реалістичну шкіру. Якщо виглядає штучно — не продає.">
-              Insight: in beauty, trust comes from texture, light and skin realism. If it looks artificial — it doesn’t sell.
-            </li>
-            <li data-en="Concept: warm controlled highlights + clean skin focus + cinematic close-ups. Product always readable."
-                data-ua="Концепт: теплі контрольовані відблиски + чистий фокус на продукті + кінематографічні крупні плани.">
-              Concept: warm controlled highlights + clean skin focus + cinematic close-ups. Product always readable.
-            </li>
-            <li data-en="Deliverables: 12 ad-ready visuals, 4:5 / 1:1 / 9:16, 2 A/B angles, 48–72h."
-                data-ua="Deliverables: 12 візуалів під рекламу, 4:5 / 1:1 / 9:16, 2 A/B подачі, 48–72 год.">
-              Deliverables: 12 ad-ready visuals, 4:5 / 1:1 / 9:16, 2 A/B angles, 48–72h.
-            </li>
-            <li data-en="Why it works: feels expensive, looks real, built for performance testing."
-                data-ua="Чому це працює: виглядає дорого, виглядає реально, зроблено під тестування реклами.">
-              Why it works: feels expensive, looks real, built for performance testing.
-            </li>
-          </ul>
-
-          <div class="cta" style="margin-top:12px">
-            <a class="btn btnPrimary" href="index.html#contact" data-en="Get a quote" data-ua="Отримати ціну">Get a quote</a>
-            <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20—%20Beauty"
-               data-en="Request Beauty brief" data-ua="Бриф для Beauty">Request Beauty brief</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <a class="shot" href="p01.jpg" target="_blank" rel="noopener"><img src="p01.jpg" alt="p01"><span>p01</span></a>
-          <a class="shot" href="p02.jpg" target="_blank" rel="noopener"><img src="p02.jpg" alt="p02"><span>p02</span></a>
-          <a class="shot" href="p03.jpg" target="_blank" rel="noopener"><img src="p03.jpg" alt="p03"><span>p03</span></a>
-          <a class="shot" href="p04.jpg" target="_blank" rel="noopener"><img src="p04.jpg" alt="p04"><span>p04</span></a>
-          <a class="shot" href="p05.jpg" target="_blank" rel="noopener"><img src="p05.jpg" alt="p05"><span>p05</span></a>
-          <a class="shot" href="p06.jpg" target="_blank" rel="noopener"><img src="p06.jpg" alt="p06"><span>p06</span></a>
-        </div>
-      </article>
-
-      <!-- MINI CASE 2 — FASHION -->
-      <article class="case" data-tags="fashion">
-        <div>
-          <div class="label" data-en="Fashion • Mini Case" data-ua="Fashion • Міні-кейс">Fashion • Mini Case</div>
-
-          <div class="title"
-            data-en="Neutral Luxury — Editorial Frames for Ads"
-            data-ua="Neutral Luxury — editorial кадри для реклами">
-            Neutral Luxury — Editorial Frames for Ads
-          </div>
-
-          <p class="muted"
-            data-en="Goal: create a fashion feed that looks like a magazine campaign, not influencer content."
-            data-ua="Ціль: створити fashion-стрічку рівня журналу, а не інфлюенсерського контенту.">
-            Goal: create a fashion feed that looks like a magazine campaign, not influencer content.
-          </p>
-
-          <ul class="list">
-            <li data-en="Insight: brands lose authority when visuals feel random. Consistency = status."
-                data-ua="Інсайт: бренди втрачають статус, коли візуал виглядає випадково. Консистентність = авторитет.">
-              Insight: brands lose authority when visuals feel random. Consistency = status.
-            </li>
-            <li data-en="Concept: minimal palette, strong negative space, confident posture, controlled shadow."
-                data-ua="Концепт: мінімальна палітра, багато повітря, впевнена поза, контрольована тінь.">
-              Concept: minimal palette, strong negative space, confident posture, controlled shadow.
-            </li>
-            <li data-en="Deliverables: 6 hero frames + 6 close-up variations, ad-ready export set, 3–5 days."
-                data-ua="Deliverables: 6 hero-кадрів + 6 варіацій крупних планів, експорт під рекламу, 3–5 днів.">
-              Deliverables: 6 hero frames + 6 close-up variations, ad-ready export set, 3–5 days.
-            </li>
-            <li data-en="Why it works: structured brand look, recognizable mood, higher perceived value."
-                data-ua="Чому працює: структура бренду, впізнаваний настрій, зростає відчуття вартості.">
-              Why it works: structured brand look, recognizable mood, higher perceived value.
-            </li>
-          </ul>
-
-          <div class="cta" style="margin-top:12px">
-            <a class="btn btnPrimary" href="index.html#contact" data-en="Get a quote" data-ua="Отримати ціну">Get a quote</a>
-            <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20—%20Fashion"
-               data-en="Request Fashion brief" data-ua="Бриф для Fashion">Request Fashion brief</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <a class="shot" href="p07.jpg" target="_blank" rel="noopener"><img src="p07.jpg" alt="p07"><span>p07</span></a>
-          <a class="shot" href="p08.jpg" target="_blank" rel="noopener"><img src="p08.jpg" alt="p08"><span>p08</span></a>
-          <a class="shot" href="p09.jpg" target="_blank" rel="noopener"><img src="p09.jpg" alt="p09"><span>p09</span></a>
-          <a class="shot" href="p10.jpg" target="_blank" rel="noopener"><img src="p10.jpg" alt="p10"><span>p10</span></a>
-          <a class="shot" href="p11.jpg" target="_blank" rel="noopener"><img src="p11.jpg" alt="p11"><span>p11</span></a>
-          <a class="shot" href="p12.jpg" target="_blank" rel="noopener"><img src="p12.jpg" alt="p12"><span>p12</span></a>
-        </div>
-      </article>
-
-      <!-- MINI CASE 3 — JEWELRY -->
-      <article class="case" data-tags="jewelry">
-        <div>
-          <div class="label" data-en="Jewelry • Mini Case" data-ua="Ювелірка • Міні-кейс">Jewelry • Mini Case</div>
-
-          <div class="title"
-            data-en="High-Contrast Emotion — Jewelry Concept System"
-            data-ua="High-Contrast Emotion — система ювелірних концептів">
-            High-Contrast Emotion — Jewelry Concept System
-          </div>
-
-          <p class="muted"
-            data-en="Goal: break through repetitive jewelry feeds and create shareable, high-status visuals."
-            data-ua="Ціль: вийти з «однакових» ювелірних стрічок і створити візуали, які хочеться шерити.">
-            Goal: break through repetitive jewelry feeds and create shareable, high-status visuals.
-          </p>
-
-          <ul class="list">
-            <li data-en="Insight: jewelry sells emotion first, metal second."
-                data-ua="Інсайт: ювелірка продає емоцію першою, метал — другим.">
-              Insight: jewelry sells emotion first, metal second.
-            </li>
-            <li data-en="Concept: emotional trigger + tight product framing + dramatic but controlled lighting."
-                data-ua="Концепт: емоційний тригер + щільне кадрування продукту + драматичне, але контрольоване світло.">
-              Concept: emotional trigger + tight product framing + dramatic but controlled lighting.
-            </li>
-            <li data-en="Deliverables: 3 concepts, 10 premium visuals, Story + Feed formats, concept-to-production pipeline."
-                data-ua="Deliverables: 3 концепти, 10 преміальних візуалів, формати Story + Feed, система від ідеї до продакшну.">
-              Deliverables: 3 concepts, 10 premium visuals, Story + Feed formats, concept-to-production pipeline.
-            </li>
-            <li data-en="Why it works: stops scrolling, feels bold, built to be shared."
-                data-ua="Чому працює: зупиняє скрол, виглядає сміливо, зроблено для шерів.">
-              Why it works: stops scrolling, feels bold, built to be shared.
-            </li>
-          </ul>
-
-          <div class="cta" style="margin-top:12px">
-            <a class="btn btnPrimary" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
-            <a class="btn" href="team.html" data-en="See how we think" data-ua="Подивитись як ми мислимо">See how we think</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
-            <div data-en="Add jewelry images later (p13…)" data-ua="Додай ювелірні фото пізніше (p13…)">Add jewelry images later (p13…)</div>
-          </div>
-          <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
-            <div data-en="This case sells the concept system" data-ua="Цей кейс продає систему концептів">This case sells the concept system</div>
-          </div>
-          <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
-            <div data-en="We’ll plug visuals in next" data-ua="Далі підставимо візуали">We’ll plug visuals in next</div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <div class="bigCta">
+    <footer>
+      <div>© <span id="year"></span> Signal Studio</div>
       <div>
-        <div class="label" data-en="Fast start" data-ua="Швидкий старт">Fast start</div>
-        <div style="font-size:18px;font-weight:bold;margin-top:6px"
-          data-en="Send a brief — we reply with timing + quote."
-          data-ua="Надішли бриф — відповімо з термінами та ціною.">
-          Send a brief — we reply with timing + quote.
+        <a class="smalllink" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
+        <span style="opacity:.35"> • </span>
+        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email" data-ua="Пошта">Email</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lbPanel">
+      <div class="lbTop">
+        <div id="lbTitle" style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <div class="lbBtn" id="lbOpen" data-en="Open" data-ua="Відкрити">Open</div>
+          <div class="lbBtn" id="lbClose" data-en="Close" data-ua="Закрити">Close</div>
         </div>
-        <div class="muted" style="margin-top:6px"
-          data-en="Email: signalstudio.agency@gmail.com"
-          data-ua="Пошта: signalstudio.agency@gmail.com">
-          Email: signalstudio.agency@gmail.com
-        </div>
       </div>
-      <div class="cta">
-        <a class="btn btnPrimary" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
-        <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF"
-           data-en="Email now" data-ua="Написати зараз">Email now</a>
+      <div class="lbBody">
+        <img class="lbImg" id="lbImg" alt="preview" />
       </div>
     </div>
-<!-- FAQ -->
-<section class="cases" id="faq" style="margin-top:18px">
-  <article class="case" data-tags="all">
-    <div>
-      <div class="label" data-en="FAQ" data-ua="FAQ">FAQ</div>
-      <div class="title"
-        data-en="Answers before you ask."
-        data-ua="Відповіді до того, як ти спитаєш.">
-        Answers before you ask.
-      </div>
-
-      <p class="muted"
-        data-en="Short. Clear. No fluff."
-        data-ua="Коротко. Чітко. Без води.">
-        Short. Clear. No fluff.
-      </p>
-
-      <div class="cta" style="margin-top:12px">
-        <a class="btn btnPrimary" href="index.html#contact"
-          data-en="Request a brief"
-          data-ua="Запросити бриф">Request a brief</a>
-        <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF"
-          data-en="Email us"
-          data-ua="Написати на пошту">Email us</a>
-      </div>
-    </div>
-
-    <div>
-      <ul class="list">
-        <li>
-          <b data-en="Is this ‘AI’ legal for ads?" data-ua="Чи легально використовувати AI у рекламі?">Is this ‘AI’ legal for ads?</b><br>
-          <span class="muted"
-            data-en="Yes. You can use the visuals in ads and socials. If you need specific licensing terms — we confirm them in writing per project."
-            data-ua="Так. Візуали можна використовувати в рекламі та соцмережах. Якщо потрібні конкретні умови ліцензії — фіксуємо письмово під проєкт.">
-            Yes. You can use the visuals in ads and socials. If you need specific licensing terms — we confirm them in writing per project.
-          </span>
-        </li>
-
-        <li>
-          <b data-en="How fast is delivery?" data-ua="Які терміни виконання?">How fast is delivery?</b><br>
-          <span class="muted"
-            data-en="Starter work is usually 48–72 hours. Bigger sets take 3–7 days depending on concepts and formats."
-            data-ua="Starter зазвичай 48–72 години. Більші сети — 3–7 днів залежно від концептів та форматів.">
-            Starter work is usually 48–72 hours. Bigger sets take 3–7 days depending on concepts and formats.
-          </span>
-        </li>
-
-        <li>
-          <b data-en="What do you need from us?" data-ua="Що вам потрібно від нас?">What do you need from us?</b><br>
-          <span class="muted"
-            data-en="Product photos (or links), goal, brand vibe, and 3–5 references. If you have a brandbook — perfect."
-            data-ua="Фото продукту (або посилання), ціль, стиль бренду і 3–5 референсів. Якщо є брендбук — ідеально.">
-            Product photos (or links), goal, brand vibe, and 3–5 references. If you have a brandbook — perfect.
-          </span>
-        </li>
-
-        <li>
-          <b data-en="How many revisions?" data-ua="Скільки правок?">How many revisions?</b><br>
-          <span class="muted"
-            data-en="Typically 1 round included for Starter, 2 rounds for larger packs. We keep revisions strategic: what improves results, not endless tweaks."
-            data-ua="Зазвичай 1 раунд у Starter, 2 раунди в більших пакетах. Правки — стратегічні: тільки те, що покращує результат, без нескінченної косметики.">
-            Typically 1 round included for Starter, 2 rounds for larger packs. We keep revisions strategic: what improves results, not endless tweaks.
-          </span>
-        </li>
-
-        <li>
-          <b data-en="Can you match our brand style?" data-ua="Чи підлаштуєтесь під стиль бренду?">Can you match our brand style?</b><br>
-          <span class="muted"
-            data-en="Yes. We adapt lighting, palette, composition and tone to match your brand. The goal is recognition, not random creativity."
-            data-ua="Так. Підлаштовуємо світло, палітру, композицію і тон. Ціль — впізнаваність, а не випадкова «креативність».">
-            Yes. We adapt lighting, palette, composition and tone to match your brand. The goal is recognition, not random creativity.
-          </span>
-        </li>
-
-        <li>
-          <b data-en="Do you create videos (Reels/TikTok)?" data-ua="Чи робите відео (Reels/TikTok)?">Do you create videos (Reels/TikTok)?</b><br>
-          <span class="muted"
-            data-en="We can deliver scripts, hooks, storyboards and short AI-driven motion depending on the project. Start with visuals — then scale to video."
-            data-ua="Можемо зробити сценарії, хуки, сторіборди та коротку AI-анімацію залежно від задачі. Почніть з візуалів — потім масштабуємо у відео.">
-            We can deliver scripts, hooks, storyboards and short AI-driven motion depending on the project. Start with visuals — then scale to video.
-          </span>
-        </li>
-
-        <li>
-          <b data-en="What’s the difference vs a designer?" data-ua="Чим ви відрізняєтесь від дизайнера?">What’s the difference vs a designer?</b><br>
-          <span class="muted"
-            data-en="We’re performance-driven: we build ad systems with concepts + variations for testing. Not a single ‘nice post’."
-            data-ua="Ми працюємо під результат: будуємо рекламні системи з концептами + варіаціями для тестів. Не один «гарний пост».">
-            We’re performance-driven: we build ad systems with concepts + variations for testing. Not a single ‘nice post’.
-          </span>
-        </li>
-
-        <li>
-          <b data-en="Can you work in UA / EN (and later DE)?" data-ua="Чи можете працювати UA / EN (і потім DE)?">Can you work in UA / EN (and later DE)?</b><br>
-          <span class="muted"
-            data-en="Yes. We deliver copy in EN + UA. German can be added when needed for EU ads."
-            data-ua="Так. Віддаємо тексти EN + UA. Німецьку додамо, коли потрібно під рекламу в ЄС.">
-            Yes. We deliver copy in EN + UA. German can be added when needed for EU ads.
-          </span>
-        </li>
-      </ul>
-    </div>
-  </article>
-</section>
-    <footer>© 2026 Signal Studio — Hamburg / UA</footer>
   </div>
 
   <script>
-    // Language switch
-    const btnEN = document.getElementById('btnEN');
-    const btnUA = document.getElementById('btnUA');
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    function setLang(lang){
+    // Language
+    const langEN = document.getElementById('langEN');
+    const langUA = document.getElementById('langUA');
+    let LANG = 'en';
+
+    function applyLang(){
       document.querySelectorAll('[data-en]').forEach(el=>{
-        el.textContent = (lang === 'UA') ? el.getAttribute('data-ua') : el.getAttribute('data-en');
+        el.textContent = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
       });
-      btnEN.classList.toggle('active', lang === 'EN');
-      btnUA.classList.toggle('active', lang === 'UA');
-      localStorage.setItem('lang', lang);
+      langEN.classList.toggle('active', LANG==='en');
+      langUA.classList.toggle('active', LANG==='ua');
+      updateCount();
     }
-    btnEN.addEventListener('click', ()=>setLang('EN'));
-    btnUA.addEventListener('click', ()=>setLang('UA'));
-    setLang(localStorage.getItem('lang') || 'EN');
+    langEN.addEventListener('click', ()=>{ LANG='en'; applyLang(); });
+    langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
 
     // Filters
-    const chips = document.querySelectorAll('.chip');
-    const cases = document.querySelectorAll('.case');
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const cards = Array.from(document.querySelectorAll('.card'));
+    let FILTER = 'all';
 
-    chips.forEach(chip=>{
-      chip.addEventListener('click', ()=>{
-        chips.forEach(c=>c.classList.remove('active'));
-        chip.classList.add('active');
-
-        const f = chip.getAttribute('data-filter');
-        cases.forEach(card=>{
-          const tags = card.getAttribute('data-tags') || '';
-          const show = (f === 'all') || tags.includes(f) || tags === 'all';
-          card.style.display = show ? 'grid' : 'none';
-        });
+    function setFilter(f){
+      FILTER = f;
+      chips.forEach(c=>c.classList.toggle('active', c.dataset.filter===f));
+      cards.forEach(card=>{
+        const ok = (f==='all') || (card.dataset.cat===f);
+        card.style.display = ok ? '' : 'none';
       });
+      updateCount();
+    }
+    chips.forEach(c=> c.addEventListener('click', ()=> setFilter(c.dataset.filter)));
+
+    function updateCount(){
+      const visible = cards.filter(card => card.style.display !== 'none').length;
+      const count = document.getElementById('count');
+      count.textContent = (LANG==='en') ? `${visible} items` : `${visible} робіт`;
+    }
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbClose = document.getElementById('lbClose');
+    const lbOpen = document.getElementById('lbOpen');
+    let currentSrc = '';
+
+    function openLB(card){
+      currentSrc = card.dataset.src;
+      lbImg.src = currentSrc;
+      const title = (LANG==='en') ? card.dataset.titleEn : card.dataset.titleUa;
+      const note  = (LANG==='en') ? card.dataset.noteEn  : card.dataset.noteUa;
+      lbTitle.textContent = `${title} — ${note}`;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+    }
+    function closeLB(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+      currentSrc = '';
+    }
+
+    cards.forEach(card => card.addEventListener('click', ()=> openLB(card)));
+    lbClose.addEventListener('click', closeLB);
+    lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
+
+    lbOpen.addEventListener('click', ()=>{
+      if(!currentSrc) return;
+      window.open(currentSrc, '_blank', 'noopener');
     });
 
-    // Safety: mark broken images (if filename mismatch)
-    document.querySelectorAll('.shot img').forEach(img=>{
-      img.addEventListener('error', ()=>{
-        img.style.display='none';
-        const p = document.createElement('div');
-        p.style.padding='14px';
-        p.style.color='#a7a9b2';
-        p.style.fontSize='12px';
-        p.textContent='Image not found (check filename)';
-        img.parentElement.appendChild(p);
-      });
-    });
+    // Init
+    applyLang();
+    setFilter('all');
   </script>
 </body>
 </html>

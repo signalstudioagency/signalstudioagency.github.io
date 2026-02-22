@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Signal Studio</title>
-  <meta name="description" content="Selected projects by Signal Studio. Fashion & beauty AI advertising visuals: concept → art direction → production." />
+  <meta name="description" content="Selected projects by Signal Studio. Fashion & beauty AI advertising visuals: goal → concept → deliverables." />
 
   <style>
     :root{
@@ -36,9 +36,7 @@
       backdrop-filter: blur(10px);
       border-bottom:1px solid rgba(255,255,255,.07);
     }
-    .brand{
-      display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.02em;
-    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.02em}
     .dot{
       width:10px;height:10px;border-radius:50%;
       background:rgba(255,255,255,.75);
@@ -86,9 +84,7 @@
       user-select:none;
     }
     .chip.active{color:var(--fg);background:rgba(255,255,255,.10)}
-    .cta{
-      display:flex;gap:10px;flex-wrap:wrap
-    }
+    .cta{display:flex;gap:10px;flex-wrap:wrap}
     .btn{
       display:inline-block;padding:10px 14px;border-radius:999px;
       border:1px solid var(--line);
@@ -147,7 +143,6 @@
       backdrop-filter: blur(8px);
     }
 
-    /* Bottom CTA */
     .bigCta{
       margin-top:22px;
       border:1px solid rgba(255,255,255,.12);
@@ -157,10 +152,7 @@
       display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
     }
 
-    footer{
-      margin-top:60px;padding-top:22px;border-top:1px solid rgba(255,255,255,.10);
-      color:#666;font-size:14px
-    }
+    footer{margin-top:60px;padding-top:22px;border-top:1px solid rgba(255,255,255,.10);color:#666;font-size:14px}
   </style>
 </head>
 
@@ -175,9 +167,9 @@
       <nav>
         <a href="index.html" data-en="Home" data-ua="Головна">Home</a>
         <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
-        <a href="services.html" data-en="Services" data-ua="Послуги" style="opacity:.65;pointer-events:none">Services</a>
         <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
         <a href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
+        <a href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email" data-ua="Пошта">Email</a>
 
         <div class="lang" aria-label="Language switch">
           <button id="btnEN" class="active" type="button">EN</button>
@@ -186,16 +178,18 @@
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
       <h1
         data-en="Projects that feel premium — and are built to sell."
         data-ua="Проєкти, які виглядають преміально — і зроблені, щоб продавати.">
         Projects that feel premium — and are built to sell.
       </h1>
+
       <p class="sub"
-        data-en="Each case is a system: Goal → Concept → Deliverables. Not ‘AI art’. Commercial direction."
-        data-ua="Кожен кейс — це система: Ціль → Концепт → Deliverables. Не «AI-арт». Комерційна режисура.">
-        Each case is a system: Goal → Concept → Deliverables. Not ‘AI art’. Commercial direction.
+        data-en="Each case is a system: Goal → Insight → Concept → Deliverables. Not ‘AI art’. Commercial direction."
+        data-ua="Кожен кейс — це система: Ціль → Інсайт → Концепт → Deliverables. Не «AI-арт». Комерційна режисура.">
+        Each case is a system: Goal → Insight → Concept → Deliverables. Not ‘AI art’. Commercial direction.
       </p>
 
       <div class="bar">
@@ -214,34 +208,90 @@
       </div>
     </section>
 
-    <!-- CASES -->
-    <section class="cases" id="cases">
-      <!-- CASE 1 (Beauty) -->
-      <article class="case" data-tags="beauty">
+    <!-- POSITIONING + WHAT WE DO -->
+    <section class="cases" style="margin-top:14px">
+      <article class="case" style="grid-template-columns:1.2fr .8fr" data-tags="all">
         <div>
-          <div class="label" data-en="Beauty • Product Visual System" data-ua="Beauty • Візуальна система продукту">Beauty • Product Visual System</div>
-          <div class="title" data-en="Euphoria-style Glow — ad-ready product visuals" data-ua="Euphoria-style Glow — візуали під рекламу">
-            Euphoria-style Glow — ad-ready product visuals
+          <div class="label" data-en="POSITIONING" data-ua="ПОЗИЦІОНУВАННЯ">POSITIONING</div>
+          <div class="title"
+            data-en="We build premium ad systems — not AI pictures."
+            data-ua="Ми будуємо преміальні рекламні системи — не AI-картинки.">
+            We build premium ad systems — not AI pictures.
           </div>
 
           <p class="muted"
-            data-en="Goal: create premium skincare visuals that look like a real studio production."
-            data-ua="Ціль: зробити преміальні візуали косметики, які виглядають як реальний студійний продакшн.">
-            Goal: create premium skincare visuals that look like a real studio production.
+            data-en="If the idea looks like Pinterest — we kill it. Our work is designed to be: shareable, believable, and performance-ready for Meta/TikTok."
+            data-ua="Якщо ідея виглядає як Pinterest — ми її вбиваємо. Наші роботи створені, щоб їх: шерили, їм вірили, і щоб вони працювали в рекламі Meta/TikTok.">
+            If the idea looks like Pinterest — we kill it. Our work is designed to be: shareable, believable, and performance-ready for Meta/TikTok.
           </p>
 
           <ul class="list">
-            <li data-en="Concept: warm luxury skin, controlled highlights, clean product focus"
-                data-ua="Концепт: теплий luxury-skin, контроль бликів, чистий фокус на продукті">
-              Concept: warm luxury skin, controlled highlights, clean product focus
+            <li data-en="You get: concept, art direction, production and ad variations"
+                data-ua="Ти отримуєш: концепт, арт-дирекшн, продакшн і рекламні варіації">
+              You get: concept, art direction, production and ad variations
             </li>
-            <li data-en="Deliverables: 12 images for ads / site / socials"
-                data-ua="Deliverables: 12 зображень для реклами / сайту / соцмереж">
-              Deliverables: 12 images for ads / site / socials
+            <li data-en="Result: a brand that looks expensive and sells"
+                data-ua="Результат: бренд виглядає дорого і продає">
+              Result: a brand that looks expensive and sells
             </li>
-            <li data-en="Why it sells: feels expensive, shareable, and clear product benefit"
-                data-ua="Чому продає: виглядає дорого, хочеться шерити, і чітко показує продукт">
-              Why it sells: feels expensive, shareable, and clear product benefit
+          </ul>
+        </div>
+
+        <div>
+          <div class="label" data-en="WHAT WE CREATE" data-ua="ЩО МИ СТВОРЮЄМО">WHAT WE CREATE</div>
+          <ul class="list">
+            <li data-en="Product visuals (ads / website / socials)" data-ua="Product-візуали (реклама / сайт / соцмережі)">Product visuals (ads / website / socials)</li>
+            <li data-en="Campaign concepts + storyboards" data-ua="Концепти кампаній + сторіборди">Campaign concepts + storyboards</li>
+            <li data-en="Performance ad sets (A/B angles)" data-ua="Набори під рекламу (A/B подача)">Performance ad sets (A/B angles)</li>
+            <li data-en="Reels/TikTok scripts (short, punchy)" data-ua="Сценарії Reels/TikTok (коротко, з панчем)">Reels/TikTok scripts (short, punchy)</li>
+          </ul>
+
+          <div class="cta" style="margin-top:12px">
+            <a class="btn btnPrimary" href="index.html#contact"
+               data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
+            <a class="btn" href="team.html"
+               data-en="See our system (Team)" data-ua="Подивитись нашу систему (Команда)">See our system (Team)</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- MINI CASES (THE IMPORTANT PART) -->
+    <section class="cases" id="cases">
+
+      <!-- MINI CASE 1 — BEAUTY -->
+      <article class="case" data-tags="beauty">
+        <div>
+          <div class="label" data-en="Beauty • Mini Case" data-ua="Beauty • Міні-кейс">Beauty • Mini Case</div>
+
+          <div class="title"
+            data-en="Glow System — Skincare Launch Visuals"
+            data-ua="Glow System — візуали для запуску skincare">
+            Glow System — Skincare Launch Visuals
+          </div>
+
+          <p class="muted"
+            data-en="Goal: launch a new skincare product with visuals that feel like a €50k studio production — but optimized for Meta ads."
+            data-ua="Ціль: запустити новий продукт з візуалами рівня €50k студії — але під рекламу Meta.">
+            Goal: launch a new skincare product with visuals that feel like a €50k studio production — but optimized for Meta ads.
+          </p>
+
+          <ul class="list">
+            <li data-en="Insight: in beauty, trust comes from texture, light and skin realism. If it looks artificial — it doesn’t sell."
+                data-ua="Інсайт: у beauty довіра формується через текстуру, світло і реалістичну шкіру. Якщо виглядає штучно — не продає.">
+              Insight: in beauty, trust comes from texture, light and skin realism. If it looks artificial — it doesn’t sell.
+            </li>
+            <li data-en="Concept: warm controlled highlights + clean skin focus + cinematic close-ups. Product always readable."
+                data-ua="Концепт: теплі контрольовані відблиски + чистий фокус на продукті + кінематографічні крупні плани.">
+              Concept: warm controlled highlights + clean skin focus + cinematic close-ups. Product always readable.
+            </li>
+            <li data-en="Deliverables: 12 ad-ready visuals, 4:5 / 1:1 / 9:16, 2 A/B angles, 48–72h."
+                data-ua="Deliverables: 12 візуалів під рекламу, 4:5 / 1:1 / 9:16, 2 A/B подачі, 48–72 год.">
+              Deliverables: 12 ad-ready visuals, 4:5 / 1:1 / 9:16, 2 A/B angles, 48–72h.
+            </li>
+            <li data-en="Why it works: feels expensive, looks real, built for performance testing."
+                data-ua="Чому це працює: виглядає дорого, виглядає реально, зроблено під тестування реклами.">
+              Why it works: feels expensive, looks real, built for performance testing.
             </li>
           </ul>
 
@@ -262,32 +312,39 @@
         </div>
       </article>
 
-      <!-- CASE 2 (Fashion) -->
+      <!-- MINI CASE 2 — FASHION -->
       <article class="case" data-tags="fashion">
         <div>
-          <div class="label" data-en="Fashion • Editorial Campaign Look" data-ua="Fashion • Editorial-кампанія">Fashion • Editorial Campaign Look</div>
-          <div class="title" data-en="Neutral Luxury — editorial frames for ads" data-ua="Neutral Luxury — editorial кадри під рекламу">
-            Neutral Luxury — editorial frames for ads
+          <div class="label" data-en="Fashion • Mini Case" data-ua="Fashion • Міні-кейс">Fashion • Mini Case</div>
+
+          <div class="title"
+            data-en="Neutral Luxury — Editorial Frames for Ads"
+            data-ua="Neutral Luxury — editorial кадри для реклами">
+            Neutral Luxury — Editorial Frames for Ads
           </div>
 
           <p class="muted"
-            data-en="Goal: build a consistent premium fashion mood that brands can reuse across launches."
-            data-ua="Ціль: створити стабільний premium-настрій у fashion, який можна повторювати для запусків.">
-            Goal: build a consistent premium fashion mood that brands can reuse across launches.
+            data-en="Goal: create a fashion feed that looks like a magazine campaign, not influencer content."
+            data-ua="Ціль: створити fashion-стрічку рівня журналу, а не інфлюенсерського контенту.">
+            Goal: create a fashion feed that looks like a magazine campaign, not influencer content.
           </p>
 
           <ul class="list">
-            <li data-en="Concept: minimal palette, expensive light, cinematic framing"
-                data-ua="Концепт: мінімальна палітра, дороге світло, кінематографічний кадр">
-              Concept: minimal palette, expensive light, cinematic framing
+            <li data-en="Insight: brands lose authority when visuals feel random. Consistency = status."
+                data-ua="Інсайт: бренди втрачають статус, коли візуал виглядає випадково. Консистентність = авторитет.">
+              Insight: brands lose authority when visuals feel random. Consistency = status.
             </li>
-            <li data-en="Deliverables: 6 hero frames + 6 close-ups (ad variations)"
-                data-ua="Deliverables: 6 hero-кадрів + 6 крупних планів (варіації для реклами)">
-              Deliverables: 6 hero frames + 6 close-ups (ad variations)
+            <li data-en="Concept: minimal palette, strong negative space, confident posture, controlled shadow."
+                data-ua="Концепт: мінімальна палітра, багато повітря, впевнена поза, контрольована тінь.">
+              Concept: minimal palette, strong negative space, confident posture, controlled shadow.
             </li>
-            <li data-en="Why it sells: looks real, feels like a magazine, instantly trustworthy"
-                data-ua="Чому продає: виглядає реально, як журнал, одразу викликає довіру">
-              Why it sells: looks real, feels like a magazine, instantly trustworthy
+            <li data-en="Deliverables: 6 hero frames + 6 close-up variations, ad-ready export set, 3–5 days."
+                data-ua="Deliverables: 6 hero-кадрів + 6 варіацій крупних планів, експорт під рекламу, 3–5 днів.">
+              Deliverables: 6 hero frames + 6 close-up variations, ad-ready export set, 3–5 days.
+            </li>
+            <li data-en="Why it works: structured brand look, recognizable mood, higher perceived value."
+                data-ua="Чому працює: структура бренду, впізнаваний настрій, зростає відчуття вартості.">
+              Why it works: structured brand look, recognizable mood, higher perceived value.
             </li>
           </ul>
 
@@ -308,50 +365,54 @@
         </div>
       </article>
 
-      <!-- CASE 3 (Jewelry placeholder — пока без новых фото, но кейс уже готов) -->
+      <!-- MINI CASE 3 — JEWELRY -->
       <article class="case" data-tags="jewelry">
         <div>
-          <div class="label" data-en="Jewelry • Concept System" data-ua="Ювелірка • Система концептів">Jewelry • Concept System</div>
+          <div class="label" data-en="Jewelry • Mini Case" data-ua="Ювелірка • Міні-кейс">Jewelry • Mini Case</div>
+
           <div class="title"
-               data-en="High-end Jewelry Concepts — built to be shared"
-               data-ua="High-end ювелірні концепти — зроблені, щоб шерили">
-            High-end Jewelry Concepts — built to be shared
+            data-en="High-Contrast Emotion — Jewelry Concept System"
+            data-ua="High-Contrast Emotion — система ювелірних концептів">
+            High-Contrast Emotion — Jewelry Concept System
           </div>
 
           <p class="muted"
-             data-en="Goal: create provocative, premium concepts for jewelry brands that cut through ‘same-same’ feeds."
-             data-ua="Ціль: зробити провокативні преміальні концепти для ювелірних брендів, які пробивають «однакові» стрічки.">
-            Goal: create provocative, premium concepts for jewelry brands that cut through ‘same-same’ feeds.
+            data-en="Goal: break through repetitive jewelry feeds and create shareable, high-status visuals."
+            data-ua="Ціль: вийти з «однакових» ювелірних стрічок і створити візуали, які хочеться шерити.">
+            Goal: break through repetitive jewelry feeds and create shareable, high-status visuals.
           </p>
 
           <ul class="list">
-            <li data-en="Concept: emotional trigger + product clarity + luxury finish"
-                data-ua="Концепт: емоційний тригер + зрозумілий продукт + luxury-фініш">
-              Concept: emotional trigger + product clarity + luxury finish
+            <li data-en="Insight: jewelry sells emotion first, metal second."
+                data-ua="Інсайт: ювелірка продає емоцію першою, метал — другим.">
+              Insight: jewelry sells emotion first, metal second.
             </li>
-            <li data-en="Deliverables: 3 concepts + storyboard + 10 visuals"
-                data-ua="Deliverables: 3 концепти + сторіборд + 10 візуалів">
-              Deliverables: 3 concepts + storyboard + 10 visuals
+            <li data-en="Concept: emotional trigger + tight product framing + dramatic but controlled lighting."
+                data-ua="Концепт: емоційний тригер + щільне кадрування продукту + драматичне, але контрольоване світло.">
+              Concept: emotional trigger + tight product framing + dramatic but controlled lighting.
             </li>
-            <li data-en="Why it sells: ‘I need this’, not ‘nice pic’"
-                data-ua="Чому продає: «мені це треба», а не «гарна картинка»">
-              Why it sells: ‘I need this’, not ‘nice pic’
+            <li data-en="Deliverables: 3 concepts, 10 premium visuals, Story + Feed formats, concept-to-production pipeline."
+                data-ua="Deliverables: 3 концепти, 10 преміальних візуалів, формати Story + Feed, система від ідеї до продакшну.">
+              Deliverables: 3 concepts, 10 premium visuals, Story + Feed formats, concept-to-production pipeline.
+            </li>
+            <li data-en="Why it works: stops scrolling, feels bold, built to be shared."
+                data-ua="Чому працює: зупиняє скрол, виглядає сміливо, зроблено для шерів.">
+              Why it works: stops scrolling, feels bold, built to be shared.
             </li>
           </ul>
 
           <div class="cta" style="margin-top:12px">
-            <a class="btn btnPrimary" href="index.html#contact" data-en="Request jewelry brief" data-ua="Бриф для ювелірки">Request jewelry brief</a>
+            <a class="btn btnPrimary" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
             <a class="btn" href="team.html" data-en="See how we think" data-ua="Подивитись як ми мислимо">See how we think</a>
           </div>
         </div>
 
         <div class="grid">
-          <!-- Placeholder tiles (no images yet) -->
           <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
-            <div data-en="Add jewelry images here later" data-ua="Пізніше додамо ювелірні фото">Add jewelry images here later</div>
+            <div data-en="Add jewelry images later (p13…)" data-ua="Додай ювелірні фото пізніше (p13…)">Add jewelry images later (p13…)</div>
           </div>
           <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
-            <div data-en="Concept-first case is ready" data-ua="Кейс по концептах вже готовий">Concept-first case is ready</div>
+            <div data-en="This case sells the concept system" data-ua="Цей кейс продає систему концептів">This case sells the concept system</div>
           </div>
           <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
             <div data-en="We’ll plug visuals in next" data-ua="Далі підставимо візуали">We’ll plug visuals in next</div>
@@ -413,7 +474,7 @@
         const f = chip.getAttribute('data-filter');
         cases.forEach(card=>{
           const tags = card.getAttribute('data-tags') || '';
-          const show = (f === 'all') || tags.includes(f);
+          const show = (f === 'all') || tags.includes(f) || tags === 'all';
           card.style.display = show ? 'grid' : 'none';
         });
       });

@@ -3,56 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Signal Studio — Creative Atelier for AI Advertising</title>
-  <meta name="description" content="Signal Studio — dual-founder creative atelier. Strategy → Art Direction → AI Production for fashion, beauty & jewelry brands." />
+  <title>Signal Studio — Premium AI Advertising Visuals</title>
+  <meta name="description" content="Dual-founder creative atelier for premium AI advertising visuals for fashion, beauty and jewelry brands. Strategy → Art Direction → AI Production." />
 
   <style>
     :root{
-      --bg:#0a0b0e;
-      --panel:#111318;
-      --panel2:#0f1217;
-      --line:rgba(255,255,255,.08);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.60);
-      --muted2:rgba(255,255,255,.40);
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius:22px;
-      --radius2:18px;
-      --max:1120px;
+      --bg:#07090c;
+      --panel: rgba(255,255,255,.03);
+      --panel2: rgba(0,0,0,.22);
+      --line: rgba(255,255,255,.10);
+      --line2: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --muted2: rgba(255,255,255,.40);
+      --shadow: 0 22px 70px rgba(0,0,0,.58);
+      --radius: 22px;
+      --radius2: 18px;
+      --max: 1180px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
       background:
-        radial-gradient(1100px 760px at 20% -10%, rgba(255,255,255,.055), transparent 60%),
-        radial-gradient(900px 650px at 90% 15%, rgba(255,255,255,.045), transparent 60%),
-        radial-gradient(900px 700px at 50% 110%, rgba(255,255,255,.03), transparent 60%),
+        radial-gradient(1200px 800px at 18% 0%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 700px at 92% 10%, rgba(255,255,255,.05), transparent 58%),
+        radial-gradient(900px 700px at 50% 100%, rgba(255,255,255,.04), transparent 60%),
         var(--bg);
       color:var(--text);
-      font: 14px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font: 14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       letter-spacing:.2px;
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 80px;}
+
+    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 74px;}
 
     /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:30;
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(10,11,14,.92), rgba(10,11,14,.62));
+      background: linear-gradient(to bottom, rgba(7,9,12,.92), rgba(7,9,12,.55));
       border-bottom:1px solid var(--line);
     }
     .topbar .inner{
       max-width:var(--max); margin:0 auto; padding: 14px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.6px;}
-    .dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.92); box-shadow:0 0 0 6px rgba(255,255,255,.06)}
-    nav{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:850}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:950; letter-spacing:.6px;}
+    .dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 0 0 6px rgba(255,255,255,.08)}
+    nav{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:900}
     nav a{padding:8px 10px;border-radius:999px;border:1px solid transparent}
     nav a:hover{border-color:var(--line); color:var(--text)}
+
     .lang{display:flex;gap:8px;align-items:center}
     .pill{
       border:1px solid var(--line);
@@ -82,23 +85,25 @@
 
     .kicker{
       display:inline-flex; gap:8px; align-items:center;
-      color:var(--muted2);
+      color:var(--muted);
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
       padding:8px 12px;
       border-radius:999px;
-      font-weight:900;
-      letter-spacing:.7px;
-      text-transform:uppercase;
+      font-weight:950;
+      letter-spacing:.5px;
+      text-transform: uppercase;
       font-size:12px;
     }
     h1{
       margin:14px 0 10px;
-      font-size: clamp(32px, 4.6vw, 56px);
+      font-size: clamp(34px, 4.8vw, 60px);
       line-height:1.02;
       letter-spacing:-.9px;
+      font-weight: 980;
     }
     .sub{margin:0;color:var(--muted);max-width:86ch;font-size:15px;font-weight:700}
+
     .ctaRow{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -108,7 +113,7 @@
       background: rgba(255,255,255,.92);
       color: var(--bg);
       font-weight:1000;
-      letter-spacing:.3px;
+      letter-spacing:.25px;
       cursor:pointer;
     }
     .btn.secondary{
@@ -126,36 +131,46 @@
     .mini{
       grid-column: span 4;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: var(--panel);
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
       padding:12px 14px;
     }
     @media (max-width: 980px){ .mini{grid-column: span 6;} }
     @media (max-width: 640px){ .mini{grid-column: span 12;} }
-    .mini b{display:block; margin-bottom:4px}
-    .mini span{color:var(--muted); font-weight:750}
+    .mini b{display:block; margin-bottom:4px; font-weight:950}
+    .mini span{color:var(--muted); font-weight:720}
 
     /* Right panel */
     .panel{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: var(--panel);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
     .panelTop{padding:16px; border-bottom:1px solid rgba(255,255,255,.08)}
-    .panelTop h2{margin:0; font-size:16px; letter-spacing:.2px}
-    .panelTop p{margin:8px 0 0; color:var(--muted); font-weight:750}
-    .offer{padding:14px 16px 16px;}
+    .panelTop h2{margin:0; font-size:16px; font-weight:980}
+    .panelTop p{margin:8px 0 0; color:var(--muted); font-weight:760}
+
+    .offer{
+      padding:14px 16px 16px;
+    }
     .offerBox{
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      background: var(--panel2);
       border-radius: 18px;
       padding:14px;
     }
-    .offerTitle{font-weight:1100; letter-spacing:.2px}
-    .offerSub{color:var(--muted); margin-top:6px; font-weight:750}
+    .offerTitle{font-weight:1000; letter-spacing:.2px}
+    .offerSub{color:var(--muted); margin-top:6px; font-weight:760}
+    .timer{
+      margin-top:10px;
+      font-size: 22px;
+      font-weight:1100;
+      letter-spacing: .8px;
+    }
+
     .proof{
       margin-top:12px;
       display:grid;
@@ -165,21 +180,21 @@
     .stat{
       grid-column: span 6;
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
+      background: rgba(0,0,0,.18);
       border-radius: 16px;
       padding:12px;
     }
-    .stat b{display:block; font-size:18px; letter-spacing:.2px}
-    .stat span{color:var(--muted); font-weight:750}
+    .stat b{display:block; font-size:16px; letter-spacing:.2px; font-weight:1000}
+    .stat span{color:var(--muted); font-weight:720}
 
     /* Sections */
-    section{margin-top:26px}
+    section{margin-top:22px}
     .sectionHead{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
       margin-bottom:12px;
     }
-    .sectionHead h3{margin:0; font-size:18px; letter-spacing:.2px}
-    .sectionHead p{margin:8px 0 0; color:var(--muted); max-width: 92ch; font-weight:750}
+    .sectionHead h3{margin:0; font-size:18px; letter-spacing:.2px; font-weight:980}
+    .sectionHead p{margin:8px 0 0; color:var(--muted); max-width: 92ch; font-weight:720}
 
     .grid{
       display:grid;
@@ -189,21 +204,21 @@
     .card{
       grid-column: span 4;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: var(--panel);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding:16px;
     }
     @media (max-width: 980px){ .card{grid-column: span 6;} }
     @media (max-width: 640px){ .card{grid-column: span 12;} }
-    .card h4{margin:0 0 6px; font-size:16px}
-    .card p{margin:0; color:var(--muted); font-weight:750}
+    .card h4{margin:0 0 6px; font-size:16px; font-weight:980}
+    .card p{margin:0; color:var(--muted); font-weight:720}
 
-    /* Mini-cases (same mapping p01..p12) */
+    /* Cases */
     .case{
       grid-column: span 12;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: var(--panel);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -221,11 +236,12 @@
       color: rgba(255,255,255,.78);
       font-weight:900;
       font-size:12px;
-      letter-spacing:.6px;
+      letter-spacing:.5px;
       text-transform:uppercase;
     }
-    .caseTop h4{margin:10px 0 0; font-size:16px}
-    .caseTop p{margin:8px 0 0; color:var(--muted); font-weight:750; max-width: 92ch}
+    .caseTop h4{margin:10px 0 0; font-size:16px; font-weight:980}
+    .caseTop p{margin:8px 0 0; color:var(--muted); font-weight:720; max-width: 94ch}
+    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
 
     .gallery{
       padding: 12px;
@@ -233,17 +249,19 @@
       grid-template-columns: repeat(12, 1fr);
       gap: 10px;
     }
+    @media (max-width: 980px){ .gallery{grid-template-columns: repeat(6, 1fr);} }
+    @media (max-width: 640px){ .gallery{grid-template-columns: repeat(2, 1fr);} }
+
     .shot{
-      border-radius: 16px;
+      border-radius: 18px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
-      aspect-ratio: 3/4;
+      aspect-ratio: 4/3;
       position:relative;
       cursor:pointer;
     }
-    .shot.wide{grid-column: span 6; aspect-ratio: 16/10;}
-    .shot.std{grid-column: span 3;}
+    .shot.tall{aspect-ratio: 3/4;}
     .shot img{
       width:100%; height:100%;
       object-fit: cover;
@@ -251,37 +269,46 @@
       transition: transform .25s ease;
     }
     .shot:hover img{transform: scale(1.06)}
-    @media (max-width: 980px){
-      .shot.wide{grid-column: span 12;}
-      .shot.std{grid-column: span 6;}
-    }
-    @media (max-width: 640px){
-      .shot.std{grid-column: span 12;}
-    }
 
     /* Packages */
-    .price{font-size: 22px; font-weight:1100; margin:8px 0 0}
-    .price small{display:block; margin-top:6px; color:var(--muted2); font-weight:900; letter-spacing:.4px; text-transform:uppercase}
+    .price{
+      font-size: 24px;
+      font-weight:1100;
+      margin:10px 0 0;
+      letter-spacing:.2px;
+    }
+    .badge{
+      display:inline-flex;
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.82);
+      font-weight:900;
+      letter-spacing:.35px;
+      text-transform:uppercase;
+      font-size:12px;
+    }
     .list{
       margin: 12px 0 0;
       padding:0;
       list-style:none;
-      color: rgba(255,255,255,.80);
-      font-weight:850;
+      color: rgba(255,255,255,.82);
+      font-weight:780;
     }
     .list li{margin:8px 0; padding-left:14px; position:relative}
     .list li::before{content:"•"; position:absolute; left:0; top:0; color: rgba(255,255,255,.55)}
-    .note{margin-top:10px; color:var(--muted2); font-weight:850}
+    .note{margin-top:10px; color:var(--muted2); font-weight:760}
 
-    /* Contact */
-    .contactBox{
+    /* Contact + Payment */
+    .wideBox{
       grid-column: span 12;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: var(--panel);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding:16px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
     .email{
       border:1px solid rgba(255,255,255,.12);
@@ -291,17 +318,17 @@
       color: rgba(255,255,255,.84);
       font-weight:900;
       letter-spacing:.2px;
+      display:inline-block;
     }
 
     footer{
-      margin-top: 28px;
+      margin-top: 26px;
       color: var(--muted2);
-      font-weight:850;
+      font-weight:800;
       padding-top: 18px;
       border-top:1px solid var(--line);
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
-    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
 
     /* Lightbox */
     .lb{
@@ -313,7 +340,7 @@
     }
     .lb.show{display:flex}
     .lbInner{
-      max-width: min(980px, 96vw);
+      max-width: min(1050px, 96vw);
       max-height: 88vh;
       border-radius: 18px;
       overflow:hidden;
@@ -330,7 +357,7 @@
       color: rgba(255,255,255,.92);
       padding:8px 10px;
       border-radius: 999px;
-      font-weight:1100;
+      font-weight:1000;
       cursor:pointer;
     }
   </style>
@@ -345,7 +372,7 @@
       </a>
 
       <nav>
-        <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
+        <a href="#cases" data-en="Projects" data-ua="Проєкти">Projects</a>
         <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
         <a href="#packages" data-en="Packages" data-ua="Пакети">Packages</a>
         <a href="#contact" data-en="Contact" data-ua="Контакт">Contact</a>
@@ -359,25 +386,22 @@
   </div>
 
   <main class="wrap">
-
     <!-- HERO -->
     <section class="hero" id="top">
       <div class="heroLeft">
-        <div class="kicker"
-             data-en="AI ADS • FASHION / BEAUTY / JEWELRY"
-             data-ua="AI РЕКЛАМА • FASHION / BEAUTY / JEWELRY">
+        <div class="kicker" data-en="AI ADS • FASHION / BEAUTY / JEWELRY" data-ua="AI РЕКЛАМА • FASHION / BEAUTY / JEWELRY">
           AI ADS • FASHION / BEAUTY / JEWELRY
         </div>
 
         <h1
           data-en="A dual-founder creative atelier for advertising visuals."
-          data-ua="Креативне ательє з двома засновниками для рекламних візуалів.">
+          data-ua="Креативне ательє двох засновників для рекламних візуалів.">
           A dual-founder creative atelier for advertising visuals.
         </h1>
 
         <p class="sub"
           data-en="Signal Studio builds commercial-ready visual systems: strategy → art direction → AI production. Not random images — controlled campaigns."
-          data-ua="Signal Studio будує комерційні візуальні системи: стратегія → артдирекшн → AI-продакшн. Не випадкові картинки — керовані кампанії.">
+          data-ua="Signal Studio створює комерційно готові візуальні системи: стратегія → артдирекшн → AI-продакшн. Не випадкові картинки — керовані кампанії.">
           Signal Studio builds commercial-ready visual systems: strategy → art direction → AI production. Not random images — controlled campaigns.
         </p>
 
@@ -386,23 +410,23 @@
              href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
              data-en="Email BRIEF" data-ua="Надіслати BRIEF">Email BRIEF</a>
 
-          <a class="btn secondary" href="projects.html"
+          <a class="btn secondary" href="#cases"
              data-en="View Projects" data-ua="Дивитись проєкти">View Projects</a>
 
-          <a class="btn secondary" href="#cases"
-             data-en="See mini-cases" data-ua="Дивитись мінікейси">See mini-cases</a>
+          <a class="btn secondary" href="team.html"
+             data-en="Meet the Team" data-ua="Познайомитись з командою">Meet the Team</a>
         </div>
 
         <div class="miniRow">
           <div class="mini">
             <b data-en="Ad-ready systems" data-ua="Системи для реклами">Ad-ready systems</b>
             <span data-en="Built for Meta/TikTok formats + performance logic."
-                  data-ua="Зроблено під формати Meta/TikTok + логіку перформансу.">Built for Meta/TikTok formats + performance logic.</span>
+                  data-ua="Створено під формати Meta/TikTok + логіку перформансу.">Built for Meta/TikTok formats + performance logic.</span>
           </div>
           <div class="mini">
             <b data-en="Limited intake" data-ua="Обмежений набір">Limited intake</b>
             <span data-en="We accept a small number of brands per month."
-                  data-ua="Беремо обмежену кількість брендів на місяць.">We accept a small number of brands per month.</span>
+                  data-ua="Беремо невелику кількість брендів щомісяця.">We accept a small number of brands per month.</span>
           </div>
           <div class="mini">
             <b data-en="Luxury control" data-ua="Контроль люкс-рівня">Luxury control</b>
@@ -418,7 +442,7 @@
             <h2 data-en="Positioning (clear)" data-ua="Позиціонування (чітко)">Positioning (clear)</h2>
             <p
               data-en="We make fashion/beauty/jewelry brands look expensive, consistent, and shareable — so people talk and ads convert."
-              data-ua="Ми робимо fashion/beauty/jewelry бренди дорогими, цілісними та «shareable» — щоб говорили й щоб реклама конвертила.">
+              data-ua="Ми робимо fashion/beauty/jewelry бренди дорогими, цілісними та «shareable» — щоб про них говорили й реклама конвертила.">
               We make fashion/beauty/jewelry brands look expensive, consistent, and shareable — so people talk and ads convert.
             </p>
           </div>
@@ -431,10 +455,11 @@
                 ENTRY intake is limited
               </div>
               <div class="offerSub"
-                   data-en="Start with ENTRY. If it hits — we scale to CORE or monthly atelier."
-                   data-ua="Почніть з ENTRY. Якщо «зайде» — масштабуємо в CORE або щомісячне ательє.">
-                Start with ENTRY. If it hits — we scale to CORE or monthly atelier.
+                   data-en="A daily bonus window for the ENTRY package (timer)."
+                   data-ua="Щоденне «bonus window» для пакета ENTRY (таймер).">
+                A daily bonus window for the ENTRY package (timer).
               </div>
+              <div class="timer" id="timer">--:--:--</div>
             </div>
 
             <div class="proof">
@@ -443,7 +468,7 @@
                 <span data-en="Beauty • Fashion • Jewelry" data-ua="Beauty • Fashion • Jewelry">Beauty • Fashion • Jewelry</span>
               </div>
               <div class="stat">
-                <b data-en="Dual founders" data-ua="Два засновники">Dual founders</b>
+                <b data-en="Dual founders" data-ua="Двоє засновників">Dual founders</b>
                 <span data-en="Strategy + aesthetic control" data-ua="Стратегія + естетичний контроль">Strategy + aesthetic control</span>
               </div>
               <div class="stat">
@@ -465,25 +490,25 @@
       </div>
     </section>
 
-    <!-- WHAT WE DO -->
+    <!-- SERVICES -->
     <section id="services">
       <div class="sectionHead">
         <div>
           <h3 data-en="What we do" data-ua="Що ми робимо">What we do</h3>
-          <p data-en="We build campaigns and visual systems that look like premium production — and work in ads."
-             data-ua="Ми будуємо кампанії та візуальні системи рівня преміального продакшну — і вони працюють у рекламі.">
-            We build campaigns and visual systems that look like premium production — and work in ads.
+          <p data-en="We build campaign drops and visual systems that look like premium production — and work in ads."
+             data-ua="Ми створюємо дропи кампаній і візуальні системи рівня преміального продакшну — які працюють у рекламі.">
+            We build campaign drops and visual systems that look like premium production — and work in ads.
           </p>
         </div>
-        <a class="smalllink" href="projects.html" data-en="See all projects →" data-ua="Усі проєкти →">See all projects →</a>
+        <a class="smalllink" href="#cases" data-en="See mini-cases →" data-ua="Дивитись мінікейси →">See mini-cases →</a>
       </div>
 
       <div class="grid">
         <div class="card">
           <h4 data-en="Ad Creatives" data-ua="Рекламні креативи">Ad Creatives</h4>
-          <p data-en="Meta/TikTok-ready visuals, angles, hooks, ratios."
-             data-ua="Візуали для Meta/TikTok, ракурси, хуки, формати.">
-            Meta/TikTok-ready visuals, angles, hooks, ratios.
+          <p data-en="Meta/TikTok-ready visuals, angles, hooks, formats."
+             data-ua="Візуали для Meta/TikTok, кути, хуки, формати.">
+            Meta/TikTok-ready visuals, angles, hooks, formats.
           </p>
         </div>
         <div class="card">
@@ -508,13 +533,12 @@
       <div class="sectionHead">
         <div>
           <h3 data-en="Mini-cases (3)" data-ua="Мінікейси (3)">Mini-cases (3)</h3>
-          <p data-en="Each mini-case shows a controlled atelier system — not random images."
-             data-ua="Кожен мінікейс показує контрольовану систему ательє — не випадкові кадри.">
-            Each mini-case shows a controlled atelier system — not random images.
+          <p data-en="Three controlled visual systems — beauty, fashion, jewelry. Click any image to open."
+             data-ua="Три керовані візуальні системи — beauty, fashion, jewelry. Натисніть на будь-яке фото, щоб відкрити.">
+            Three controlled visual systems — beauty, fashion, jewelry. Click any image to open.
           </p>
         </div>
-        <a class="smalllink" href="projects.html"
-           data-en="Open Projects page →" data-ua="Відкрити сторінку проєктів →">Open Projects page →</a>
+        <a class="smalllink" href="projects.html" data-en="Open Projects page →" data-ua="Відкрити сторінку проєктів →">Open Projects page →</a>
       </div>
 
       <!-- BEAUTY: p01..p05 -->
@@ -522,25 +546,24 @@
         <div class="caseTop">
           <div>
             <div class="tag" data-en="Beauty" data-ua="Beauty">Beauty</div>
-            <h4
-              data-en="Beauty System — clean glow / product hero / premium soft light"
-              data-ua="Beauty System — чисте сяйво / продукт-герой / преміальне м’яке світло">
+            <h4 data-en="Beauty System — clean glow / product hero / premium soft light"
+                data-ua="Beauty System — чисте сяйво / product hero / преміальне м’яке світло">
               Beauty System — clean glow / product hero / premium soft light
             </h4>
-            <p
-              data-en="Goal: expensive, clean, ad-ready. Approach: controlled highlights and disciplined palette."
-              data-ua="Ціль: дорогий, чистий, рекламний вигляд. Підхід: контроль бликів і дисципліна палітри.">
+            <p data-en="Goal: expensive, clean, ad-ready. Approach: controlled highlights and disciplined palette."
+               data-ua="Ціль: дорогий, чистий, рекламний вигляд. Підхід: контроль бликів і дисциплінована палітра.">
               Goal: expensive, clean, ad-ready. Approach: controlled highlights and disciplined palette.
             </p>
           </div>
           <a class="smalllink" href="projects.html#beauty" data-en="Details →" data-ua="Деталі →">Details →</a>
         </div>
+
         <div class="gallery">
-          <div class="shot wide" data-src="p01.jpg"><img src="p01.jpg" alt="Beauty 01"></div>
-          <div class="shot std" data-src="p02.jpg"><img src="p02.jpg" alt="Beauty 02"></div>
-          <div class="shot std" data-src="p03.jpg"><img src="p03.jpg" alt="Beauty 03"></div>
-          <div class="shot std" data-src="p04.jpg"><img src="p04.jpg" alt="Beauty 04"></div>
-          <div class="shot std" data-src="p05.jpg"><img src="p05.jpg" alt="Beauty 05"></div>
+          <div class="shot" data-src="p01.jpg"><img src="p01.jpg" alt="Beauty image 1"></div>
+          <div class="shot" data-src="p02.jpg"><img src="p02.jpg" alt="Beauty image 2"></div>
+          <div class="shot tall" data-src="p03.jpg"><img src="p03.jpg" alt="Beauty image 3"></div>
+          <div class="shot" data-src="p04.jpg"><img src="p04.jpg" alt="Beauty image 4"></div>
+          <div class="shot" data-src="p05.jpg"><img src="p05.jpg" alt="Beauty image 5"></div>
         </div>
       </article>
 
@@ -549,25 +572,24 @@
         <div class="caseTop">
           <div>
             <div class="tag" data-en="Fashion" data-ua="Fashion">Fashion</div>
-            <h4
-              data-en="Fashion Story — editorial mood / attitude / cinematic realism"
-              data-ua="Fashion Story — editorial настрій / характер / кінематографічний реалізм">
+            <h4 data-en="Fashion Story — editorial mood / attitude / cinematic realism"
+                data-ua="Fashion Story — editorial настрій / характер / кінематографічний реалізм">
               Fashion Story — editorial mood / attitude / cinematic realism
             </h4>
-            <p
-              data-en="Goal: shareable editorial frames. Approach: one tone across scenes and angles."
-              data-ua="Ціль: «shareable» editorial кадри. Підхід: один тон у різних сценах і ракурсах.">
+            <p data-en="Goal: shareable editorial frames. Approach: one tone across scenes and angles."
+               data-ua="Ціль: «shareable» editorial кадри. Підхід: один тон через сцени й ракурси.">
               Goal: shareable editorial frames. Approach: one tone across scenes and angles.
             </p>
           </div>
           <a class="smalllink" href="projects.html#fashion" data-en="Details →" data-ua="Деталі →">Details →</a>
         </div>
+
         <div class="gallery">
-          <div class="shot wide" data-src="p06.jpg"><img src="p06.jpg" alt="Fashion 06"></div>
-          <div class="shot std" data-src="p07.jpg"><img src="p07.jpg" alt="Fashion 07"></div>
-          <div class="shot std" data-src="p08.jpg"><img src="p08.jpg" alt="Fashion 08"></div>
-          <div class="shot std" data-src="p09.jpg"><img src="p09.jpg" alt="Fashion 09"></div>
-          <div class="shot std" data-src="p10.jpg"><img src="p10.jpg" alt="Fashion 10"></div>
+          <div class="shot" data-src="p06.jpg"><img src="p06.jpg" alt="Fashion image 1"></div>
+          <div class="shot" data-src="p07.jpg"><img src="p07.jpg" alt="Fashion image 2"></div>
+          <div class="shot" data-src="p08.jpg"><img src="p08.jpg" alt="Fashion image 3"></div>
+          <div class="shot" data-src="p09.jpg"><img src="p09.jpg" alt="Fashion image 4"></div>
+          <div class="shot" data-src="p10.jpg"><img src="p10.jpg" alt="Fashion image 5"></div>
         </div>
       </article>
 
@@ -576,22 +598,21 @@
         <div class="caseTop">
           <div>
             <div class="tag" data-en="Jewelry" data-ua="Jewelry">Jewelry</div>
-            <h4
-              data-en="Jewelry Focus — close-ups / texture / luxury highlights"
-              data-ua="Jewelry Focus — крупні плани / фактура / люкс-відблиски">
+            <h4 data-en="Jewelry Focus — close-ups / texture / luxury highlights"
+                data-ua="Jewelry Focus — крупні плани / фактура / люкс-відблиски">
               Jewelry Focus — close-ups / texture / luxury highlights
             </h4>
-            <p
-              data-en="Goal: jewelry reads premium and real. Approach: macro discipline + clean reflections."
-              data-ua="Ціль: щоб прикраси виглядали преміально й реально. Підхід: дисципліна макро + чисті відбиття.">
+            <p data-en="Goal: jewelry reads premium and real. Approach: macro discipline + clean reflections."
+               data-ua="Ціль: щоб прикраси виглядали преміально і реально. Підхід: дисципліна макро + чисті віддзеркалення.">
               Goal: jewelry reads premium and real. Approach: macro discipline + clean reflections.
             </p>
           </div>
           <a class="smalllink" href="projects.html#jewelry" data-en="Details →" data-ua="Деталі →">Details →</a>
         </div>
+
         <div class="gallery">
-          <div class="shot wide" data-src="p11.jpg"><img src="p11.jpg" alt="Jewelry 11"></div>
-          <div class="shot wide" data-src="p12.jpg"><img src="p12.jpg" alt="Jewelry 12"></div>
+          <div class="shot" data-src="p11.jpg"><img src="p11.jpg" alt="Jewelry image 1"></div>
+          <div class="shot" data-src="p12.jpg"><img src="p12.jpg" alt="Jewelry image 2"></div>
         </div>
       </article>
     </section>
@@ -601,9 +622,9 @@
       <div class="sectionHead">
         <div>
           <h3 data-en="Packages" data-ua="Пакети">Packages</h3>
-          <p data-en="Start with ENTRY. If the system hits — we scale to CORE or monthly atelier."
+          <p data-en="Start with ENTRY. If the system hits — we scale to CORE or a monthly atelier."
              data-ua="Почніть з ENTRY. Якщо система «зайде» — масштабуємо в CORE або щомісячне ательє.">
-            Start with ENTRY. If the system hits — we scale to CORE or monthly atelier.
+            Start with ENTRY. If the system hits — we scale to CORE or a monthly atelier.
           </p>
         </div>
       </div>
@@ -613,65 +634,59 @@
         <div class="card" style="grid-column: span 4;">
           <h4 data-en="ENTRY — First Drop" data-ua="ENTRY — Перший дроп">ENTRY — First Drop</h4>
           <p data-en="Best first step to test our atelier system."
-             data-ua="Найкращий перший крок, щоб протестувати нашу систему ательє.">
+             data-ua="Найкращий перший крок, щоб протестувати нашу систему.">
             Best first step to test our atelier system.
           </p>
 
           <div class="price">
-            <span data-en="€390" data-ua="≈ ₴16 900">€390</span>
-            <small data-en="one-time" data-ua="разово">one-time</small>
+            <span class="priceText" data-eur="€390" data-uah="≈ 16 000 грн">€390</span>
           </div>
+          <div class="badge" data-en="ONE-TIME" data-ua="ОДНОРАЗОВО">ONE-TIME</div>
 
           <ul class="list">
-            <li data-en="6 premium visuals (ad-ready)" data-ua="6 преміальних візуалів (для реклами)">6 premium visuals (ad-ready)</li>
+            <li data-en="6 premium visuals (ad-ready)" data-ua="6 преміальних візуалів (готово для реклами)">6 premium visuals (ad-ready)</li>
             <li data-en="1 concept + shot direction" data-ua="1 концепт + shot-напрям">1 concept + shot direction</li>
             <li data-en="2 ratios (1:1 + 9:16)" data-ua="2 формати (1:1 + 9:16)">2 ratios (1:1 + 9:16)</li>
             <li data-en="Delivery: 3–5 days" data-ua="Термін: 3–5 днів">Delivery: 3–5 days</li>
           </ul>
 
           <div class="ctaRow" style="margin-top:12px">
-            <a class="btn"
-               href="mailto:signalstudio.agency@gmail.com?subject=ENTRY%20-%20BRIEF&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0AReferences:%0A"
-               data-en="Request ENTRY" data-ua="Запросити ENTRY">Request ENTRY</a>
+            <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=ENTRY%20-%20BRIEF&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ACountry:%0AReferences:%0A"
+               data-en="Request ENTRY" data-ua="Запитати ENTRY">Request ENTRY</a>
           </div>
 
-          <div class="note"
-               data-en="Limited seats per month."
-               data-ua="Обмежена кількість місць на місяць.">
+          <div class="note" data-en="Limited seats per month." data-ua="Обмежені місця щомісяця.">
             Limited seats per month.
           </div>
         </div>
 
         <!-- CORE -->
         <div class="card" style="grid-column: span 4;">
-          <h4 data-en="CORE — Campaign Pack" data-ua="CORE — Кампанія">CORE — Campaign Pack</h4>
+          <h4 data-en="CORE — Campaign Pack" data-ua="CORE — Пакет кампанії">CORE — Campaign Pack</h4>
           <p data-en="For brands that need a stronger system and multiple angles."
-             data-ua="Для брендів, яким потрібна сильніша система й кілька кутів.">
+             data-ua="Для брендів, яким потрібна сильніша система та різні ракурси.">
             For brands that need a stronger system and multiple angles.
           </p>
 
           <div class="price">
-            <span data-en="€990" data-ua="≈ ₴42 900">€990</span>
-            <small data-en="one-time" data-ua="разово">one-time</small>
+            <span class="priceText" data-eur="€990" data-uah="≈ 41 000 грн">€990</span>
           </div>
+          <div class="badge" data-en="ONE-TIME" data-ua="ОДНОРАЗОВО">ONE-TIME</div>
 
           <ul class="list">
-            <li data-en="15 visuals (campaign-ready)" data-ua="15 візуалів (для кампанії)">15 visuals (campaign-ready)</li>
+            <li data-en="15 visuals (campaign-ready)" data-ua="15 візуалів (готово для кампанії)">15 visuals (campaign-ready)</li>
             <li data-en="3 concepts (different angles)" data-ua="3 концепти (різні кути)">3 concepts (different angles)</li>
             <li data-en="Hooks + captions (EN/UA)" data-ua="Хуки + підписи (EN/UA)">Hooks + captions (EN/UA)</li>
             <li data-en="Delivery: 5–8 days" data-ua="Термін: 5–8 днів">Delivery: 5–8 days</li>
           </ul>
 
           <div class="ctaRow" style="margin-top:12px">
-            <a class="btn secondary"
-               href="mailto:signalstudio.agency@gmail.com?subject=CORE%20-%20BRIEF&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0AReferences:%0A"
-               data-en="Request CORE" data-ua="Запросити CORE">Request CORE</a>
+            <a class="btn secondary" href="mailto:signalstudio.agency@gmail.com?subject=CORE%20-%20BRIEF&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ACountry:%0AReferences:%0A"
+               data-en="Request CORE" data-ua="Запитати CORE">Request CORE</a>
           </div>
 
-          <div class="note"
-               data-en="Best for: a clean campaign drop."
-               data-ua="Найкраще для: чистого кампанійного дропу.">
-            Best for: a clean campaign drop.
+          <div class="note" data-en="Best for a clean campaign drop." data-ua="Найкраще для чистого дропу кампанії.">
+            Best for a clean campaign drop.
           </div>
         </div>
 
@@ -684,9 +699,9 @@
           </p>
 
           <div class="price">
-            <span data-en="€1,890 / mo" data-ua="≈ ₴81 900 / міс">€1,890 / mo</span>
-            <small data-en="monthly" data-ua="щомісяця">monthly</small>
+            <span class="priceText" data-eur="€1,890 / mo" data-uah="≈ 79 000 грн / міс">€1,890 / mo</span>
           </div>
+          <div class="badge" data-en="MONTHLY" data-ua="ЩОМІСЯЦЯ">MONTHLY</div>
 
           <ul class="list">
             <li data-en="30 visuals / month" data-ua="30 візуалів / місяць">30 visuals / month</li>
@@ -696,9 +711,8 @@
           </ul>
 
           <div class="ctaRow" style="margin-top:12px">
-            <a class="btn secondary"
-               href="mailto:signalstudio.agency@gmail.com?subject=PREMIUM%20-%20Call%20request&body=Brand:%0AWebsite/IG:%0AGoal:%0ABudget:%0A"
-               data-en="Request a call" data-ua="Запросити дзвінок">Request a call</a>
+            <a class="btn secondary" href="mailto:signalstudio.agency@gmail.com?subject=PREMIUM%20-%20Call%20request&body=Brand:%0AWebsite/IG:%0AGoal:%0ABudget:%0ACountry:%0A"
+               data-en="Request a call" data-ua="Запитати дзвінок">Request a call</a>
           </div>
 
           <div class="note"
@@ -709,70 +723,72 @@
         </div>
       </div>
 
-      <div class="note" style="margin-top:14px"
-           data-en="UA prices are approximate and can be updated anytime (edit 3 numbers in the HTML)."
-           data-ua="Ціни в грн — орієнтовні та легко оновлюються (поміняти 3 числа в HTML).">
+      <div class="note" style="margin-top:12px"
+        data-en="UA prices are approximate and can be updated anytime (edit 3 numbers in the HTML)."
+        data-ua="UA ціни орієнтовні і можуть змінюватись (відредагуйте 3 числа в HTML).">
         UA prices are approximate and can be updated anytime (edit 3 numbers in the HTML).
       </div>
     </section>
-    <!-- PAYMENT (Invoice) -->
-<section id="payment">
-  <div class="sectionHead">
-    <div>
-      <h3 data-en="Payment" data-ua="Оплата">Payment</h3>
-      <p
-        data-en="We work by invoice. After we review your brief, we confirm scope + timeline and send an invoice with payment instructions. Production starts after payment."
-        data-ua="Ми працюємо за рахунком. Після перегляду брифу підтверджуємо обсяг + терміни та надсилаємо рахунок з реквізитами для оплати. Роботу починаємо після оплати.">
-        We work by invoice. After we review your brief, we confirm scope + timeline and send an invoice with payment instructions. Production starts after payment.
-      </p>
-    </div>
-  </div>
 
-  <div class="grid">
-    <div class="card" style="grid-column: span 12;">
-      <h4 data-en="What we need for the invoice" data-ua="Що потрібно для рахунку">What we need for the invoice</h4>
-      <p
-        data-en="Send this in the email brief — we will reply with invoice + payment details."
-        data-ua="Надішліть це у листі з брифом — ми відповімо рахунком і деталями оплати.">
-        Send this in the email brief — we will reply with invoice + payment details.
-      </p>
-
-      <ul class="list">
-        <li data-en="Brand / Company name" data-ua="Назва бренду / компанії">Brand / Company name</li>
-        <li data-en="Contact person (name)" data-ua="Контактна особа (ім’я)">Contact person (name)</li>
-        <li data-en="Email for invoice" data-ua="Email для рахунку">Email for invoice</li>
-        <li data-en="Package: ENTRY / CORE / PREMIUM" data-ua="Пакет: ENTRY / CORE / PREMIUM">Package: ENTRY / CORE / PREMIUM</li>
-        <li data-en="Country (for billing)" data-ua="Країна (для рахунку)">Country (for billing)</li>
-        <li data-en="Deadline + references (if any)" data-ua="Дедлайн + референси (якщо є)">Deadline + references (if any)</li>
-      </ul>
-
-      <div class="ctaRow" style="margin-top:12px">
-        <a class="btn"
-           href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio%20(%20Invoice%20)%20&body=Brand/Company:%0AContact%20name:%0AInvoice%20email:%0APackage%20(ENTRY/CORE/PREMIUM):%0ACountry:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
-           data-en="Send BRIEF (Invoice)" data-ua="Надіслати BRIEF (рахунок)">Send BRIEF (Invoice)</a>
-
-        <a class="btn secondary" href="#packages"
-           data-en="Back to packages" data-ua="Назад до пакетів">Back to packages</a>
+    <!-- PAYMENT -->
+    <section id="payment">
+      <div class="sectionHead">
+        <div>
+          <h3 data-en="Payment" data-ua="Оплата">Payment</h3>
+          <p data-en="We work by invoice. After we review your brief, we confirm scope + timeline and send an invoice with payment instructions. Production starts after payment."
+             data-ua="Ми працюємо по рахунку. Після брифу підтверджуємо обсяг і терміни та надсилаємо рахунок з реквізитами. Продакшн стартує після оплати.">
+            We work by invoice. After we review your brief, we confirm scope + timeline and send an invoice with payment instructions. Production starts after payment.
+          </p>
+        </div>
       </div>
 
-      <div class="note"
-        data-en="Optional (if you have it): billing address + VAT ID (EU)."
-        data-ua="Опційно (якщо є): адреса для рахунку + VAT ID (ЄС).">
-        Optional (if you have it): billing address + VAT ID (EU).
+      <div class="grid">
+        <div class="wideBox">
+          <h4 style="margin:0 0 10px; font-size:16px; font-weight:980"
+              data-en="What we need for the invoice"
+              data-ua="Що потрібно для рахунку">
+            What we need for the invoice
+          </h4>
+
+          <p style="margin:0 0 10px; color:var(--muted); font-weight:720"
+             data-en="Send this in the email brief — we will reply with invoice + payment details."
+             data-ua="Надішліть це у листі BRIEF — ми відповімо рахунком і реквізитами для оплати.">
+            Send this in the email brief — we will reply with invoice + payment details.
+          </p>
+
+          <ul class="list">
+            <li data-en="Brand / Company name" data-ua="Назва бренду / компанії">Brand / Company name</li>
+            <li data-en="Contact person (name)" data-ua="Контактна особа (ім’я)">Contact person (name)</li>
+            <li data-en="Email for invoice" data-ua="Email для рахунку">Email for invoice</li>
+            <li data-en="Package: ENTRY / CORE / PREMIUM" data-ua="Пакет: ENTRY / CORE / PREMIUM">Package: ENTRY / CORE / PREMIUM</li>
+            <li data-en="Country (for billing)" data-ua="Країна (для рахунку)">Country (for billing)</li>
+            <li data-en="Deadline + references (if any)" data-ua="Дедлайн + референси (за наявності)">Deadline + references (if any)</li>
+          </ul>
+
+          <div class="ctaRow" style="margin-top:12px">
+            <a class="btn"
+               href="mailto:signalstudio.agency@gmail.com?subject=INVOICE%20REQUEST%20-%20Signal%20Studio&body=Brand/Company:%0AContact%20person:%0AInvoice%20email:%0APackage%20(ENTRY/CORE/PREMIUM):%0ACountry:%0ADeadline:%0AReferences:%0A"
+               data-en="Send BRIEF (Invoice)"
+               data-ua="Надіслати BRIEF (рахунок)">Send BRIEF (Invoice)</a>
+
+            <a class="btn secondary" href="#packages" data-en="Back to packages" data-ua="Назад до пакетів">Back to packages</a>
+          </div>
+
+          <div class="note"
+            data-en="Optional (if you have it): billing address + VAT ID (EU)."
+            data-ua="Опційно (якщо є): платіжна адреса + VAT ID (ЄС).">
+            Optional (if you have it): billing address + VAT ID (EU).
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact">
       <div class="sectionHead">
         <div>
           <h3 data-en="Contact" data-ua="Контакт">Contact</h3>
-          <p data-en="Email is the fastest. <p class="note"
-   data-en="Payment is by invoice (we send invoice + payment instructions after brief approval)."
-   data-ua="Оплата — за рахунком (після погодження брифу надсилаємо рахунок і реквізити).">
-  Payment is by invoice (we send invoice + payment instructions after brief approval).
-</p> Send a brief and we reply with the best entry plan."
+          <p data-en="Email is the fastest. Send a brief and we reply with the best entry plan."
              data-ua="Найшвидше — пошта. Надішліть бриф і ми відповімо з найкращим планом старту.">
             Email is the fastest. Send a brief and we reply with the best entry plan.
           </p>
@@ -780,7 +796,7 @@
       </div>
 
       <div class="grid">
-        <div class="contactBox">
+        <div class="wideBox" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
           <div>
             <div class="kicker" data-en="EMAIL" data-ua="ПОШТА">EMAIL</div>
             <div style="margin-top:10px" class="email">signalstudio.agency@gmail.com</div>
@@ -792,7 +808,7 @@
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <a class="btn"
-               href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
+               href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0ACountry:%0AReferences%20(if%20any):%0A"
                data-en="Email BRIEF" data-ua="Надіслати BRIEF">Email BRIEF</a>
             <a class="btn secondary" href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
             <a class="btn secondary" href="team.html" data-en="Team" data-ua="Команда">Team</a>
@@ -806,11 +822,9 @@
       <div>
         <a class="smalllink" href="#top" data-en="Back to top" data-ua="Вгору">Back to top</a>
         <span style="opacity:.35"> • </span>
-        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF"
-           data-en="Email" data-ua="Пошта">Email</a>
+        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email" data-ua="Пошта">Email</a>
       </div>
     </footer>
-
   </main>
 
   <!-- Lightbox -->
@@ -825,15 +839,25 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Language switch EN/UA
+    // Language switch EN/UA (uses innerHTML to avoid the "<p class=" garbage issue)
     const langEN = document.getElementById('langEN');
     const langUA = document.getElementById('langUA');
     let LANG = 'en';
 
     function applyLang(){
       document.querySelectorAll('[data-en]').forEach(el=>{
-        el.textContent = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
+        const v = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
+        // keep markup safe (we control the strings)
+        el.innerHTML = v;
       });
+
+      // prices (EUR vs UAH)
+      document.querySelectorAll('.priceText').forEach(el=>{
+        const eur = el.getAttribute('data-eur') || el.textContent;
+        const uah = el.getAttribute('data-uah') || el.textContent;
+        el.textContent = (LANG==='en') ? eur : uah;
+      });
+
       langEN.classList.toggle('active', LANG==='en');
       langUA.classList.toggle('active', LANG==='ua');
     }
@@ -841,7 +865,45 @@
     langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
     applyLang();
 
-    // Lightbox for gallery
+    // Daily timer (keep, but no "resets" wording)
+    const KEY = "signalstudio_daily_bonus_v2";
+    function getResetTs(){
+      const saved = localStorage.getItem(KEY);
+      const now = Date.now();
+      if(!saved){
+        const reset = now + 24*60*60*1000;
+        localStorage.setItem(KEY, String(reset));
+        return reset;
+      }
+      let reset = parseInt(saved, 10);
+      if(isNaN(reset) || reset < now){
+        reset = now + 24*60*60*1000;
+        localStorage.setItem(KEY, String(reset));
+      }
+      return reset;
+    }
+    function tick(){
+      const reset = getResetTs();
+      const now = Date.now();
+      let ms = reset - now;
+      if(ms < 0) ms = 0;
+
+      const s = Math.floor(ms/1000);
+      const hh = String(Math.floor(s/3600)).padStart(2,'0');
+      const mm = String(Math.floor((s%3600)/60)).padStart(2,'0');
+      const ss = String(s%60).padStart(2,'0');
+
+      const t = document.getElementById('timer');
+      if(t) t.textContent = `${hh}:${mm}:${ss}`;
+
+      if(ms === 0){
+        localStorage.removeItem(KEY);
+      }
+    }
+    setInterval(tick, 250);
+    tick();
+
+    // Lightbox
     const lb = document.getElementById('lb');
     const lbImg = document.getElementById('lbImg');
     const lbClose = document.getElementById('lbClose');

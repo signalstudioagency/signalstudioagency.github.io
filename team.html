@@ -4,423 +4,273 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Team — Signal Studio</title>
-  <meta name="description" content="Signal Studio — Team. Strategy, art direction, AI production." />
+  <meta name="description" content="Signal Studio — Stanislav & Victoria. Creative couple building premium AI advertising systems for fashion, beauty and jewelry brands." />
 
   <style>
     :root{
-      --bg:#07090c;
-      --panel:#0c1016;
-      --line:rgba(255,255,255,.10);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.60);
-      --muted2:rgba(255,255,255,.42);
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius:22px;
-      --radius2:18px;
+      --bg:#fbfaf7;
+      --ink:#0b0d12;
+      --muted:rgba(11,13,18,.68);
+      --muted2:rgba(11,13,18,.50);
+      --line:rgba(11,13,18,.10);
+      --panel:#ffffff;
+      --shadow: 0 18px 55px rgba(0,0,0,.10);
+      --r18:18px;
+      --r24:24px;
       --max:1120px;
+
+      --accent:#1a46ff;
+      --accent2:#ff2d7d;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
+      color:var(--ink);
+      font:14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 600px at 90% 20%, rgba(255,255,255,.05), transparent 55%),
+        radial-gradient(900px 600px at 10% -10%, rgba(26,70,255,.08), transparent 55%),
+        radial-gradient(700px 520px at 90% 5%, rgba(255,45,125,.06), transparent 55%),
         var(--bg);
-      color:var(--text);
-      font: 14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      letter-spacing:.2px;
     }
     a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 16px 70px;}
 
+    /* Topbar */
     .topbar{
-      position:sticky; top:0; z-index:30;
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(7,9,12,.88), rgba(7,9,12,.50));
+      background: linear-gradient(to bottom, rgba(251,250,247,.92), rgba(251,250,247,.65));
       border-bottom:1px solid var(--line);
     }
     .topbar .inner{
-      max-width:var(--max); margin:0 auto; padding: 14px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 16px;
+      display:flex; align-items:center; justify-content:space-between;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.6px;}
-    .dot{width:10px;height:10px;border-radius:99px;background:rgba(255,255,255,.9);box-shadow:0 0 0 6px rgba(255,255,255,.08)}
-    nav{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:700}
-    nav a{padding:8px 10px;border-radius:999px;border:1px solid transparent}
-    nav a:hover{border-color:var(--line); color:var(--text)}
-    .lang{display:flex;gap:8px;align-items:center}
-    .pill{
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900;}
+    .mark{width:10px;height:10px;border-radius:999px;background:var(--ink);}
+    nav{display:flex; gap:12px; color:var(--muted); font-weight:900}
+    nav a{padding:8px 10px;border-radius:999px;}
+    nav a:hover{background:rgba(0,0,0,.05)}
+    .navActive{color:var(--ink); background:rgba(0,0,0,.05)}
+
+    /* Hero */
+    .hero{
+      margin-top:16px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding:8px 10px;
-      border-radius:999px;
-      color:var(--muted);
-      font-weight:900;
-      cursor:pointer;
-      user-select:none;
+      background:var(--panel);
+      border-radius:var(--r24);
+      box-shadow:var(--shadow);
+      padding:22px;
     }
-    .pill.active{color:var(--bg); background: rgba(255,255,255,.92); border-color:transparent}
-
-    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 70px;}
-
     .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      color:var(--muted);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      display:inline-flex; align-items:center; gap:8px;
       padding:8px 12px;
       border-radius:999px;
+      border:1px solid rgba(11,13,18,.12);
+      background:rgba(0,0,0,.02);
+      color:var(--muted);
       font-weight:900;
-      letter-spacing:.5px;
+      font-size:12px;
+      text-transform:uppercase;
+    }
+    .kdot{
+      width:7px;height:7px;border-radius:999px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
     }
     h1{
-      margin:14px 0 8px;
-      font-size: clamp(28px, 4.2vw, 46px);
+      margin:14px 0 10px;
+      font-size:clamp(28px,4vw,42px);
       line-height:1.05;
       letter-spacing:-.6px;
     }
-    .sub{margin:0;color:var(--muted);max-width:80ch;font-size:15px}
+    .sub{
+      color:var(--muted);
+      font-weight:600;
+      max-width:90ch;
+    }
 
+    /* Two founders */
     .grid{
       margin-top:18px;
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
+      grid-template-columns: repeat(12,1fr);
+      gap:14px;
     }
     .card{
       grid-column: span 6;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:16px;
+      background:var(--panel);
+      border-radius:var(--r24);
+      padding:18px;
+      box-shadow:var(--shadow);
     }
-    @media (max-width: 860px){ .card{grid-column: span 12;} }
+    @media (max-width:900px){
+      .card{grid-column: span 12;}
+    }
 
-    .head{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      padding-bottom:12px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      margin-bottom:12px;
-    }
     .role{
-      display:inline-flex; width:fit-content;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.80);
-      font-weight:900;
       font-size:12px;
-      letter-spacing:.5px;
       text-transform:uppercase;
-    }
-    .name{margin:8px 0 0; font-size:18px; letter-spacing:.2px}
-    .desc{margin:8px 0 0; color:var(--muted); max-width: 80ch}
-
-    .list{
-      margin: 10px 0 0;
-      padding:0;
-      list-style:none;
-      color: rgba(255,255,255,.78);
-      font-weight:800;
-    }
-    .list li{
-      margin:8px 0;
-      padding-left:14px;
-      position:relative;
-    }
-    .list li::before{
-      content:"•";
-      position:absolute; left:0; top:0;
-      color: rgba(255,255,255,.55);
-    }
-
-    .panel{
-      margin-top:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .panelTop{
-      padding:16px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
-    }
-    .panelTop h2{margin:0; font-size:18px}
-    .panelTop p{margin:8px 0 0; color:var(--muted); max-width: 88ch}
-    .pill2{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      padding:8px 10px;
-      border-radius:999px;
-      white-space:nowrap;
-      color: var(--muted);
       font-weight:900;
+      color:var(--muted2);
+      letter-spacing:.6px;
     }
-    .panelBody{
-      padding: 14px 16px 16px;
+    .name{
+      font-size:20px;
+      font-weight:900;
+      margin:6px 0 8px;
+    }
+    .desc{
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    /* Virtual team */
+    .virtual{
+      margin-top:22px;
+      border:1px solid var(--line);
+      background:var(--panel);
+      border-radius:var(--r24);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+    .virtual h3{margin:0 0 10px;}
+    .virtGrid{
+      margin-top:12px;
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns:repeat(3,1fr);
       gap:12px;
     }
-    .mini{
-      grid-column: span 4;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      border-radius: 18px;
-      padding:14px;
+    @media (max-width:900px){
+      .virtGrid{grid-template-columns:1fr;}
     }
-    @media (max-width: 980px){ .mini{grid-column: span 6;} }
-    @media (max-width: 640px){ .mini{grid-column: span 12;} }
-
-    .mini b{display:block; margin-bottom:6px; letter-spacing:.2px}
-    .mini span{color:var(--muted); font-weight:700}
-
-    .cta{
-      margin-top:14px;
+    .virtCard{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:16px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      border-radius:var(--r18);
+      padding:14px;
+      background:rgba(0,0,0,.02);
     }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 14px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.92);
-      color: var(--bg);
-      font-weight:1000;
-      letter-spacing:.3px;
-      cursor:pointer;
-    }
-    .btn.secondary{
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.14);
-    }
+    .virtCard b{display:block;margin-bottom:4px;}
 
     footer{
-      margin-top: 26px;
-      color: var(--muted2);
-      font-weight:800;
-      padding-top: 18px;
+      margin-top:28px;
+      padding-top:14px;
       border-top:1px solid var(--line);
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted2);
+      font-weight:700;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
-    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
   </style>
 </head>
 
 <body>
   <div class="topbar">
     <div class="inner">
-      <a class="brand" href="index.html" title="Signal Studio">
-        <span class="dot"></span>
+      <a class="brand" href="index.html">
+        <span class="mark"></span>
         <span>Signal Studio</span>
       </a>
-
       <nav>
-        <a href="index.html" data-en="Home" data-ua="Головна">Home</a>
-        <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
-        <a href="team.html" data-en="Team" data-ua="Команда" style="color:var(--text)">Team</a>
-        <a href="index.html#packages" data-en="Packages" data-ua="Пакети">Packages</a>
-        <a href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
+        <a href="projects.html">Projects</a>
+        <a href="team.html" class="navActive">Team</a>
+        <a href="index.html#packages">Packages</a>
+        <a href="index.html#contact">Contact</a>
       </nav>
-
-      <div class="lang">
-        <div class="pill active" id="langEN">EN</div>
-        <div class="pill" id="langUA">UA</div>
-      </div>
     </div>
   </div>
 
   <main class="wrap">
-    <div class="kicker" data-en="TEAM / AGENCY OPERATING SYSTEM" data-ua="КОМАНДА / ОПЕРАЦІЙНА СИСТЕМА">TEAM / AGENCY OPERATING SYSTEM</div>
-    <h1 data-en="We don’t generate images. We build systems that convert."
-        data-ua="Ми не «генеруємо картинки». Ми будуємо системи, що продають.">
-      We don’t generate images. We build systems that convert.
-    </h1>
-    <p class="sub"
-      data-en="Signal Studio is a two-founder core with an agency-grade production system. Strategy → Art Direction → AI Production → Delivery. Clean, fast, controllable."
-      data-ua="Signal Studio — ядро з двох фаундерів + агентська продакшн-система. Стратегія → Артдирекшн → AI-продакшн → Доставка. Чисто, швидко, керовано.">
-      Signal Studio is a two-founder core with an agency-grade production system. Strategy → Art Direction → AI Production → Delivery. Clean, fast, controllable.
-    </p>
 
-    <!-- CORE TEAM -->
+    <section class="hero">
+      <div class="kicker"><span class="kdot"></span> Founders</div>
+      <h1>We are not a freelancer. We are a creative couple.</h1>
+      <p class="sub">
+        Signal Studio is built by two minds working as one system. Strategy + visual direction + AI production —
+        double control, faster decisions, stronger ideas.
+      </p>
+    </section>
+
+    <!-- Founders -->
     <section class="grid">
-      <article class="card">
-        <div class="head">
-          <div>
-            <div class="role" data-en="Co-founder / Strategy" data-ua="Співзасновник / Стратегія">Co-founder / Strategy</div>
-            <h3 class="name" data-en="Operator 01" data-ua="Оператор 01">Operator 01</h3>
-            <p class="desc"
-              data-en="Turns a product into a message and a message into a structure: hooks, angles, offers, proof, sequencing."
-              data-ua="Перетворює продукт у меседж, а меседж — у структуру: хуки, кути, оффер, доказ, послідовність.">
-              Turns a product into a message and a message into a structure: hooks, angles, offers, proof, sequencing.
-            </p>
-          </div>
-          <div class="pill2" data-en="Focus: market + conversion" data-ua="Фокус: ринок + конверсія">Focus: market + conversion</div>
+      <div class="card">
+        <div class="role">Co-Founder • Creative Direction • Strategy</div>
+        <div class="name">Stanislav</div>
+        <div class="desc">
+          Responsible for strategic positioning, visual system logic, campaign structure and commercial clarity.
+          Focused on making ideas not just beautiful — but sellable.
         </div>
-        <ul class="list">
-          <li data-en="Builds the campaign narrative and content architecture (what / for who / why now)."
-              data-ua="Будує наратив кампанії й архітектуру контенту (що / для кого / чому зараз).">
-            Builds the campaign narrative and content architecture (what / for who / why now).
-          </li>
-          <li data-en="Designs the offer and package structure: entry → core → premium."
-              data-ua="Проєктує оффер і пакети: entry → core → premium.">
-            Designs the offer and package structure: entry → core → premium.
-          </li>
-          <li data-en="Defines what must be shown to earn trust in 7 seconds."
-              data-ua="Визначає, що саме треба показати, щоб отримати довіру за 7 секунд.">
-            Defines what must be shown to earn trust in 7 seconds.
-          </li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="head">
-          <div>
-            <div class="role" data-en="Co-founder / Art Direction" data-ua="Співзасновниця / Артдирекшн">Co-founder / Art Direction</div>
-            <h3 class="name" data-en="Operator 02" data-ua="Оператор 02">Operator 02</h3>
-            <p class="desc"
-              data-en="Controls taste, consistency, and luxury cues: light, texture, styling, camera language, brand feel."
-              data-ua="Контролює смак, цілісність і люкс-ознаки: світло, фактура, стилізація, камера, «відчуття бренду».">
-              Controls taste, consistency, and luxury cues: light, texture, styling, camera language, brand feel.
-            </p>
-          </div>
-          <div class="pill2" data-en="Focus: taste + realism" data-ua="Фокус: смак + реалізм">Focus: taste + realism</div>
-        </div>
-        <ul class="list">
-          <li data-en="Builds a visual system (not random shots): palette, mood, recurring motifs."
-              data-ua="Будує візуальну систему (не випадкові кадри): палітра, настрій, повторювані мотиви.">
-            Builds a visual system (not random shots): palette, mood, recurring motifs.
-          </li>
-          <li data-en="Sets strict quality bar: no cheap AI artifacts, no plastic skin, no nonsense."
-              data-ua="Ставить жорстку планку якості: без дешевого AI, без «пластика», без нісенітниць.">
-            Sets strict quality bar: no cheap AI artifacts, no plastic skin, no nonsense.
-          </li>
-          <li data-en="Turns concepts into frames that look like a premium production."
-              data-ua="Перетворює ідеї у кадри рівня преміального продакшну.">
-            Turns concepts into frames that look like a premium production.
-          </li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- OPERATING SYSTEM -->
-    <section class="panel">
-      <div class="panelTop">
-        <div>
-          <h2 data-en="Our production system" data-ua="Наша продакшн-система">Our production system</h2>
-          <p
-            data-en="Clients don’t pay for “AI”. They pay for speed, control, consistency, and visuals that sell. This is how we operate."
-            data-ua="Клієнти платять не за «AI». Вони платять за швидкість, контроль, цілісність і візуали, що продають. Ось як ми працюємо.">
-            Clients don’t pay for “AI”. They pay for speed, control, consistency, and visuals that sell. This is how we operate.
-          </p>
-        </div>
-        <div class="pill2" data-en="Strategy → Direction → Production" data-ua="Стратегія → Дирекшн → Продакшн">Strategy → Direction → Production</div>
       </div>
 
-      <div class="panelBody">
-        <div class="mini">
-          <b data-en="1) Brief compression" data-ua="1) Стиснення брифу">1) Brief compression</b>
-          <span data-en="We cut noise, define one sharp angle, one promise, one emotion."
-                data-ua="Прибираємо шум, залишаємо один чіткий кут, одну обіцянку, одну емоцію.">
-            We cut noise, define one sharp angle, one promise, one emotion.
-          </span>
-        </div>
-
-        <div class="mini">
-          <b data-en="2) Visual system" data-ua="2) Візуальна система">2) Visual system</b>
-          <span data-en="Palette, lighting logic, camera language, product hero rules."
-                data-ua="Палітра, логіка світла, мова камери, правила product hero.">
-            Palette, lighting logic, camera language, product hero rules.
-          </span>
-        </div>
-
-        <div class="mini">
-          <b data-en="3) Production & QA" data-ua="3) Продакшн і QA">3) Production & QA</b>
-          <span data-en="We iterate until it looks premium and natural. No “AI look”."
-                data-ua="Ітеруємо, доки не буде преміально і натурально. Без «AI-вайбу».">
-            We iterate until it looks premium and natural. No “AI look”.
-          </span>
-        </div>
-
-        <div class="mini">
-          <b data-en="4) Delivery formats" data-ua="4) Формати видачі">4) Delivery formats</b>
-          <span data-en="Ads, carousels, landing visuals, and a ready-to-post content pack."
-                data-ua="Реклама, каруселі, візуали для лендингу, ready-to-post пак.">
-            Ads, carousels, landing visuals, and a ready-to-post content pack.
-          </span>
-        </div>
-
-        <div class="mini">
-          <b data-en="5) What we avoid" data-ua="5) Чого ми уникаємо">5) What we avoid</b>
-          <span data-en="Pinterest ideas, generic prompts, random aesthetics, weak hooks."
-                data-ua="Pinterest-ідеї, загальні промти, випадкова естетика, слабкі хуки.">
-            Pinterest ideas, generic prompts, random aesthetics, weak hooks.
-          </span>
-        </div>
-
-        <div class="mini">
-          <b data-en="6) What you get" data-ua="6) Що ви отримуєте">6) What you get</b>
-          <span data-en="A controllable system you can scale — not a one-time set of pictures."
-                data-ua="Керовану систему, яку можна масштабувати — не разовий набір картинок.">
-            A controllable system you can scale — not a one-time set of pictures.
-          </span>
+      <div class="card">
+        <div class="role">Co-Founder • Visual Art • AI Production</div>
+        <div class="name">Victoria</div>
+        <div class="desc">
+          Responsible for visual aesthetics, styling control, mood consistency and premium finish.
+          Turns strategy into frames that feel editorial and expensive.
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta">
-      <div>
-        <div class="kicker" style="margin-bottom:10px" data-en="READY TO START?" data-ua="ГОТОВІ СТАРТУВАТИ?">READY TO START?</div>
-        <div style="color:var(--muted); font-weight:800; max-width:84ch"
-          data-en="Email us a short BRIEF (brand + product + goal + deadline). We reply with the best entry package."
-          data-ua="Напишіть короткий BRIEF (бренд + продукт + ціль + дедлайн). Відповімо з найкращим entry-пакетом.">
-          Email us a short BRIEF (brand + product + goal + deadline). We reply with the best entry package.
+    <!-- Why two is stronger -->
+    <section class="virtual">
+      <h3>Why two founders is stronger than one</h3>
+      <div class="virtGrid">
+        <div class="virtCard">
+          <b>Dual Quality Control</b>
+          Every visual passes two creative filters — strategy and aesthetics.
+        </div>
+        <div class="virtCard">
+          <b>Faster Decisions</b>
+          No waiting for external approvals. We iterate and refine instantly.
+        </div>
+        <div class="virtCard">
+          <b>Balanced Thinking</b>
+          Logic + intuition. Structure + emotion. Conversion + beauty.
         </div>
       </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
-           data-en="Email BRIEF" data-ua="Надіслати BRIEF">Email BRIEF</a>
-        <a class="btn secondary" href="projects.html" data-en="See Projects" data-ua="Дивитись проєкти">See Projects</a>
+    </section>
+
+    <!-- Virtual Creative Board -->
+    <section class="virtual">
+      <h3>Our Virtual Creative Board</h3>
+      <p class="sub">
+        Behind every project stands a system of references and standards inspired by the best minds in advertising,
+        design and brand strategy.
+      </p>
+
+      <div class="virtGrid">
+        <div class="virtCard">
+          <b>Strategy Mindset</b>
+          Clarity, positioning, why-before-what logic.
+        </div>
+        <div class="virtCard">
+          <b>Bold Advertising Energy</b>
+          Unexpected angles, strong hooks, memorable frames.
+        </div>
+        <div class="virtCard">
+          <b>Luxury Visual Language</b>
+          Editorial discipline, premium light, refined composition.
+        </div>
       </div>
     </section>
 
     <footer>
       <div>© <span id="year"></span> Signal Studio</div>
       <div>
-        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email: send BRIEF" data-ua="Пошта: надіслати BRIEF">Email: send BRIEF</a>
-        <span style="opacity:.35"> • </span>
-        <a class="smalllink" href="index.html" data-en="Back to Home" data-ua="Назад на головну">Back to Home</a>
+        <a href="projects.html">Projects</a> •
+        <a href="index.html">Home</a>
       </div>
     </footer>
+
   </main>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    const langEN = document.getElementById('langEN');
-    const langUA = document.getElementById('langUA');
-    let LANG = 'en';
-
-    function applyLang(){
-      document.querySelectorAll('[data-en]').forEach(el=>{
-        el.textContent = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
-      });
-      langEN.classList.toggle('active', LANG==='en');
-      langUA.classList.toggle('active', LANG==='ua');
-    }
-    langEN.addEventListener('click', ()=>{ LANG='en'; applyLang(); });
-    langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
-
-    applyLang();
   </script>
 </body>
 </html>

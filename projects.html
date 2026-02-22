@@ -10,7 +10,6 @@
     :root{
       --bg:#07090c;
       --panel:#0c1016;
-      --panel2:#0b0f15;
       --line:rgba(255,255,255,.10);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.60);
@@ -18,22 +17,21 @@
       --shadow: 0 20px 60px rgba(0,0,0,.55);
       --radius:22px;
       --radius2:18px;
-      --pad:18px;
       --max:1120px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      background: radial-gradient(1200px 800px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
-                  radial-gradient(900px 600px at 90% 20%, rgba(255,255,255,.05), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(255,255,255,.05), transparent 55%),
+        var(--bg);
       color:var(--text);
       font: 14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       letter-spacing:.2px;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 70px;}
+
     .topbar{
       position:sticky; top:0; z-index:30;
       backdrop-filter: blur(10px);
@@ -44,48 +42,25 @@
       max-width:var(--max); margin:0 auto; padding: 14px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:700; letter-spacing:.6px;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:99px;
-      background: rgba(255,255,255,.9);
-      box-shadow: 0 0 0 6px rgba(255,255,255,.08);
-    }
-    nav{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      color:var(--muted);
-      font-weight:600;
-    }
-    nav a{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.6px;}
+    .dot{width:10px;height:10px;border-radius:99px;background:rgba(255,255,255,.9);box-shadow:0 0 0 6px rgba(255,255,255,.08)}
+    nav{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:700}
+    nav a{padding:8px 10px;border-radius:999px;border:1px solid transparent}
     nav a:hover{border-color:var(--line); color:var(--text)}
-    .lang{
-      display:flex; gap:8px; align-items:center;
-    }
+    .lang{display:flex;gap:8px;align-items:center}
     .pill{
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
       padding:8px 10px;
       border-radius:999px;
       color:var(--muted);
-      font-weight:700;
+      font-weight:900;
       cursor:pointer;
       user-select:none;
     }
-    .pill.active{
-      color:var(--bg);
-      background: rgba(255,255,255,.92);
-      border-color:transparent;
-    }
+    .pill.active{color:var(--bg); background: rgba(255,255,255,.92); border-color:transparent}
 
-    header.hero{
-      padding: 26px 0 10px;
-    }
+    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 70px;}
     .kicker{
       display:inline-flex; gap:8px; align-items:center;
       color:var(--muted);
@@ -93,7 +68,8 @@
       background: rgba(255,255,255,.03);
       padding:8px 12px;
       border-radius:999px;
-      font-weight:700;
+      font-weight:900;
+      letter-spacing:.5px;
     }
     h1{
       margin:14px 0 8px;
@@ -101,97 +77,29 @@
       line-height:1.05;
       letter-spacing:-.6px;
     }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      max-width: 70ch;
-      font-size: 15px;
-    }
+    .sub{margin:0;color:var(--muted);max-width:70ch;font-size:15px}
 
-    .controls{
-      margin-top:18px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
+    .case{
+      margin-top: 16px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
-      padding: 12px;
-      border-radius: var(--radius);
-    }
-    .filters{
-      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
-    }
-    .chip{
-      padding:8px 11px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color:var(--muted);
-      font-weight:800;
-      cursor:pointer;
-      user-select:none;
-    }
-    .chip.active{
-      color:var(--bg);
-      background: rgba(255,255,255,.92);
-      border-color:transparent;
-    }
-    .meta{
-      color:var(--muted2);
-      font-weight:700;
-    }
-
-    .grid{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
-    }
-    .card{
-      grid-column: span 4;
       border-radius: var(--radius);
       overflow:hidden;
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
       box-shadow: var(--shadow);
-      position:relative;
-      cursor:pointer;
-      min-height: 240px;
     }
-    @media (max-width: 980px){ .card{grid-column: span 6;} }
-    @media (max-width: 640px){ .card{grid-column: span 12;} }
-
-    .thumb{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;
-      transform: scale(1.01);
-      filter: contrast(1.03) saturate(1.02);
+    .caseTop{
+      padding: 16px 16px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; gap:14px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap;
     }
-    .overlay{
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.62));
-      opacity:.95;
-      pointer-events:none;
-    }
-    .cap{
-      position:absolute;
-      left:14px; right:14px; bottom:12px;
-      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
-    }
-    .cap .left{
-      display:flex; flex-direction:column; gap:3px;
-      min-width:0;
+    .caseTitle{
+      display:flex; flex-direction:column; gap:4px;
+      min-width: 240px;
     }
     .tag{
-      display:inline-flex;
-      width:fit-content;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
+      display:inline-flex; width:fit-content;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
       background: rgba(0,0,0,.18);
       color: rgba(255,255,255,.80);
       font-weight:900;
@@ -199,49 +107,70 @@
       letter-spacing:.5px;
       text-transform:uppercase;
     }
-    .ttl{
+    .caseTitle h2{margin:0; font-size:18px; letter-spacing:.2px}
+    .caseTitle p{margin:0; color:var(--muted); max-width: 78ch}
+
+    .caseMeta{
+      color: var(--muted2);
       font-weight:900;
-      letter-spacing:.2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      display:flex;
+      gap:10px;
+      align-items:center;
     }
-    .note{
-      color: rgba(255,255,255,.70);
-      font-weight:700;
-      font-size:12px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .cap .num{
-      color: rgba(255,255,255,.75);
-      font-weight:900;
-      font-size:12px;
-      border:1px solid rgba(255,255,255,.18);
+    .metaPill{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      padding:8px 10px;
       border-radius:999px;
-      padding:6px 9px;
-      background: rgba(0,0,0,.18);
-      flex:0 0 auto;
+      white-space:nowrap;
     }
 
-    .section{
-      margin-top: 24px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding: 16px;
-      border-radius: var(--radius);
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+      padding: 14px;
     }
-    .section h2{
-      margin: 0 0 6px;
-      font-size: 16px;
-      letter-spacing:.2px;
+    .shot{
+      grid-column: span 4;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      position:relative;
+      cursor:pointer;
+      min-height: 220px;
     }
-    .section p{
-      margin:0;
-      color:var(--muted);
-      max-width: 88ch;
+    @media (max-width: 980px){ .shot{grid-column: span 6;} }
+    @media (max-width: 640px){ .shot{grid-column: span 12;} }
+
+    .shot img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.01);
+      filter: contrast(1.03) saturate(1.02);
     }
+    .shot .label{
+      position:absolute; left:10px; top:10px;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.78);
+      font-weight:900;
+      font-size:12px;
+    }
+
+    footer{
+      margin-top: 26px;
+      color: var(--muted2);
+      font-weight:800;
+      padding-top: 18px;
+      border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
 
     /* Lightbox */
     .lightbox{
@@ -266,8 +195,10 @@
       padding: 12px 14px;
       border-bottom:1px solid rgba(255,255,255,.10);
       color:var(--muted);
-      font-weight:800;
+      font-weight:900;
+      gap:10px;
     }
+    .lbTop .t{min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
     .lbBtn{
       cursor:pointer;
       border:1px solid rgba(255,255,255,.14);
@@ -277,26 +208,10 @@
       border-radius: 999px;
       font-weight:900;
       user-select:none;
+      white-space:nowrap;
     }
-    .lbBody{
-      position:relative;
-      background:#05070a;
-    }
-    .lbImg{
-      width:100%;
-      max-height: 78vh;
-      object-fit: contain;
-      display:block;
-    }
-    footer{
-      margin-top: 26px;
-      color: var(--muted2);
-      font-weight:700;
-      padding-top: 18px;
-      border-top:1px solid var(--line);
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-    }
-    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
+    .lbBody{background:#05070a;}
+    .lbImg{width:100%; max-height: 78vh; object-fit: contain; display:block;}
   </style>
 </head>
 
@@ -324,208 +239,95 @@
   </div>
 
   <main class="wrap">
-    <header class="hero">
-      <div class="kicker" data-en="PROJECTS / SELECTED WORK" data-ua="ПРОЄКТИ / ВИБРАНІ РОБОТИ">PROJECTS / SELECTED WORK</div>
-      <h1 data-en="Editorial-grade visuals built for ads." data-ua="Візуали editorial-рівня, створені під рекламу.">
-        Editorial-grade visuals built for ads.
-      </h1>
-      <p class="sub"
-        data-en="This page is a curated showcase. For each project we build a concept and variations — not random AI images."
-        data-ua="Це curated-вітрина. У кожному проєкті ми будуємо концепт і варіації — а не випадкові AI-картинки.">
-        This page is a curated showcase. For each project we build a concept and variations — not random AI images.
-      </p>
-    </header>
+    <div class="kicker" data-en="PROJECTS / 3 MINI-CASES" data-ua="ПРОЄКТИ / 3 МІНІ-КЕЙСИ">PROJECTS / 3 MINI-CASES</div>
+    <h1 data-en="Three focused cases. No filler." data-ua="Три сфокусовані кейси. Без води.">Three focused cases. No filler.</h1>
+    <p class="sub"
+       data-en="Each case is a compact set of ad-ready frames. Click any image to view it full-size."
+       data-ua="Кожен кейс — компактний набір ad-ready кадрів. Натисни на будь-яке фото, щоб відкрити повний розмір.">
+      Each case is a compact set of ad-ready frames. Click any image to view it full-size.
+    </p>
 
-    <section class="controls">
-      <div class="filters" id="filters">
-        <div class="chip active" data-filter="all" data-en="All" data-ua="Усі">All</div>
-        <div class="chip" data-filter="beauty" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
-        <div class="chip" data-filter="fashion" data-en="Fashion" data-ua="Фешн">Fashion</div>
-        <div class="chip" data-filter="jewelry" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
-        <div class="chip" data-filter="story" data-en="Story" data-ua="Історія">Story</div>
-      </div>
-
-      <div class="meta" id="count" data-en="12 items" data-ua="12 робіт">12 items</div>
-    </section>
-
-    <!-- GRID -->
-    <section class="grid" id="grid">
-      <!-- BEAUTY -->
-      <div class="card" data-cat="beauty" data-src="p03.jpg" data-title-en="Golden Skin Oil" data-title-ua="Golden Skin Oil" data-note-en="Beauty launch visuals" data-note-ua="Візуали для запуску бʼюті">
-        <img class="thumb" src="p03.jpg" alt="p03" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
-            <div class="ttl" data-en="Golden Skin Oil" data-ua="Golden Skin Oil">Golden Skin Oil</div>
-            <div class="note" data-en="Beauty launch visuals" data-ua="Візуали для запуску бʼюті">Beauty launch visuals</div>
-          </div>
-          <div class="num">p03</div>
+    <!-- CASE 1: BEAUTY -->
+    <section class="case" data-case="beauty">
+      <div class="caseTop">
+        <div class="caseTitle">
+          <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
+          <h2 data-en="Beauty Launch Visual System" data-ua="Візуальна система для запуску бʼюті">Beauty Launch Visual System</h2>
+          <p data-en="Product hero + texture proofs + lifestyle frames. Built to sell, not to decorate."
+             data-ua="Продуктовий hero + proof текстури + лайфстайл. Зроблено щоб продавало, а не «для краси».">
+            Product hero + texture proofs + lifestyle frames. Built to sell, not to decorate.
+          </p>
+        </div>
+        <div class="caseMeta">
+          <div class="metaPill" data-en="5 visuals" data-ua="5 візуалів">5 visuals</div>
+          <div class="metaPill" data-en="Ad-ready" data-ua="Готово під рекламу">Ad-ready</div>
         </div>
       </div>
 
-      <div class="card" data-cat="beauty" data-src="p04.jpg" data-title-en="Texture Proof" data-title-ua="Текстура / Proof" data-note-en="Light + skin detail" data-note-ua="Світло + шкіра">
-        <img class="thumb" src="p04.jpg" alt="p04" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
-            <div class="ttl" data-en="Texture Proof" data-ua="Текстура / Proof">Texture Proof</div>
-            <div class="note" data-en="Light + skin detail" data-ua="Світло + шкіра">Light + skin detail</div>
-          </div>
-          <div class="num">p04</div>
-        </div>
-      </div>
-
-      <div class="card" data-cat="beauty" data-src="p12.jpg" data-title-en="Clean Skin Portrait" data-title-ua="Портрет шкіри" data-note-en="Beauty confidence" data-note-ua="Бʼюті-довіра">
-        <img class="thumb" src="p12.jpg" alt="p12" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
-            <div class="ttl" data-en="Clean Skin Portrait" data-ua="Портрет шкіри">Clean Skin Portrait</div>
-            <div class="note" data-en="Beauty confidence" data-ua="Бʼюті-довіра">Beauty confidence</div>
-          </div>
-          <div class="num">p12</div>
-        </div>
-      </div>
-
-      <div class="card" data-cat="beauty" data-src="p05.jpg" data-title-en="Warm Sun Mood" data-title-ua="Теплий настрій" data-note-en="Campaign atmosphere" data-note-ua="Атмосфера кампейну">
-        <img class="thumb" src="p05.jpg" alt="p05" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
-            <div class="ttl" data-en="Warm Sun Mood" data-ua="Теплий настрій">Warm Sun Mood</div>
-            <div class="note" data-en="Campaign atmosphere" data-ua="Атмосфера кампейну">Campaign atmosphere</div>
-          </div>
-          <div class="num">p05</div>
-        </div>
-      </div>
-
-      <div class="card" data-cat="beauty" data-src="p01.jpg" data-title-en="Poolside Product Shot" data-title-ua="Продукт біля басейну" data-note-en="Lifestyle beauty frame" data-note-ua="Лайфстайл кадр">
-        <img class="thumb" src="p01.jpg" alt="p01" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
-            <div class="ttl" data-en="Poolside Product Shot" data-ua="Продукт біля басейну">Poolside Product Shot</div>
-            <div class="note" data-en="Lifestyle beauty frame" data-ua="Лайфстайл кадр">Lifestyle beauty frame</div>
-          </div>
-          <div class="num">p01</div>
-        </div>
-      </div>
-
-      <!-- FASHION -->
-      <div class="card" data-cat="fashion" data-src="p07.jpg" data-title-en="Accessory Editorial" data-title-ua="Аксесуар editorial" data-note-en="Minimal luxury styling" data-note-ua="Мінімал-люкс стайлінг">
-        <img class="thumb" src="p07.jpg" alt="p07" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
-            <div class="ttl" data-en="Accessory Editorial" data-ua="Аксесуар editorial">Accessory Editorial</div>
-            <div class="note" data-en="Minimal luxury styling" data-ua="Мінімал-люкс стайлінг">Minimal luxury styling</div>
-          </div>
-          <div class="num">p07</div>
-        </div>
-      </div>
-
-      <div class="card" data-cat="fashion" data-src="p06.jpg" data-title-en="Accessory Variation" data-title-ua="Варіація аксесуара" data-note-en="Same concept, new angle" data-note-ua="Той самий концепт, інший кут">
-        <img class="thumb" src="p06.jpg" alt="p06" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
-            <div class="ttl" data-en="Accessory Variation" data-ua="Варіація аксесуара">Accessory Variation</div>
-            <div class="note" data-en="Same concept, new angle" data-ua="Той самий концепт, інший кут">Same concept, new angle</div>
-          </div>
-          <div class="num">p06</div>
-        </div>
-      </div>
-
-      <div class="card" data-cat="fashion" data-src="p11.jpg" data-title-en="Editorial Gesture" data-title-ua="Editorial жест" data-note-en="High-fashion frame" data-note-ua="Кадр high-fashion">
-        <img class="thumb" src="p11.jpg" alt="p11" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
-            <div class="ttl" data-en="Editorial Gesture" data-ua="Editorial жест">Editorial Gesture</div>
-            <div class="note" data-en="High-fashion frame" data-ua="Кадр high-fashion">High-fashion frame</div>
-          </div>
-          <div class="num">p11</div>
-        </div>
-      </div>
-
-      <!-- JEWELRY -->
-      <div class="card" data-cat="jewelry" data-src="p10.jpg" data-title-en="Evening Jewelry Hero" data-title-ua="Ювелірний hero" data-note-en="Desire-focused shot" data-note-ua="Кадр про бажання">
-        <img class="thumb" src="p10.jpg" alt="p10" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
-            <div class="ttl" data-en="Evening Jewelry Hero" data-ua="Ювелірний hero">Evening Jewelry Hero</div>
-            <div class="note" data-en="Desire-focused shot" data-ua="Кадр про бажання">Desire-focused shot</div>
-          </div>
-          <div class="num">p10</div>
-        </div>
-      </div>
-
-      <div class="card" data-cat="jewelry" data-src="p09.jpg" data-title-en="Glam Atmosphere" data-title-ua="Glam атмосфера" data-note-en="Cinematic luxury mood" data-note-ua="Кінематографічний люкс">
-        <img class="thumb" src="p09.jpg" alt="p09" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
-            <div class="ttl" data-en="Glam Atmosphere" data-ua="Glam атмосфера">Glam Atmosphere</div>
-            <div class="note" data-en="Cinematic luxury mood" data-ua="Кінематографічний люкс">Cinematic luxury mood</div>
-          </div>
-          <div class="num">p09</div>
-        </div>
-      </div>
-
-      <div class="card" data-cat="jewelry" data-src="p08.jpg" data-title-en="Candlelight Detail" data-title-ua="Деталь при свічках" data-note-en="Intimate product moment" data-note-ua="Інтимний момент продукту">
-        <img class="thumb" src="p08.jpg" alt="p08" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
-            <div class="ttl" data-en="Candlelight Detail" data-ua="Деталь при свічках">Candlelight Detail</div>
-            <div class="note" data-en="Intimate product moment" data-ua="Інтимний момент продукту">Intimate product moment</div>
-          </div>
-          <div class="num">p08</div>
-        </div>
-      </div>
-
-      <!-- STORY -->
-      <div class="card" data-cat="story" data-src="p02.jpg" data-title-en="Lifestyle Story Frame" data-title-ua="Лайфстайл-історія" data-note-en="Cinematic editorial scene" data-note-ua="Кінематографічна сцена">
-        <img class="thumb" src="p02.jpg" alt="p02" loading="lazy" />
-        <div class="overlay"></div>
-        <div class="cap">
-          <div class="left">
-            <div class="tag" data-en="Story" data-ua="Історія">Story</div>
-            <div class="ttl" data-en="Lifestyle Story Frame" data-ua="Лайфстайл-історія">Lifestyle Story Frame</div>
-            <div class="note" data-en="Cinematic editorial scene" data-ua="Кінематографічна сцена">Cinematic editorial scene</div>
-          </div>
-          <div class="num">p02</div>
-        </div>
+      <div class="grid">
+        <div class="shot" data-src="p01.jpg" data-title-en="Beauty / Shot 01" data-title-ua="Бʼюті / Кадр 01"><span class="label">p01</span><img src="p01.jpg" alt="p01" loading="lazy"></div>
+        <div class="shot" data-src="p02.jpg" data-title-en="Beauty / Shot 02" data-title-ua="Бʼюті / Кадр 02"><span class="label">p02</span><img src="p02.jpg" alt="p02" loading="lazy"></div>
+        <div class="shot" data-src="p03.jpg" data-title-en="Beauty / Shot 03" data-title-ua="Бʼюті / Кадр 03"><span class="label">p03</span><img src="p03.jpg" alt="p03" loading="lazy"></div>
+        <div class="shot" data-src="p04.jpg" data-title-en="Beauty / Shot 04" data-title-ua="Бʼюті / Кадр 04"><span class="label">p04</span><img src="p04.jpg" alt="p04" loading="lazy"></div>
+        <div class="shot" data-src="p05.jpg" data-title-en="Beauty / Shot 05" data-title-ua="Бʼюті / Кадр 05"><span class="label">p05</span><img src="p05.jpg" alt="p05" loading="lazy"></div>
       </div>
     </section>
 
-    <section class="section" style="margin-top:18px">
-      <h2 data-en="Note" data-ua="Примітка">Note</h2>
-      <p
-        data-en="Some projects are concept studies (spec work). We can share brand-specific case details privately after an NDA."
-        data-ua="Частина проєктів — концепт-роботи (spec). Деталі бренд-кейсів можемо показати приватно після NDA.">
-        Some projects are concept studies (spec work). We can share brand-specific case details privately after an NDA.
-      </p>
+    <!-- CASE 2: FASHION -->
+    <section class="case" data-case="fashion">
+      <div class="caseTop">
+        <div class="caseTitle">
+          <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
+          <h2 data-en="Fashion Editorial Series" data-ua="Фешн editorial серія">Fashion Editorial Series</h2>
+          <p data-en="A consistent story with variation: angles, poses, light — one aesthetic."
+             data-ua="Єдина естетика + варіації: ракурси, пози, світло — одна історія.">
+            A consistent story with variation: angles, poses, light — one aesthetic.
+          </p>
+        </div>
+        <div class="caseMeta">
+          <div class="metaPill" data-en="5 visuals" data-ua="5 візуалів">5 visuals</div>
+          <div class="metaPill" data-en="Editorial look" data-ua="Editorial вигляд">Editorial look</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="shot" data-src="p06.jpg" data-title-en="Fashion / Shot 06" data-title-ua="Фешн / Кадр 06"><span class="label">p06</span><img src="p06.jpg" alt="p06" loading="lazy"></div>
+        <div class="shot" data-src="p07.jpg" data-title-en="Fashion / Shot 07" data-title-ua="Фешн / Кадр 07"><span class="label">p07</span><img src="p07.jpg" alt="p07" loading="lazy"></div>
+        <div class="shot" data-src="p08.jpg" data-title-en="Fashion / Shot 08" data-title-ua="Фешн / Кадр 08"><span class="label">p08</span><img src="p08.jpg" alt="p08" loading="lazy"></div>
+        <div class="shot" data-src="p09.jpg" data-title-en="Fashion / Shot 09" data-title-ua="Фешн / Кадр 09"><span class="label">p09</span><img src="p09.jpg" alt="p09" loading="lazy"></div>
+        <div class="shot" data-src="p10.jpg" data-title-en="Fashion / Shot 10" data-title-ua="Фешн / Кадр 10"><span class="label">p10</span><img src="p10.jpg" alt="p10" loading="lazy"></div>
+      </div>
+    </section>
+
+    <!-- CASE 3: JEWELRY -->
+    <section class="case" data-case="jewelry">
+      <div class="caseTop">
+        <div class="caseTitle">
+          <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
+          <h2 data-en="Jewelry Desire Frames" data-ua="Ювелірні кадри бажання">Jewelry Desire Frames</h2>
+          <p data-en="Luxury mood + close-up detail. The point is: want it now."
+             data-ua="Люкс-настрій + деталь крупним планом. Сенс простий: «хочу зараз».">
+            Luxury mood + close-up detail. The point is: want it now.
+          </p>
+        </div>
+        <div class="caseMeta">
+          <div class="metaPill" data-en="2 visuals" data-ua="2 візуали">2 visuals</div>
+          <div class="metaPill" data-en="High intent" data-ua="Високий намір">High intent</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="shot" data-src="p11.jpg" data-title-en="Jewelry / Shot 11" data-title-ua="Ювелірка / Кадр 11"><span class="label">p11</span><img src="p11.jpg" alt="p11" loading="lazy"></div>
+        <div class="shot" data-src="p12.jpg" data-title-en="Jewelry / Shot 12" data-title-ua="Ювелірка / Кадр 12"><span class="label">p12</span><img src="p12.jpg" alt="p12" loading="lazy"></div>
+      </div>
     </section>
 
     <footer>
       <div>© <span id="year"></span> Signal Studio</div>
       <div>
-        <a class="smalllink" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
+        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email: send BRIEF" data-ua="Пошта: надіслати BRIEF">Email: send BRIEF</a>
         <span style="opacity:.35"> • </span>
-        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email" data-ua="Пошта">Email</a>
+        <a class="smalllink" href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
       </div>
     </footer>
   </main>
@@ -534,7 +336,7 @@
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lbPanel">
       <div class="lbTop">
-        <div id="lbTitle" style="min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
+        <div class="t" id="lbTitle">Preview</div>
         <div style="display:flex; gap:8px; align-items:center;">
           <div class="lbBtn" id="lbOpen" data-en="Open" data-ua="Відкрити">Open</div>
           <div class="lbBtn" id="lbClose" data-en="Close" data-ua="Закрити">Close</div>
@@ -547,46 +349,24 @@
   </div>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Language
     const langEN = document.getElementById('langEN');
     const langUA = document.getElementById('langUA');
     let LANG = 'en';
-
     function applyLang(){
       document.querySelectorAll('[data-en]').forEach(el=>{
         el.textContent = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
       });
       langEN.classList.toggle('active', LANG==='en');
       langUA.classList.toggle('active', LANG==='ua');
-      updateCount();
+      // update lightbox buttons text too
+      document.getElementById('lbOpen').textContent = (LANG==='en') ? 'Open' : 'Відкрити';
+      document.getElementById('lbClose').textContent = (LANG==='en') ? 'Close' : 'Закрити';
     }
     langEN.addEventListener('click', ()=>{ LANG='en'; applyLang(); });
     langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
-
-    // Filters
-    const chips = Array.from(document.querySelectorAll('.chip'));
-    const cards = Array.from(document.querySelectorAll('.card'));
-    let FILTER = 'all';
-
-    function setFilter(f){
-      FILTER = f;
-      chips.forEach(c=>c.classList.toggle('active', c.dataset.filter===f));
-      cards.forEach(card=>{
-        const ok = (f==='all') || (card.dataset.cat===f);
-        card.style.display = ok ? '' : 'none';
-      });
-      updateCount();
-    }
-    chips.forEach(c=> c.addEventListener('click', ()=> setFilter(c.dataset.filter)));
-
-    function updateCount(){
-      const visible = cards.filter(card => card.style.display !== 'none').length;
-      const count = document.getElementById('count');
-      count.textContent = (LANG==='en') ? `${visible} items` : `${visible} робіт`;
-    }
 
     // Lightbox
     const lb = document.getElementById('lightbox');
@@ -596,12 +376,10 @@
     const lbOpen = document.getElementById('lbOpen');
     let currentSrc = '';
 
-    function openLB(card){
-      currentSrc = card.dataset.src;
+    function openLB(el){
+      currentSrc = el.dataset.src;
       lbImg.src = currentSrc;
-      const title = (LANG==='en') ? card.dataset.titleEn : card.dataset.titleUa;
-      const note  = (LANG==='en') ? card.dataset.noteEn  : card.dataset.noteUa;
-      lbTitle.textContent = `${title} — ${note}`;
+      lbTitle.textContent = (LANG==='en') ? el.dataset.titleEn : el.dataset.titleUa;
       lb.classList.add('open');
       lb.setAttribute('aria-hidden', 'false');
     }
@@ -612,7 +390,7 @@
       currentSrc = '';
     }
 
-    cards.forEach(card => card.addEventListener('click', ()=> openLB(card)));
+    document.querySelectorAll('.shot').forEach(s=> s.addEventListener('click', ()=> openLB(s)));
     lbClose.addEventListener('click', closeLB);
     lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
@@ -622,9 +400,7 @@
       window.open(currentSrc, '_blank', 'noopener');
     });
 
-    // Init
     applyLang();
-    setFilter('all');
   </script>
 </body>
 </html>

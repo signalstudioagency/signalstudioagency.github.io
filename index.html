@@ -1,908 +1,563 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Signal Studio — Premium AI Advertising Visuals</title>
-  <meta name="description" content="Dual-founder creative atelier for premium AI advertising visuals for fashion, beauty and jewelry brands. Strategy → Art Direction → AI Production." />
+  <meta name="description" content="SIGNAL STUDIO — AI Campaign Studio for Fashion, Jewelry & Beauty brands. Cinematic visuals and scalable content systems." />
+  <title>SIGNAL STUDIO — AI Campaign Studio</title>
 
   <style>
     :root{
-      --bg:#07090c;
-      --panel: rgba(255,255,255,.03);
-      --panel2: rgba(0,0,0,.22);
-      --line: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.62);
-      --muted2: rgba(255,255,255,.40);
-      --shadow: 0 22px 70px rgba(0,0,0,.58);
-      --radius: 22px;
-      --radius2: 18px;
-      --max: 1180px;
+      --bg:#07070A;
+      --panel:#0B0B10;
+      --text:#F2F3F7;
+      --muted:#B7BAC7;
+      --muted2:#8B8FA3;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 18px 50px rgba(0,0,0,.55);
+      --radius:18px;
+      --radius2:26px;
+      --max:1120px;
+      --accent1:#9BFFB4;
+      --accent2:#8AB6FF;
+      --accent3:#E9D3FF;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:
-        radial-gradient(1200px 800px at 18% 0%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 700px at 92% 10%, rgba(255,255,255,.05), transparent 58%),
-        radial-gradient(900px 700px at 50% 100%, rgba(255,255,255,.04), transparent 60%),
+        radial-gradient(1200px 600px at 20% -10%, rgba(138,182,255,.14), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(233,211,255,.12), transparent 55%),
+        radial-gradient(900px 700px at 50% 110%, rgba(155,255,180,.10), transparent 60%),
         var(--bg);
       color:var(--text);
-      font: 14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.35;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+    .grid{display:grid; gap:16px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:12px 16px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.2s transform, .2s background, .2s border;
+      font-weight:700;
       letter-spacing:.2px;
     }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 74px;}
-
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:30;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(7,9,12,.92), rgba(7,9,12,.55));
-      border-bottom:1px solid var(--line);
-    }
-    .topbar .inner{
-      max-width:var(--max); margin:0 auto; padding: 14px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-    }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:950; letter-spacing:.6px;}
-    .dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 0 0 6px rgba(255,255,255,.08)}
-    nav{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:900}
-    nav a{padding:8px 10px;border-radius:999px;border:1px solid transparent}
-    nav a:hover{border-color:var(--line); color:var(--text)}
-
-    .lang{display:flex;gap:8px;align-items:center}
-    .pill{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding:8px 10px;
-      border-radius:999px;
-      color:var(--muted);
-      font-weight:950;
-      cursor:pointer;
-      user-select:none;
-    }
-    .pill.active{color:var(--bg); background: rgba(255,255,255,.92); border-color:transparent}
-
-    /* Hero layout */
-    .hero{
-      padding-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      align-items:stretch;
-    }
-    .heroLeft{grid-column: span 7;}
-    .heroRight{grid-column: span 5;}
-    @media (max-width: 980px){
-      .heroLeft,.heroRight{grid-column: span 12;}
-    }
-
-    .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      color:var(--muted);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:950;
-      letter-spacing:.5px;
-      text-transform: uppercase;
-      font-size:12px;
-    }
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(34px, 4.8vw, 60px);
-      line-height:1.02;
-      letter-spacing:-.9px;
-      font-weight: 980;
-    }
-    .sub{margin:0;color:var(--muted);max-width:86ch;font-size:15px;font-weight:700}
-
-    .ctaRow{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 14px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.92);
-      color: var(--bg);
-      font-weight:1000;
-      letter-spacing:.25px;
-      cursor:pointer;
-    }
-    .btn.secondary{
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.14);
-    }
-
-    .miniRow{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
-    }
-    .mini{
-      grid-column: span 4;
-      border:1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding:12px 14px;
-    }
-    @media (max-width: 980px){ .mini{grid-column: span 6;} }
-    @media (max-width: 640px){ .mini{grid-column: span 12;} }
-    .mini b{display:block; margin-bottom:4px; font-weight:950}
-    .mini span{color:var(--muted); font-weight:720}
-
-    /* Right panel */
-    .panel{
-      border:1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .panelTop{padding:16px; border-bottom:1px solid rgba(255,255,255,.08)}
-    .panelTop h2{margin:0; font-size:16px; font-weight:980}
-    .panelTop p{margin:8px 0 0; color:var(--muted); font-weight:760}
-
-    .offer{padding:14px 16px 16px;}
-    .offerBox{
-      border:1px solid rgba(255,255,255,.10);
-      background: var(--panel2);
-      border-radius: 18px;
-      padding:14px;
-    }
-    .offerTitle{font-weight:1000; letter-spacing:.2px}
-    .offerSub{color:var(--muted); margin-top:6px; font-weight:760}
-    .timer{margin-top:10px; font-size: 22px; font-weight:1100; letter-spacing: .8px;}
-
-    .proof{
-      margin-top:12px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:10px;
-    }
-    .stat{
-      grid-column: span 6;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      border-radius: 16px;
-      padding:12px;
-    }
-    .stat b{display:block; font-size:16px; letter-spacing:.2px; font-weight:1000}
-    .stat span{color:var(--muted); font-weight:720}
-
-    /* Sections */
-    section{margin-top:22px}
-    .sectionHead{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin-bottom:12px;
-    }
-    .sectionHead h3{margin:0; font-size:18px; letter-spacing:.2px; font-weight:980}
-    .sectionHead p{margin:8px 0 0; color:var(--muted); max-width: 92ch; font-weight:720}
-
-    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:12px;}
-    .card{
-      grid-column: span 4;
-      border:1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:16px;
-    }
-    @media (max-width: 980px){ .card{grid-column: span 6;} }
-    @media (max-width: 640px){ .card{grid-column: span 12;} }
-    .card h4{margin:0 0 6px; font-size:16px; font-weight:980}
-    .card p{margin:0; color:var(--muted); font-weight:720}
-
-    /* Cases */
-    .case{
-      grid-column: span 12;
-      border:1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .caseTop{
-      padding:16px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14)}
+    .btn.primary{
+      border:0;
+      background:linear-gradient(135deg, rgba(155,255,180,.26), rgba(138,182,255,.22));
+      box-shadow:0 10px 30px rgba(138,182,255,.08);
     }
     .tag{
-      display:inline-flex;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.78);
-      font-weight:900;
-      font-size:12px;
-      letter-spacing:.5px;
-      text-transform:uppercase;
-    }
-    .caseTop h4{margin:10px 0 0; font-size:16px; font-weight:980}
-    .caseTop p{margin:8px 0 0; color:var(--muted); font-weight:720; max-width: 94ch}
-    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
-
-    .gallery{
-      padding: 12px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 10px;
-    }
-    @media (max-width: 980px){ .gallery{grid-template-columns: repeat(6, 1fr);} }
-    @media (max-width: 640px){ .gallery{grid-template-columns: repeat(2, 1fr);} }
-    .shot{
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      aspect-ratio: 4/3;
-      position:relative;
-      cursor:pointer;
-    }
-    .shot.tall{aspect-ratio: 3/4;}
-    .shot img{
-      width:100%; height:100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      transition: transform .25s ease;
-    }
-    .shot:hover img{transform: scale(1.06)}
-
-    /* Packages */
-    .price{font-size: 24px; font-weight:1100; margin:10px 0 0; letter-spacing:.2px;}
-    .badge{
-      display:inline-flex;
-      margin-top:10px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.82);
-      font-weight:900;
-      letter-spacing:.35px;
-      text-transform:uppercase;
-      font-size:12px;
-    }
-    .list{
-      margin: 12px 0 0;
-      padding:0;
-      list-style:none;
-      color: rgba(255,255,255,.82);
-      font-weight:780;
-    }
-    .list li{margin:8px 0; padding-left:14px; position:relative}
-    .list li::before{content:"•"; position:absolute; left:0; top:0; color: rgba(255,255,255,.55)}
-    .note{margin-top:10px; color:var(--muted2); font-weight:760}
-
-    /* Payment + Contact */
-    .wideBox{
-      grid-column: span 12;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
       border:1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:16px;
-    }
-    .email{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      padding:10px 12px;
-      border-radius: 14px;
-      color: rgba(255,255,255,.84);
-      font-weight:900;
+      border-radius:999px;
+      color:var(--muted);
+      background:rgba(255,255,255,.03);
+      font-size:12.5px;
       letter-spacing:.2px;
-      display:inline-block;
     }
 
-    footer{
-      margin-top: 26px;
-      color: var(--muted2);
-      font-weight:800;
-      padding-top: 18px;
-      border-top:1px solid var(--line);
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(7,7,10,.62);
+      border-bottom:1px solid var(--line);
     }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:.6px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background:linear-gradient(135deg, var(--accent1), var(--accent2));
+      box-shadow:0 0 0 6px rgba(138,182,255,.08);
+    }
+    .menu{
+      display:flex; align-items:center; gap:18px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+    .menu a:hover{color:var(--text)}
+    .nav-actions{display:flex; align-items:center; gap:10px}
+    .hamb{display:none}
 
-    /* Lightbox */
-    .lb{
-      position:fixed; inset:0; z-index:80;
-      display:none;
-      align-items:center; justify-content:center;
-      background: rgba(0,0,0,.72);
+    .hero{padding:70px 0 34px;}
+    .hero-card{
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      overflow:hidden;
+      background:
+        radial-gradient(800px 420px at 30% 0%, rgba(138,182,255,.14), transparent 60%),
+        radial-gradient(680px 420px at 70% 20%, rgba(233,211,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+    }
+    .hero-inner{
+      padding:44px 28px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:end;
+    }
+    h1{
+      margin:10px 0 12px;
+      font-size:44px;
+      line-height:1.06;
+      letter-spacing:-.7px;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:62ch;
+    }
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap}
+    .hero-right{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius);
       padding:16px;
     }
-    .lb.show{display:flex}
-    .lbInner{
-      max-width: min(1050px, 96vw);
-      max-height: 88vh;
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.2);
-      box-shadow: 0 30px 100px rgba(0,0,0,.7);
-      position:relative;
+    .kpis{display:grid; gap:10px}
+    .kpi{
+      display:flex; justify-content:space-between; align-items:baseline;
+      padding:10px 10px;
+      border-radius:14px;
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.06);
     }
-    .lbInner img{width:100%; height:100%; object-fit:contain; background:#000}
-    .lbClose{
-      position:absolute; top:10px; right:10px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.45);
-      color: rgba(255,255,255,.92);
-      padding:8px 10px;
-      border-radius: 999px;
-      font-weight:1000;
+    .kpi b{font-size:16px}
+    .kpi span{color:var(--muted2); font-size:13px}
+    .hero-note{margin-top:12px; color:var(--muted2); font-size:12.5px}
+
+    section{padding:34px 0}
+    .section-head{display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:16px}
+    .section-head h2{margin:0; font-size:24px; letter-spacing:-.3px}
+    .section-head p{margin:0; color:var(--muted); max-width:64ch; font-size:14.5px}
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.03);
+      padding:18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      padding:18px;
+      box-shadow:0 12px 40px rgba(0,0,0,.28);
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .list{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+    .list li{color:var(--muted); font-size:13.5px}
+    .list li::before{content:"• "; color:rgba(155,255,180,.9)}
+
+    .three{grid-template-columns:repeat(3, 1fr)}
+    .two{grid-template-columns:repeat(2, 1fr)}
+    .four{grid-template-columns:repeat(4, 1fr)}
+
+    /* Pricing */
+    .pricing-top{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      margin-bottom:14px; flex-wrap:wrap;
+    }
+    .toggle{
+      display:flex; align-items:center; gap:10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 8px;
+      background:rgba(255,255,255,.03);
+    }
+    .chip{
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:13px;
+      color:var(--muted);
       cursor:pointer;
+      border:1px solid transparent;
+      user-select:none;
+    }
+    .chip.active{
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+      border-color:rgba(255,255,255,.10);
+    }
+    .price{font-size:34px; letter-spacing:-.6px; margin:8px 0 0}
+    .price small{font-size:13px; color:var(--muted2); font-weight:700; margin-left:8px}
+    .price-card{display:flex; flex-direction:column; gap:10px; min-height: 340px}
+    .price-actions{margin-top:auto; display:flex; gap:10px; flex-wrap:wrap}
+    .fine{font-size:12.5px; color:var(--muted2); margin-top:6px}
+
+    /* Contact */
+    .contact-grid{grid-template-columns: 1.1fr .9fr}
+    .form{display:grid; gap:10px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus{border-color:rgba(155,255,180,.28)}
+
+    .footer{
+      padding:26px 0 40px;
+      color:var(--muted2);
+      border-top:1px solid var(--line);
+      margin-top:20px;
+      font-size:13px;
+    }
+    .footer .wrap{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap}
+
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr; align-items:start}
+      h1{font-size:38px}
+      .three{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      .four{grid-template-columns:1fr 1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .menu{display:none}
+      .hamb{display:inline-flex}
+    }
+    @media (max-width: 520px){
+      h1{font-size:34px}
+      .four{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="inner">
-      <a class="brand" href="index.html" title="Signal Studio">
+
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="SIGNAL STUDIO">
         <span class="dot"></span>
-        <span>Signal Studio</span>
+        <span>SIGNAL STUDIO</span>
       </a>
 
-      <!-- IMPORTANT CHANGE:
-           Projects now ALWAYS goes to projects.html (not #cases) -->
-      <nav>
-        <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
-        <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
-        <a href="#packages" data-en="Packages" data-ua="Пакети">Packages</a>
-        <a href="#contact" data-en="Contact" data-ua="Контакт">Contact</a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="projects.html">Projects</a>
+        <a href="#system">What we do</a>
+        <a href="#pricing">Pricing</a>
+        <a href="team.html">Team</a>
+        <a href="#contact">Contact</a>
       </nav>
 
-      <div class="lang">
-        <div class="pill active" id="langEN">EN</div>
-        <div class="pill" id="langUA">UA</div>
+      <div class="nav-actions">
+        <a class="btn" href="projects.html">View work</a>
+        <a class="btn primary" href="#contact">Request concept</a>
+        <button class="btn hamb" id="hamb" aria-label="Открыть меню">Menu</button>
       </div>
     </div>
   </div>
+</header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="heroLeft">
-        <div class="kicker" data-en="AI ADS • FASHION / BEAUTY / JEWELRY" data-ua="AI РЕКЛАМА • FASHION / BEAUTY / JEWELRY">
-          AI ADS • FASHION / BEAUTY / JEWELRY
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <div>
+            <span class="tag">AI Campaign Studio • Fashion / Jewelry / Beauty</span>
+            <h1>Кампании, которые выглядят как €20k продакшн — но собираются AI-системой.</h1>
+            <p class="lead">
+              Мы строим визуальные кампании и контент-движки: cinematic hero-кадры, адаптации под платформы и motion-ready фреймы.
+              Без хаоса съёмок. Быстро. Дорого по ощущению.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact">Request campaign concept</a>
+              <a class="btn" href="projects.html">View case studies</a>
+              <a class="btn" href="#pricing">See packages</a>
+            </div>
+            <div class="hero-note">Ответ в течение 24 часов. Пилотный концепт-кадр — по запросу (с водяным знаком).</div>
+          </div>
+
+          <aside class="hero-right" aria-label="Ключевые показатели">
+            <div class="kpis">
+              <div class="kpi"><b>3–7 дней</b><span>типичный цикл кампании</span></div>
+              <div class="kpi"><b>30+ вариаций</b><span>в одном визуальном языке</span></div>
+              <div class="kpi"><b>9:16 / 1:1 / 4:5</b><span>форматы под платформы</span></div>
+              <div class="kpi"><b>Motion-ready</b><span>фреймы для видео</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEM -->
+  <section id="system">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>What we do</h2>
+          <p>Мы не “генерим картинки”. Мы строим кампании: концепт → визуальный язык → серия → упаковка под запуск.</p>
+        </div>
+        <a class="btn" href="projects.html">See work</a>
+      </div>
+
+      <div class="grid three">
+        <div class="card">
+          <h3>01 — Strategy & Concept</h3>
+          <p>DNA бренда, narrative, референсы, правила света и материалов.</p>
+          <ul class="list">
+            <li>brand snapshot + moodline</li>
+            <li>hero-сцены + shot-лист</li>
+            <li>визуальные правила для серии</li>
+          </ul>
         </div>
 
-        <h1
-          data-en="A dual-founder creative atelier for advertising visuals."
-          data-ua="Креативне ательє двох засновників для рекламних візуалів.">
-          A dual-founder creative atelier for advertising visuals.
-        </h1>
-
-        <p class="sub"
-          data-en="Signal Studio builds commercial-ready visual systems: strategy → art direction → AI production. Not random images — controlled campaigns."
-          data-ua="Signal Studio створює комерційно готові візуальні системи: стратегія → артдирекшн → AI-продакшн. Не випадкові картинки — керовані кампанії.">
-          Signal Studio builds commercial-ready visual systems: strategy → art direction → AI production. Not random images — controlled campaigns.
-        </p>
-
-        <div class="ctaRow">
-          <a class="btn"
-             href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
-             data-en="Email BRIEF" data-ua="Надіслати BRIEF">Email BRIEF</a>
-
-          <!-- Make this go to the Projects page (not scroll) -->
-          <a class="btn secondary" href="projects.html"
-             data-en="View Projects" data-ua="Дивитись проєкти">View Projects</a>
-
-          <a class="btn secondary" href="team.html"
-             data-en="Meet the Team" data-ua="Познайомитись з командою">Meet the Team</a>
+        <div class="card">
+          <h3>02 — AI Production</h3>
+          <p>Hero-кадры, продуктовые крупные планы, модели, материал — с контролем качества.</p>
+          <ul class="list">
+            <li>editorial + product visuals</li>
+            <li>consistency и ретушь</li>
+            <li>multi-format output</li>
+          </ul>
         </div>
 
-        <div class="miniRow">
-          <div class="mini">
-            <b data-en="Ad-ready systems" data-ua="Системи для реклами">Ad-ready systems</b>
-            <span data-en="Built for Meta/TikTok formats + performance logic."
-                  data-ua="Створено під формати Meta/TikTok + логіку перформансу.">Built for Meta/TikTok formats + performance logic.</span>
-          </div>
-          <div class="mini">
-            <b data-en="Limited intake" data-ua="Обмежений набір">Limited intake</b>
-            <span data-en="We accept a small number of brands per month."
-                  data-ua="Беремо невелику кількість брендів щомісяця.">We accept a small number of brands per month.</span>
-          </div>
-          <div class="mini">
-            <b data-en="Luxury control" data-ua="Контроль люкс-рівня">Luxury control</b>
-            <span data-en="Light discipline, product hierarchy, consistency."
-                  data-ua="Дисципліна світла, ієрархія продукту, цілісність.">Light discipline, product hierarchy, consistency.</span>
-          </div>
+        <div class="card">
+          <h3>03 — Content Engine</h3>
+          <p>Пакет под запуск: посты/сторис/ads + motion-ready фреймы для Reels.</p>
+          <ul class="list">
+            <li>адаптации под платформы</li>
+            <li>вариации в одном стиле</li>
+            <li>готово к публикации</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Packages</h2>
+          <p>Пакеты — это кампанийный результат: hero + адаптации + контроль “дорогости”.</p>
         </div>
       </div>
 
-      <div class="heroRight">
+      <div class="pricing-top">
+        <span class="tag">Оплата по счёту (invoice). Старт после оплаты. Для €1890 возможна схема 50/50.</span>
+        <div class="toggle" aria-label="Валюта">
+          <div class="chip active" data-currency="EUR">EUR</div>
+          <div class="chip" data-currency="UAH">UAH</div>
+        </div>
+      </div>
+
+      <div class="grid three">
+        <div class="card price-card" data-price-eur="390" data-price-uah="15900">
+          <div class="tag">Pilot</div>
+          <h3>CAMPAIGN START</h3>
+          <div class="price"><span class="price-value">€390</span><small>entry</small></div>
+          <p>Тест идеи / быстрый дроп / первые рекламные креативы.</p>
+          <ul class="list">
+            <li>8 AI visuals</li>
+            <li>1 visual direction</li>
+            <li>2 раунда правок</li>
+            <li>срок: 4 дня</li>
+            <li>формат: 9:16 или 1:1</li>
+          </ul>
+          <div class="price-actions">
+            <a class="btn primary" href="#contact">Request START</a>
+            <a class="btn" href="projects.html">See work</a>
+          </div>
+          <div class="fine">Лучший вход без риска.</div>
+        </div>
+
+        <div class="card price-card" data-price-eur="990" data-price-uah="39900">
+          <div class="tag">Best for growth</div>
+          <h3>CAMPAIGN PRO</h3>
+          <div class="price"><span class="price-value">€990</span><small>mid</small></div>
+          <p>Мини-кампания под соцсети и рекламу.</p>
+          <ul class="list">
+            <li>18 visuals</li>
+            <li>адаптации: 9:16 + 1:1</li>
+            <li>concept (1 page)</li>
+            <li>3 motion-ready frames</li>
+            <li>срок: 5–7 дней</li>
+          </ul>
+          <div class="price-actions">
+            <a class="btn primary" href="#contact">Request PRO</a>
+            <a class="btn" href="projects.html">View projects</a>
+          </div>
+          <div class="fine">Самый продающий пакет.</div>
+        </div>
+
+        <div class="card price-card" data-price-eur="1890" data-price-uah="75900">
+          <div class="tag">Launch system</div>
+          <h3>CAMPAIGN SYSTEM</h3>
+          <div class="price"><span class="price-value">€1890</span><small>premium</small></div>
+          <p>Система под запуск: язык + объём + подготовка к видео.</p>
+          <ul class="list">
+            <li>30+ visuals</li>
+            <li>9:16 / 1:1 / 4:5</li>
+            <li>narrative + shot-list</li>
+            <li>1 video storyboard</li>
+            <li>5 motion-ready frames</li>
+            <li>срок: 7–10 дней</li>
+          </ul>
+          <div class="price-actions">
+            <a class="btn primary" href="#contact">Request SYSTEM</a>
+            <a class="btn" href="#contact">Custom €3k–€7k</a>
+          </div>
+          <div class="fine">Для серьёзных запусков.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Бренд / продукт / цель / референсы — мы ответим планом и направлением.</p>
+        </div>
+      </div>
+
+      <div class="grid contact-grid">
+        <div class="card">
+          <h3>Request a campaign concept</h3>
+          <form class="form" id="contactForm">
+            <input type="text" id="brand" placeholder="Brand name / Instagram" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="text" id="goal" placeholder="Goal (drop / ads / launch / lookbook)" />
+            <textarea id="message" placeholder="Short brief: product, audience, desired vibe, references/links"></textarea>
+            <button class="btn primary" type="submit">Send request</button>
+            <div class="fine">Сейчас отправка через mailto. Если хотите — подключим Formspree/Netlify Forms.</div>
+          </form>
+        </div>
+
         <div class="panel">
-          <div class="panelTop">
-            <h2 data-en="Positioning (clear)" data-ua="Позиціонування (чітко)">Positioning (clear)</h2>
-            <p
-              data-en="We make fashion/beauty/jewelry brands look expensive, consistent, and shareable — so people talk and ads convert."
-              data-ua="Ми робимо fashion/beauty/jewelry бренди дорогими, цілісними та «shareable» — щоб про них говорили й реклама конвертила.">
-              We make fashion/beauty/jewelry brands look expensive, consistent, and shareable — so people talk and ads convert.
-            </p>
-          </div>
-
-          <div class="offer">
-            <div class="offerBox">
-              <div class="offerTitle"
-                   data-en="ENTRY intake is limited"
-                   data-ua="Набір на ENTRY обмежений">
-                ENTRY intake is limited
-              </div>
-              <div class="offerSub"
-                   data-en="A daily bonus window for the ENTRY package (timer)."
-                   data-ua="Щоденне «bonus window» для пакета ENTRY (таймер).">
-                A daily bonus window for the ENTRY package (timer).
-              </div>
-              <div class="timer" id="timer">--:--:--</div>
-            </div>
-
-            <div class="proof">
-              <div class="stat">
-                <b data-en="3 niches" data-ua="3 ніші">3 niches</b>
-                <span data-en="Beauty • Fashion • Jewelry" data-ua="Beauty • Fashion • Jewelry">Beauty • Fashion • Jewelry</span>
-              </div>
-              <div class="stat">
-                <b data-en="Dual founders" data-ua="Двоє засновників">Dual founders</b>
-                <span data-en="Strategy + aesthetic control" data-ua="Стратегія + естетичний контроль">Strategy + aesthetic control</span>
-              </div>
-              <div class="stat">
-                <b data-en="Controlled look" data-ua="Керований вигляд">Controlled look</b>
-                <span data-en="No random aesthetics" data-ua="Без випадкової естетики">No random aesthetics</span>
-              </div>
-              <div class="stat">
-                <b data-en="Shareable" data-ua="Shareable">Shareable</b>
-                <span data-en="Built to be reposted" data-ua="Зроблено для репостів">Built to be reposted</span>
-              </div>
-            </div>
-
-            <div class="ctaRow" style="margin-top:12px">
-              <a class="btn" href="#packages" data-en="Pick a package" data-ua="Обрати пакет">Pick a package</a>
-              <a class="btn secondary" href="team.html" data-en="Who we are" data-ua="Хто ми">Who we are</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="sectionHead">
-        <div>
-          <h3 data-en="What we do" data-ua="Що ми робимо">What we do</h3>
-          <p data-en="We build campaign drops and visual systems that look like premium production — and work in ads."
-             data-ua="Ми створюємо дропи кампаній і візуальні системи рівня преміального продакшну — які працюють у рекламі.">
-            We build campaign drops and visual systems that look like premium production — and work in ads.
-          </p>
-        </div>
-        <!-- Link out to projects page, not scroll -->
-        <a class="smalllink" href="projects.html" data-en="See projects →" data-ua="Дивитись проєкти →">See projects →</a>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <h4 data-en="Ad Creatives" data-ua="Рекламні креативи">Ad Creatives</h4>
-          <p data-en="Meta/TikTok-ready visuals, angles, hooks, formats."
-             data-ua="Візуали для Meta/TikTok, кути, хуки, формати.">
-            Meta/TikTok-ready visuals, angles, hooks, formats.
-          </p>
-        </div>
-        <div class="card">
-          <h4 data-en="Product Visual Systems" data-ua="Система продукт-візуалів">Product Visual Systems</h4>
-          <p data-en="Consistency across a series: light discipline, texture control, hero rules."
-             data-ua="Цілісність серії: дисципліна світла, контроль фактури, правила hero.">
-            Consistency across a series: light discipline, texture control, hero rules.
-          </p>
-        </div>
-        <div class="card">
-          <h4 data-en="Campaign Concepts" data-ua="Концепти кампаній">Campaign Concepts</h4>
-          <p data-en="Narrative + shot list so the brand looks intentional."
-             data-ua="Наратив + shot list, щоб бренд виглядав продуманим.">
-            Narrative + shot list so the brand looks intentional.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- MINI CASES (still on home) -->
-    <section id="cases">
-      <div class="sectionHead">
-        <div>
-          <h3 data-en="Mini-cases (3)" data-ua="Мінікейси (3)">Mini-cases (3)</h3>
-          <p data-en="Three controlled visual systems — beauty, fashion, jewelry. Click any image to open."
-             data-ua="Три керовані візуальні системи — beauty, fashion, jewelry. Натисніть на будь-яке фото, щоб відкрити.">
-            Three controlled visual systems — beauty, fashion, jewelry. Click any image to open.
-          </p>
-        </div>
-        <a class="smalllink" href="projects.html" data-en="Open Projects page →" data-ua="Відкрити сторінку проєктів →">Open Projects page →</a>
-      </div>
-
-      <!-- BEAUTY: p01..p05 -->
-      <article class="case">
-        <div class="caseTop">
-          <div>
-            <div class="tag" data-en="Beauty" data-ua="Beauty">Beauty</div>
-            <h4 data-en="Beauty System — clean glow / product hero / premium soft light"
-                data-ua="Beauty System — чисте сяйво / product hero / преміальне м’яке світло">
-              Beauty System — clean glow / product hero / premium soft light
-            </h4>
-            <p data-en="Goal: expensive, clean, ad-ready. Approach: controlled highlights and disciplined palette."
-               data-ua="Ціль: дорогий, чистий, рекламний вигляд. Підхід: контроль бликів і дисциплінована палітра.">
-              Goal: expensive, clean, ad-ready. Approach: controlled highlights and disciplined palette.
-            </p>
-          </div>
-          <a class="smalllink" href="projects.html#beauty" data-en="Details →" data-ua="Деталі →">Details →</a>
-        </div>
-
-        <div class="gallery">
-          <div class="shot" data-src="p01.jpg"><img src="p01.jpg" alt="Beauty image 1"></div>
-          <div class="shot" data-src="p02.jpg"><img src="p02.jpg" alt="Beauty image 2"></div>
-          <div class="shot tall" data-src="p03.jpg"><img src="p03.jpg" alt="Beauty image 3"></div>
-          <div class="shot" data-src="p04.jpg"><img src="p04.jpg" alt="Beauty image 4"></div>
-          <div class="shot" data-src="p05.jpg"><img src="p05.jpg" alt="Beauty image 5"></div>
-        </div>
-      </article>
-
-      <!-- FASHION: p06..p10 -->
-      <article class="case" style="margin-top:12px">
-        <div class="caseTop">
-          <div>
-            <div class="tag" data-en="Fashion" data-ua="Fashion">Fashion</div>
-            <h4 data-en="Fashion Story — editorial mood / attitude / cinematic realism"
-                data-ua="Fashion Story — editorial настрій / характер / кінематографічний реалізм">
-              Fashion Story — editorial mood / attitude / cinematic realism
-            </h4>
-            <p data-en="Goal: shareable editorial frames. Approach: one tone across scenes and angles."
-               data-ua="Ціль: «shareable» editorial кадри. Підхід: один тон через сцени й ракурси.">
-              Goal: shareable editorial frames. Approach: one tone across scenes and angles.
-            </p>
-          </div>
-          <a class="smalllink" href="projects.html#fashion" data-en="Details →" data-ua="Деталі →">Details →</a>
-        </div>
-
-        <div class="gallery">
-          <div class="shot" data-src="p06.jpg"><img src="p06.jpg" alt="Fashion image 1"></div>
-          <div class="shot" data-src="p07.jpg"><img src="p07.jpg" alt="Fashion image 2"></div>
-          <div class="shot" data-src="p08.jpg"><img src="p08.jpg" alt="Fashion image 3"></div>
-          <div class="shot" data-src="p09.jpg"><img src="p09.jpg" alt="Fashion image 4"></div>
-          <div class="shot" data-src="p10.jpg"><img src="p10.jpg" alt="Fashion image 5"></div>
-        </div>
-      </article>
-
-      <!-- JEWELRY: p11..p12 -->
-      <article class="case" style="margin-top:12px">
-        <div class="caseTop">
-          <div>
-            <div class="tag" data-en="Jewelry" data-ua="Jewelry">Jewelry</div>
-            <h4 data-en="Jewelry Focus — close-ups / texture / luxury highlights"
-                data-ua="Jewelry Focus — крупні плани / фактура / люкс-відблиски">
-              Jewelry Focus — close-ups / texture / luxury highlights
-            </h4>
-            <p data-en="Goal: jewelry reads premium and real. Approach: macro discipline + clean reflections."
-               data-ua="Ціль: щоб прикраси виглядали преміально і реально. Підхід: дисципліна макро + чисті віддзеркалення.">
-              Goal: jewelry reads premium and real. Approach: macro discipline + clean reflections.
-            </p>
-          </div>
-          <a class="smalllink" href="projects.html#jewelry" data-en="Details →" data-ua="Деталі →">Details →</a>
-        </div>
-
-        <div class="gallery">
-          <div class="shot" data-src="p11.jpg"><img src="p11.jpg" alt="Jewelry image 1"></div>
-          <div class="shot" data-src="p12.jpg"><img src="p12.jpg" alt="Jewelry image 2"></div>
-        </div>
-      </article>
-    </section>
-
-    <!-- PACKAGES -->
-    <section id="packages">
-      <div class="sectionHead">
-        <div>
-          <h3 data-en="Packages" data-ua="Пакети">Packages</h3>
-          <p data-en="Start with ENTRY. If the system hits — we scale to CORE or a monthly atelier."
-             data-ua="Почніть з ENTRY. Якщо система «зайде» — масштабуємо в CORE або щомісячне ательє.">
-            Start with ENTRY. If the system hits — we scale to CORE or a monthly atelier.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <!-- ENTRY -->
-        <div class="card" style="grid-column: span 4;">
-          <h4 data-en="ENTRY — First Drop" data-ua="ENTRY — Перший дроп">ENTRY — First Drop</h4>
-          <p data-en="Best first step to test our atelier system."
-             data-ua="Найкращий перший крок, щоб протестувати нашу систему.">
-            Best first step to test our atelier system.
+          <h3 style="margin:0 0 10px">Links</h3>
+          <p style="margin:0; color:var(--muted)">
+            Work: <a href="projects.html" style="text-decoration:underline">projects.html</a><br/>
+            Team: <a href="team.html" style="text-decoration:underline">team.html</a>
           </p>
 
-          <div class="price">
-            <span class="priceText" data-eur="€390" data-uah="≈ 16 000 грн">€390</span>
-          </div>
-          <div class="badge" data-en="ONE-TIME" data-ua="ОДНОРАЗОВО">ONE-TIME</div>
+          <div style="height:12px"></div>
 
-          <ul class="list">
-            <li data-en="6 premium visuals (ad-ready)" data-ua="6 преміальних візуалів (готово для реклами)">6 premium visuals (ad-ready)</li>
-            <li data-en="1 concept + shot direction" data-ua="1 концепт + shot-напрям">1 concept + shot direction</li>
-            <li data-en="2 ratios (1:1 + 9:16)" data-ua="2 формати (1:1 + 9:16)">2 ratios (1:1 + 9:16)</li>
-            <li data-en="Delivery: 3–5 days" data-ua="Термін: 3–5 днів">Delivery: 3–5 days</li>
-          </ul>
-
-          <div class="ctaRow" style="margin-top:12px">
-            <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=ENTRY%20-%20BRIEF&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ACountry:%0AReferences:%0A"
-               data-en="Request ENTRY" data-ua="Запитати ENTRY">Request ENTRY</a>
-          </div>
-
-          <div class="note" data-en="Limited seats per month." data-ua="Обмежені місця щомісяця.">
-            Limited seats per month.
-          </div>
-        </div>
-
-        <!-- CORE -->
-        <div class="card" style="grid-column: span 4;">
-          <h4 data-en="CORE — Campaign Pack" data-ua="CORE — Пакет кампанії">CORE — Campaign Pack</h4>
-          <p data-en="For brands that need a stronger system and multiple angles."
-             data-ua="Для брендів, яким потрібна сильніша система та різні ракурси.">
-            For brands that need a stronger system and multiple angles.
+          <h3 style="margin:0 0 10px">Payment</h3>
+          <p class="fine" style="margin:0">
+            Оплата по счёту (invoice). Старт после оплаты. NDA — по запросу.
           </p>
 
-          <div class="price">
-            <span class="priceText" data-eur="€990" data-uah="≈ 41 000 грн">€990</span>
-          </div>
-          <div class="badge" data-en="ONE-TIME" data-ua="ОДНОРАЗОВО">ONE-TIME</div>
+          <div style="height:12px"></div>
 
-          <ul class="list">
-            <li data-en="15 visuals (campaign-ready)" data-ua="15 візуалів (готово для кампанії)">15 visuals (campaign-ready)</li>
-            <li data-en="3 concepts (different angles)" data-ua="3 концепти (різні кути)">3 concepts (different angles)</li>
-            <li data-en="Hooks + captions (EN/UA)" data-ua="Хуки + підписи (EN/UA)">Hooks + captions (EN/UA)</li>
-            <li data-en="Delivery: 5–8 days" data-ua="Термін: 5–8 днів">Delivery: 5–8 days</li>
-          </ul>
-
-          <div class="ctaRow" style="margin-top:12px">
-            <a class="btn secondary" href="mailto:signalstudio.agency@gmail.com?subject=CORE%20-%20BRIEF&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ACountry:%0AReferences:%0A"
-               data-en="Request CORE" data-ua="Запитати CORE">Request CORE</a>
-          </div>
-
-          <div class="note" data-en="Best for a clean campaign drop." data-ua="Найкраще для чистого дропу кампанії.">
-            Best for a clean campaign drop.
-          </div>
-        </div>
-
-        <!-- PREMIUM -->
-        <div class="card" style="grid-column: span 4;">
-          <h4 data-en="PREMIUM — Monthly Atelier" data-ua="PREMIUM — Щомісячне ательє">PREMIUM — Monthly Atelier</h4>
-          <p data-en="For brands that want to dominate through consistency."
-             data-ua="Для брендів, які хочуть домінувати завдяки цілісності.">
-            For brands that want to dominate through consistency.
+          <h3 style="margin:0 0 10px">Add your contacts</h3>
+          <p class="fine" style="margin:0">
+            Вставь сюда: email / Instagram / Telegram/Signal.
           </p>
 
-          <div class="price">
-            <span class="priceText" data-eur="€1,890 / mo" data-uah="≈ 79 000 грн / міс">€1,890 / mo</span>
-          </div>
-          <div class="badge" data-en="MONTHLY" data-ua="ЩОМІСЯЦЯ">MONTHLY</div>
-
-          <ul class="list">
-            <li data-en="30 visuals / month" data-ua="30 візуалів / місяць">30 visuals / month</li>
-            <li data-en="4 drops (weekly)" data-ua="4 дропи (щотижня)">4 drops (weekly)</li>
-            <li data-en="System rules: palette, motifs, hierarchy" data-ua="Правила системи: палітра, мотиви, ієрархія">System rules: palette, motifs, hierarchy</li>
-            <li data-en="Priority production & QA" data-ua="Пріоритетний продакшн і QA">Priority production & QA</li>
-          </ul>
-
-          <div class="ctaRow" style="margin-top:12px">
-            <a class="btn secondary" href="mailto:signalstudio.agency@gmail.com?subject=PREMIUM%20-%20Call%20request&body=Brand:%0AWebsite/IG:%0AGoal:%0ABudget:%0ACountry:%0A"
-               data-en="Request a call" data-ua="Запитати дзвінок">Request a call</a>
-          </div>
-
-          <div class="note"
-               data-en="Premium starts after a successful ENTRY/CORE."
-               data-ua="Premium стартуємо після вдалого ENTRY/CORE.">
-            Premium starts after a successful ENTRY/CORE.
-          </div>
+          <div style="height:12px"></div>
+          <a class="btn" href="projects.html">View projects</a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="note" style="margin-top:12px"
-        data-en="UA prices are approximate and can be updated anytime (edit 3 numbers in the HTML)."
-        data-ua="UA ціни орієнтовні і можуть змінюватись (відредагуйте 3 числа в HTML).">
-        UA prices are approximate and can be updated anytime (edit 3 numbers in the HTML).
+  <div class="footer">
+    <div class="wrap">
+      <div>© <span id="year"></span> SIGNAL STUDIO. AI Campaign Studio.</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap">
+        <a href="projects.html">Projects</a>
+        <a href="team.html">Team</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
       </div>
-    </section>
-
-    <!-- PAYMENT -->
-    <section id="payment">
-      <div class="sectionHead">
-        <div>
-          <h3 data-en="Payment" data-ua="Оплата">Payment</h3>
-          <p data-en="We work by invoice. After we review your brief, we confirm scope + timeline and send an invoice with payment instructions. Production starts after payment."
-             data-ua="Ми працюємо по рахунку. Після брифу підтверджуємо обсяг і терміни та надсилаємо рахунок з реквізитами. Продакшн стартує після оплати.">
-            We work by invoice. After we review your brief, we confirm scope + timeline and send an invoice with payment instructions. Production starts after payment.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="wideBox">
-          <h4 style="margin:0 0 10px; font-size:16px; font-weight:980"
-              data-en="What we need for the invoice"
-              data-ua="Що потрібно для рахунку">
-            What we need for the invoice
-          </h4>
-
-          <p style="margin:0 0 10px; color:var(--muted); font-weight:720"
-             data-en="Send this in the email brief — we will reply with invoice + payment details."
-             data-ua="Надішліть це у листі BRIEF — ми відповімо рахунком і реквізитами для оплати.">
-            Send this in the email brief — we will reply with invoice + payment details.
-          </p>
-
-          <ul class="list">
-            <li data-en="Brand / Company name" data-ua="Назва бренду / компанії">Brand / Company name</li>
-            <li data-en="Contact person (name)" data-ua="Контактна особа (ім’я)">Contact person (name)</li>
-            <li data-en="Email for invoice" data-ua="Email для рахунку">Email for invoice</li>
-            <li data-en="Package: ENTRY / CORE / PREMIUM" data-ua="Пакет: ENTRY / CORE / PREMIUM">Package: ENTRY / CORE / PREMIUM</li>
-            <li data-en="Country (for billing)" data-ua="Країна (для рахунку)">Country (for billing)</li>
-            <li data-en="Deadline + references (if any)" data-ua="Дедлайн + референси (за наявності)">Deadline + references (if any)</li>
-          </ul>
-
-          <div class="ctaRow" style="margin-top:12px">
-            <a class="btn"
-               href="mailto:signalstudio.agency@gmail.com?subject=INVOICE%20REQUEST%20-%20Signal%20Studio&body=Brand/Company:%0AContact%20person:%0AInvoice%20email:%0APackage%20(ENTRY/CORE/PREMIUM):%0ACountry:%0ADeadline:%0AReferences:%0A"
-               data-en="Send BRIEF (Invoice)"
-               data-ua="Надіслати BRIEF (рахунок)">Send BRIEF (Invoice)</a>
-
-            <a class="btn secondary" href="#packages" data-en="Back to packages" data-ua="Назад до пакетів">Back to packages</a>
-          </div>
-
-          <div class="note"
-            data-en="Optional (if you have it): billing address + VAT ID (EU)."
-            data-ua="Опційно (якщо є): платіжна адреса + VAT ID (ЄС).">
-            Optional (if you have it): billing address + VAT ID (EU).
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="sectionHead">
-        <div>
-          <h3 data-en="Contact" data-ua="Контакт">Contact</h3>
-          <p data-en="Email is the fastest. Send a brief and we reply with the best entry plan."
-             data-ua="Найшвидше — пошта. Надішліть бриф і ми відповімо з найкращим планом старту.">
-            Email is the fastest. Send a brief and we reply with the best entry plan.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="wideBox" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-          <div>
-            <div class="kicker" data-en="EMAIL" data-ua="ПОШТА">EMAIL</div>
-            <div style="margin-top:10px" class="email">signalstudio.agency@gmail.com</div>
-            <div class="note"
-              data-en="Subject: BRIEF — brand / product / goal / deadline."
-              data-ua="Тема: BRIEF — бренд / продукт / ціль / дедлайн.">
-              Subject: BRIEF — brand / product / goal / deadline.
-            </div>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn"
-               href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0ACountry:%0AReferences%20(if%20any):%0A"
-               data-en="Email BRIEF" data-ua="Надіслати BRIEF">Email BRIEF</a>
-            <a class="btn secondary" href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
-            <a class="btn secondary" href="team.html" data-en="Team" data-ua="Команда">Team</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© <span id="year"></span> Signal Studio</div>
-      <div>
-        <a class="smalllink" href="#top" data-en="Back to top" data-ua="Вгору">Back to top</a>
-        <span style="opacity:.35"> • </span>
-        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email" data-ua="Пошта">Email</a>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Lightbox -->
-  <div class="lb" id="lb">
-    <div class="lbInner">
-      <div class="lbClose" id="lbClose" data-en="Close" data-ua="Закрити">Close</div>
-      <img id="lbImg" src="" alt="Preview" />
     </div>
   </div>
 
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+</main>
 
-    // Language switch EN/UA
-    const langEN = document.getElementById('langEN');
-    const langUA = document.getElementById('langUA');
-    let LANG = 'en';
+<script>
+  // mobile menu toggle (shows links on small screens)
+  const hamb = document.getElementById('hamb');
+  hamb?.addEventListener('click', () => {
+    const nav = document.querySelector('nav.menu');
+    if (!nav) return;
+    const isHidden = getComputedStyle(nav).display === 'none';
+    nav.style.display = isHidden ? 'flex' : 'none';
+    nav.style.flexWrap = 'wrap';
+    nav.style.gap = '14px';
+    nav.style.padding = '10px 0 0';
+  });
 
-    function applyLang(){
-      document.querySelectorAll('[data-en]').forEach(el=>{
-        const v = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
-        el.innerHTML = v;
-      });
-
-      // prices (EUR vs UAH)
-      document.querySelectorAll('.priceText').forEach(el=>{
-        const eur = el.getAttribute('data-eur') || el.textContent;
-        const uah = el.getAttribute('data-uah') || el.textContent;
-        el.textContent = (LANG==='en') ? eur : uah;
-      });
-
-      langEN.classList.toggle('active', LANG==='en');
-      langUA.classList.toggle('active', LANG==='ua');
-    }
-    langEN.addEventListener('click', ()=>{ LANG='en'; applyLang(); });
-    langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
-    applyLang();
-
-    // Daily timer
-    const KEY = "signalstudio_daily_bonus_v2";
-    function getResetTs(){
-      const saved = localStorage.getItem(KEY);
-      const now = Date.now();
-      if(!saved){
-        const reset = now + 24*60*60*1000;
-        localStorage.setItem(KEY, String(reset));
-        return reset;
-      }
-      let reset = parseInt(saved, 10);
-      if(isNaN(reset) || reset < now){
-        reset = now + 24*60*60*1000;
-        localStorage.setItem(KEY, String(reset));
-      }
-      return reset;
-    }
-    function tick(){
-      const reset = getResetTs();
-      const now = Date.now();
-      let ms = reset - now;
-      if(ms < 0) ms = 0;
-
-      const s = Math.floor(ms/1000);
-      const hh = String(Math.floor(s/3600)).padStart(2,'0');
-      const mm = String(Math.floor((s%3600)/60)).padStart(2,'0');
-      const ss = String(s%60).padStart(2,'0');
-
-      const t = document.getElementById('timer');
-      if(t) t.textContent = `${hh}:${mm}:${ss}`;
-
-      if(ms === 0){
-        localStorage.removeItem(KEY);
-      }
-    }
-    setInterval(tick, 250);
-    tick();
-
-    // Lightbox
-    const lb = document.getElementById('lb');
-    const lbImg = document.getElementById('lbImg');
-    const lbClose = document.getElementById('lbClose');
-
-    document.querySelectorAll('.shot').forEach(el=>{
-      el.addEventListener('click', ()=>{
-        const src = el.getAttribute('data-src');
-        lbImg.src = src;
-        lb.classList.add('show');
-      });
+  // Currency toggle
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  const priceCards = Array.from(document.querySelectorAll('.price-card'));
+  function setCurrency(cur){
+    chips.forEach(c => c.classList.toggle('active', c.dataset.currency === cur));
+    priceCards.forEach(card => {
+      const eur = card.getAttribute('data-price-eur');
+      const uah = card.getAttribute('data-price-uah');
+      const el = card.querySelector('.price-value');
+      if(!el) return;
+      el.textContent = cur === 'UAH'
+        ? (uah ? `₴${Number(uah).toLocaleString('uk-UA')}` : '₴—')
+        : (eur ? `€${Number(eur).toLocaleString('de-DE')}` : '€—');
     });
-    function closeLB(){ lb.classList.remove('show'); lbImg.src=""; }
-    lbClose.addEventListener('click', closeLB);
-    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key === "Escape") closeLB(); });
-  </script>
+  }
+  chips.forEach(c => c.addEventListener('click', () => setCurrency(c.dataset.currency)));
+  setCurrency('EUR');
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Contact -> mailto (replace email)
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const brand = document.getElementById('brand').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const goal = document.getElementById('goal').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    const TO = "hello@signalstudioagency.com"; // TODO: change
+
+    const subject = encodeURIComponent(`Campaign request — ${brand || "Brand"}`);
+    const body = encodeURIComponent(
+      `Brand/IG: ${brand}\n` +
+      `Client email: ${email}\n` +
+      `Goal: ${goal}\n\n` +
+      `Brief:\n${message}\n\n` +
+      `— Sent from SIGNAL STUDIO website`
+    );
+
+    window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
+  });
+</script>
+
 </body>
 </html>

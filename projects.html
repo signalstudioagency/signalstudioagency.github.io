@@ -1,593 +1,352 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Projects — Signal Studio</title>
-<meta name="description" content="Signal Studio — selected atelier systems in Beauty, Fashion, Jewelry. Controlled visual language built for ads and shareability." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SIGNAL STUDIO — Projects</title>
+  <meta name="description" content="SIGNAL STUDIO projects — AI campaign visuals for fashion, jewelry and beauty." />
 
-<style>
-  :root{
-    --bg:#0a0b0e;
-    --panel:#111318;
-    --line:rgba(255,255,255,.08);
-    --text:rgba(255,255,255,.92);
-    --muted:rgba(255,255,255,.60);
-    --muted2:rgba(255,255,255,.40);
-    --shadow: 0 20px 60px rgba(0,0,0,.55);
-    --r18:18px;
-    --r24:24px;
-    --max:1100px;
-  }
+  <style>
+    :root{
+      --bg:#07070A;
+      --text:#F2F3F7;
+      --muted:#B7BAC7;
+      --muted2:#8B8FA3;
+      --line:rgba(255,255,255,.08);
+      --radius:18px;
+      --radius2:26px;
+      --max:1120px;
+      --shadow: 0 18px 50px rgba(0,0,0,.55);
+      --accent1:#9BFFB4;
+      --accent2:#8AB6FF;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(138,182,255,.14), transparent 60%),
+        radial-gradient(900px 700px at 70% 110%, rgba(155,255,180,.10), transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(7,7,10,.62);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.6px; white-space:nowrap}
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background:linear-gradient(135deg, var(--accent1), var(--accent2));
+      box-shadow:0 0 0 6px rgba(138,182,255,.08);
+    }
+    .menu{display:flex; gap:16px; color:var(--muted); font-weight:800; font-size:14px}
+    .menu a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .btn:hover{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14)}
 
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    background:
-      radial-gradient(1000px 700px at 20% -10%, rgba(255,255,255,.05), transparent 60%),
-      radial-gradient(900px 650px at 90% 10%, rgba(255,255,255,.04), transparent 60%),
-      radial-gradient(900px 650px at 50% 110%, rgba(255,255,255,.03), transparent 60%),
-      var(--bg);
-    color:var(--text);
-    font:14px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-    letter-spacing:.2px;
-  }
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%;display:block}
+    /* Lang */
+    .lang{
+      display:inline-flex; align-items:center;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      padding:4px;
+      gap:4px;
+    }
+    .lang button{
+      border:0; background:transparent;
+      color:var(--muted);
+      font-weight:900;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      cursor:pointer;
+    }
+    .lang button.active{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
 
-  .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 80px}
+    main{padding:30px 0 50px}
+    h1{margin:0 0 8px; font-size:34px; letter-spacing:-.6px}
+    p{margin:0 0 18px; color:var(--muted); max-width:70ch}
 
-  /* Topbar (same as Team) */
-  .topbar{
-    position:sticky;top:0;z-index:40;
-    backdrop-filter:blur(10px);
-    background:linear-gradient(to bottom, rgba(10,11,14,.92), rgba(10,11,14,.65));
-    border-bottom:1px solid var(--line);
-  }
-  .topbar .inner{
-    max-width:var(--max);
-    margin:0 auto;
-    padding:14px 18px;
-    display:flex;justify-content:space-between;align-items:center;gap:14px;
-  }
-  .brand{display:flex;gap:10px;font-weight:900;letter-spacing:.4px;align-items:center}
-  .dot{width:10px;height:10px;border-radius:999px;background:white}
-  nav{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-weight:800}
-  nav a:hover{color:white}
-  .lang{display:flex;gap:6px;align-items:center}
-  .pill{
-    border:1px solid var(--line);
-    padding:6px 10px;
-    border-radius:999px;
-    cursor:pointer;
-    font-weight:900;
-    color:var(--muted);
-    user-select:none;
-  }
-  .pill.active{
-    background:white;
-    color:black;
-    border-color:transparent;
-  }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+    }
+    .tile{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      cursor:pointer;
+    }
+    .tile::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.35));
+      opacity:.9;
+      pointer-events:none;
+    }
+    .tile img{
+      width:100%; height:100%;
+      display:block;
+      object-fit:cover;
+      aspect-ratio: 9 / 16;
+      transform:scale(1.01);
+      transition:.25s transform;
+    }
+    .tile:hover img{transform:scale(1.04)}
+    .cap{
+      position:absolute; left:10px; bottom:10px;
+      font-size:12px;
+      color:rgba(242,243,247,.9);
+      z-index:2;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      padding:6px 10px;
+      border-radius:999px;
+      backdrop-filter: blur(8px);
+    }
 
-  /* Typography */
-  h1{
-    font-size:clamp(32px,4.8vw,56px);
-    line-height:1.05;
-    margin:18px 0 12px;
-    letter-spacing:-.6px;
-  }
-  h2{
-    margin:0 0 10px;
-    font-size:18px;
-    letter-spacing:.2px;
-  }
-  .sub{color:var(--muted);max-width:92ch}
+    /* Lightbox */
+    .lb{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:100;
+    }
+    .lb.open{display:flex}
+    .lb-inner{
+      width:min(980px, 95vw);
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(10,10,14,.8);
+      box-shadow:var(--shadow);
+    }
+    .lb-top{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-weight:900;
+      font-size:13px;
+    }
+    .lb-actions{display:flex; gap:8px}
+    .icon{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .icon:hover{background:rgba(255,255,255,.08)}
+    .lb-img{
+      width:100%;
+      display:block;
+      background:#0b0b10;
+      max-height:78vh;
+      object-fit:contain;
+    }
 
-  /* Hero */
-  .hero{
-    border-top:1px solid var(--line);
-    padding-top:26px;
-  }
-  .kicker{
-    display:inline-flex;
-    gap:10px;
-    align-items:center;
-    color:var(--muted2);
-    text-transform:uppercase;
-    letter-spacing:.9px;
-    font-weight:900;
-    font-size:12px;
-  }
-  .ctaRow{
-    margin-top:14px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    align-items:center;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:12px 14px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.92);
-    color: var(--bg);
-    font-weight:1000;
-    letter-spacing:.3px;
-    cursor:pointer;
-  }
-  .btn.secondary{
-    background: rgba(255,255,255,.04);
-    color: rgba(255,255,255,.92);
-    border:1px solid rgba(255,255,255,.14);
-  }
-
-  /* Sections */
-  section{margin-top:46px}
-  .sectionHead{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:12px;
-  }
-  .sectionHead p{margin:8px 0 0;color:var(--muted);max-width:92ch}
-
-  .tag{
-    display:inline-flex;
-    padding:6px 10px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.03);
-    color: rgba(255,255,255,.78);
-    font-weight:900;
-    font-size:12px;
-    letter-spacing:.7px;
-    text-transform:uppercase;
-  }
-
-  /* Case block */
-  .case{
-    border:1px solid var(--line);
-    background: rgba(255,255,255,.03);
-    border-radius: var(--r24);
-    box-shadow: var(--shadow);
-    overflow:hidden;
-  }
-  .caseTop{
-    padding:18px;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    display:grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap:16px;
-    align-items:start;
-  }
-  @media(max-width: 920px){ .caseTop{grid-template-columns:1fr;} }
-
-  .caseTop h3{
-    margin:10px 0 8px;
-    font-size:20px;
-    letter-spacing:.2px;
-  }
-  .caseTop .desc{color:var(--muted);font-weight:700;margin:0;max-width:92ch}
-
-  .meta{
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(0,0,0,.18);
-    border-radius: var(--r18);
-    padding:14px;
-  }
-  .meta b{display:block;margin-bottom:6px;letter-spacing:.2px}
-  .meta ul{margin:10px 0 0;padding-left:16px;color:rgba(255,255,255,.78);font-weight:800}
-  .meta li{margin:8px 0}
-
-  /* Gallery */
-  .gallery{
-    padding:12px;
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap:10px;
-  }
-  .shot{
-    border-radius: 16px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(0,0,0,.18);
-    aspect-ratio: 3/4;
-    cursor:pointer;
-    position:relative;
-  }
-  .shot img{
-    width:100%;height:100%;
-    object-fit:cover;
-    transform: scale(1.02);
-    transition: transform .28s ease;
-  }
-  .shot:hover img{transform: scale(1.06)}
-
-  /* Editorial layout: first is wide */
-  .shot.wide{
-    grid-column: span 6;
-    aspect-ratio: 16/10;
-  }
-  .shot.std{grid-column: span 3;}
-  @media (max-width: 980px){
-    .shot.wide{grid-column: span 12;}
-    .shot.std{grid-column: span 6;}
-  }
-  @media (max-width: 640px){
-    .shot.std{grid-column: span 12;}
-  }
-
-  /* Standards block */
-  .standards{
-    border-top:1px solid var(--line);
-    padding-top:26px;
-  }
-  .stdGrid{
-    margin-top:12px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:12px;
-  }
-  @media(max-width: 980px){ .stdGrid{grid-template-columns:1fr;} }
-  .stdCard{
-    border:1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.03);
-    border-radius: var(--r18);
-    padding:14px;
-  }
-  .stdCard b{display:block;margin-bottom:6px}
-  .stdCard span{color:var(--muted);font-weight:700}
-
-  /* Footer */
-  footer{
-    margin-top:60px;
-    padding-top:20px;
-    border-top:1px solid var(--line);
-    color:var(--muted2);
-    display:flex;
-    justify-content:space-between;
-    gap:12px;
-    flex-wrap:wrap;
-    font-weight:800;
-  }
-  .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
-
-  /* Lightbox */
-  .lb{
-    position:fixed; inset:0; z-index:90;
-    display:none;
-    align-items:center; justify-content:center;
-    background: rgba(0,0,0,.72);
-    padding:16px;
-  }
-  .lb.show{display:flex}
-  .lbInner{
-    max-width: min(980px, 96vw);
-    max-height: 88vh;
-    border-radius: 18px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(0,0,0,.2);
-    box-shadow: 0 30px 100px rgba(0,0,0,.7);
-    position:relative;
-  }
-  .lbInner img{width:100%; height:100%; object-fit:contain; background:#000}
-  .lbClose{
-    position:absolute; top:10px; right:10px;
-    border:1px solid rgba(255,255,255,.18);
-    background: rgba(0,0,0,.45);
-    color: rgba(255,255,255,.92);
-    padding:8px 10px;
-    border-radius: 999px;
-    font-weight:1000;
-    cursor:pointer;
-  }
-</style>
+    @media (max-width: 980px){
+      .grid{grid-template-columns:repeat(2, 1fr)}
+      .menu{display:none}
+    }
+    @media (max-width: 520px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="inner">
-      <a class="brand" href="index.html" title="Signal Studio">
-        <span class="dot"></span>
-        <span>Signal Studio</span>
-      </a>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="dot"></span><span>SIGNAL STUDIO</span></a>
 
-      <nav>
-        <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
-        <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
-        <a href="index.html#packages" data-en="Packages" data-ua="Пакети">Packages</a>
-        <a href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
+      <nav class="menu">
+        <a href="projects.html" data-i18n="nav.projects">Projects</a>
+        <a href="team.html" data-i18n="nav.team">Team</a>
+        <a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
       </nav>
 
-      <div class="lang">
-        <div class="pill active" id="langEN">EN</div>
-        <div class="pill" id="langUA">UA</div>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+        <div class="lang" aria-label="Language switch">
+          <button type="button" id="langRU" class="active">RU</button>
+          <button type="button" id="langUK">UKR</button>
+        </div>
+        <a class="btn" href="index.html#contact" data-i18n="cta.requestConcept">Request concept</a>
       </div>
     </div>
   </div>
+</header>
 
-  <main class="wrap">
+<main>
+  <div class="wrap">
+    <h1 data-i18n="h1">Projects</h1>
+    <p data-i18n="p">
+      Текущие тестовые серии. Дальше добавим кейсы (Jewelry / Beauty / Fashion). Сейчас задача — показать визуальную мощь.
+    </p>
 
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="kicker" data-en="Selected Systems • Beauty / Fashion / Jewelry"
-           data-ua="Вибрані системи • Beauty / Fashion / Jewelry">
-        Selected Systems • Beauty / Fashion / Jewelry
-      </div>
-
-      <h1 data-en="Projects are not images. They are controlled visual systems."
-          data-ua="Проєкти — це не картинки. Це контрольовані візуальні системи.">
-        Projects are not images. They are controlled visual systems.
-      </h1>
-
-      <p class="sub"
-         data-en="Each mini-case demonstrates repeatable aesthetics: light discipline, product hierarchy, premium texture — built to be shareable and ad-ready."
-         data-ua="Кожен мінікейс показує повторювану естетику: дисципліна світла, ієрархія продукту, преміальна фактура — створено для репостів і реклами.">
-        Each mini-case demonstrates repeatable aesthetics: light discipline, product hierarchy, premium texture — built to be shareable and ad-ready.
-      </p>
-
-      <div class="ctaRow">
-        <a class="btn"
-           href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
-           data-en="Request a BRIEF" data-ua="Запросити BRIEF">Request a BRIEF</a>
-        <a class="btn secondary" href="#beauty" data-en="Beauty" data-ua="Beauty">Beauty</a>
-        <a class="btn secondary" href="#fashion" data-en="Fashion" data-ua="Fashion">Fashion</a>
-        <a class="btn secondary" href="#jewelry" data-en="Jewelry" data-ua="Jewelry">Jewelry</a>
-      </div>
-    </section>
-
-    <!-- BEAUTY -->
-    <section id="beauty">
-      <div class="sectionHead">
-        <div>
-          <div class="tag" data-en="Beauty" data-ua="Beauty">Beauty</div>
-          <h2 data-en="Beauty System — clean glow / product hero / premium soft light"
-              data-ua="Beauty System — чисте сяйво / продукт-герой / преміальне м’яке світло">
-            Beauty System — clean glow / product hero / premium soft light
-          </h2>
-          <p data-en="Goal: expensive, clean, ad-ready. Approach: controlled highlights, disciplined palette, product stays the hero."
-             data-ua="Ціль: дорогий, чистий, рекламний вигляд. Підхід: контроль бликів, дисципліна палітри, продукт — головний герой.">
-            Goal: expensive, clean, ad-ready. Approach: controlled highlights, disciplined palette, product stays the hero.
-          </p>
-        </div>
-        <a class="smalllink" href="#contact" data-en="Work with us →" data-ua="Працювати з нами →">Work with us →</a>
-      </div>
-
-      <article class="case">
-        <div class="caseTop">
-          <div>
-            <h3 data-en="Atelier Notes" data-ua="Нотатки ательє">Atelier Notes</h3>
-            <p class="desc"
-               data-en="This system is designed for paid ads: clean skin feel, premium reflection control, and consistent product hierarchy."
-               data-ua="Ця система створена для реклами: чисте відчуття шкіри, контроль відблисків і стабільна ієрархія продукту.">
-              This system is designed for paid ads: clean skin feel, premium reflection control, and consistent product hierarchy.
-            </p>
-          </div>
-          <div class="meta">
-            <b data-en="What it proves" data-ua="Що це доводить">What it proves</b>
-            <ul>
-              <li data-en="Consistency across frames" data-ua="Цілісність у серії кадрів">Consistency across frames</li>
-              <li data-en="Controlled highlight map" data-ua="Контрольована карта бликів">Controlled highlight map</li>
-              <li data-en="Commercial-ready finish" data-ua="Комерційно готовий фініш">Commercial-ready finish</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="gallery">
-          <div class="shot wide" data-src="p01.jpg"><img src="p01.jpg" alt="Beauty frame 1"></div>
-          <div class="shot std" data-src="p02.jpg"><img src="p02.jpg" alt="Beauty frame 2"></div>
-          <div class="shot std" data-src="p03.jpg"><img src="p03.jpg" alt="Beauty frame 3"></div>
-          <div class="shot std" data-src="p04.jpg"><img src="p04.jpg" alt="Beauty frame 4"></div>
-          <div class="shot std" data-src="p05.jpg"><img src="p05.jpg" alt="Beauty frame 5"></div>
-        </div>
-      </article>
-    </section>
-
-    <!-- FASHION -->
-    <section id="fashion">
-      <div class="sectionHead">
-        <div>
-          <div class="tag" data-en="Fashion" data-ua="Fashion">Fashion</div>
-          <h2 data-en="Fashion Story — editorial mood / attitude / cinematic realism"
-              data-ua="Fashion Story — editorial настрій / характер / кінематографічний реалізм">
-            Fashion Story — editorial mood / attitude / cinematic realism
-          </h2>
-          <p data-en="Goal: shareable editorial frames. Approach: one narrative across angles, controlled camera feel, premium styling cues."
-             data-ua="Ціль: «shareable» editorial кадри. Підхід: одна історія в різних ракурсах, контроль камери, преміальні стилістичні маркери.">
-            Goal: shareable editorial frames. Approach: one narrative across angles, controlled camera feel, premium styling cues.
-          </p>
-        </div>
-        <a class="smalllink" href="#contact" data-en="Request ENTRY →" data-ua="Запросити ENTRY →">Request ENTRY →</a>
-      </div>
-
-      <article class="case">
-        <div class="caseTop">
-          <div>
-            <h3 data-en="Atelier Notes" data-ua="Нотатки ательє">Atelier Notes</h3>
-            <p class="desc"
-               data-en="Editorial does not mean random. This is a controlled tone — repeatable across a full campaign."
-               data-ua="Editorial — це не хаос. Це контрольований тон, який можна повторити в повній кампанії.">
-              Editorial does not mean random. This is a controlled tone — repeatable across a full campaign.
-            </p>
-          </div>
-          <div class="meta">
-            <b data-en="What it proves" data-ua="Що це доводить">What it proves</b>
-            <ul>
-              <li data-en="One tone across scenes" data-ua="Один тон у різних сценах">One tone across scenes</li>
-              <li data-en="Luxury cues in composition" data-ua="Люкс-маркери в композиції">Luxury cues in composition</li>
-              <li data-en="Campaign consistency" data-ua="Цілісність кампанії">Campaign consistency</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="gallery">
-          <div class="shot wide" data-src="p06.jpg"><img src="p06.jpg" alt="Fashion frame 1"></div>
-          <div class="shot std" data-src="p07.jpg"><img src="p07.jpg" alt="Fashion frame 2"></div>
-          <div class="shot std" data-src="p08.jpg"><img src="p08.jpg" alt="Fashion frame 3"></div>
-          <div class="shot std" data-src="p09.jpg"><img src="p09.jpg" alt="Fashion frame 4"></div>
-          <div class="shot std" data-src="p10.jpg"><img src="p10.jpg" alt="Fashion frame 5"></div>
-        </div>
-      </article>
-    </section>
-
-    <!-- JEWELRY -->
-    <section id="jewelry">
-      <div class="sectionHead">
-        <div>
-          <div class="tag" data-en="Jewelry" data-ua="Jewelry">Jewelry</div>
-          <h2 data-en="Jewelry Focus — close-ups / texture / luxury highlights"
-              data-ua="Jewelry Focus — крупні плани / фактура / люкс-відблиски">
-            Jewelry Focus — close-ups / texture / luxury highlights
-          </h2>
-          <p data-en="Goal: jewelry reads premium and real. Approach: macro language, clean highlights, expensive material feel."
-             data-ua="Ціль: щоб прикраси виглядали преміально й реально. Підхід: мова макро, чисті відблиски, дорога фактура матеріалів.">
-            Goal: jewelry reads premium and real. Approach: macro language, clean highlights, expensive material feel.
-          </p>
-        </div>
-        <a class="smalllink" href="#contact" data-en="Email BRIEF →" data-ua="Надіслати BRIEF →">Email BRIEF →</a>
-      </div>
-
-      <article class="case">
-        <div class="caseTop">
-          <div>
-            <h3 data-en="Atelier Notes" data-ua="Нотатки ательє">Atelier Notes</h3>
-            <p class="desc"
-               data-en="Jewelry is unforgiving. Control of reflections and focus defines whether it looks real or cheap."
-               data-ua="Ювелірка не пробачає. Контроль відбиттів і фокусу визначає: реально це виглядає чи дешево.">
-              Jewelry is unforgiving. Control of reflections and focus defines whether it looks real or cheap.
-            </p>
-          </div>
-          <div class="meta">
-            <b data-en="What it proves" data-ua="Що це доводить">What it proves</b>
-            <ul>
-              <li data-en="Macro discipline" data-ua="Дисципліна макро">Macro discipline</li>
-              <li data-en="Clean, premium reflections" data-ua="Чисті преміальні відбиття">Clean, premium reflections</li>
-              <li data-en="Material realism" data-ua="Реалізм матеріалу">Material realism</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="gallery">
-          <div class="shot wide" data-src="p11.jpg"><img src="p11.jpg" alt="Jewelry frame 1"></div>
-          <div class="shot wide" data-src="p12.jpg"><img src="p12.jpg" alt="Jewelry frame 2"></div>
-        </div>
-      </article>
-    </section>
-
-    <!-- ATELIER STANDARDS -->
-    <section class="standards">
-      <h2 data-en="Atelier Standards"
-          data-ua="Стандарти ательє">Atelier Standards</h2>
-      <p class="sub"
-         data-en="A project is approved only when it holds up under advertising pressure: consistency, realism, hierarchy."
-         data-ua="Проєкт затверджується лише тоді, коли витримує рекламний тиск: цілісність, реалізм, ієрархія.">
-        A project is approved only when it holds up under advertising pressure: consistency, realism, hierarchy.
-      </p>
-
-      <div class="stdGrid">
-        <div class="stdCard">
-          <b data-en="Light Discipline" data-ua="Дисципліна світла">Light Discipline</b>
-          <span data-en="Highlights are controlled, not accidental."
-                data-ua="Відблиски контрольовані, а не випадкові.">Highlights are controlled, not accidental.</span>
-        </div>
-        <div class="stdCard">
-          <b data-en="Product Hierarchy" data-ua="Ієрархія продукту">Product Hierarchy</b>
-          <span data-en="The product remains the hero in every frame."
-                data-ua="Продукт — герой у кожному кадрі.">The product remains the hero in every frame.</span>
-        </div>
-        <div class="stdCard">
-          <b data-en="Consistency Rules" data-ua="Правила цілісності">Consistency Rules</b>
-          <span data-en="A system you can scale into a full campaign."
-                data-ua="Система, яку можна масштабувати в кампанію.">A system you can scale into a full campaign.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT CTA -->
-    <section id="contact" style="margin-top:46px;border-top:1px solid var(--line);padding-top:26px">
-      <h2 data-en="Contact" data-ua="Контакт">Contact</h2>
-      <p class="sub"
-         data-en="Email is the fastest. Send a brief and we reply with the best entry plan."
-         data-ua="Найшвидше — пошта. Надішліть бриф і ми відповімо з найкращим планом старту.">
-        Email is the fastest. Send a brief and we reply with the best entry plan.
-      </p>
-      <div class="ctaRow" style="margin-top:12px">
-        <a class="btn"
-           href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A"
-           data-en="Email BRIEF" data-ua="Надіслати BRIEF">Email BRIEF</a>
-        <a class="btn secondary" href="team.html" data-en="Team" data-ua="Команда">Team</a>
-        <a class="btn secondary" href="index.html" data-en="Home" data-ua="Головна">Home</a>
-      </div>
-    </section>
-
-    <footer>
-      <div>© <span id="year"></span> Signal Studio</div>
-      <div>
-        <a class="smalllink" href="#top" data-en="Back to top" data-ua="Вгору">Back to top</a>
-        <span style="opacity:.35"> • </span>
-        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email" data-ua="Пошта">Email</a>
-      </div>
-    </footer>
-
-  </main>
-
-  <!-- Lightbox -->
-  <div class="lb" id="lb">
-    <div class="lbInner">
-      <div class="lbClose" id="lbClose" data-en="Close" data-ua="Закрити">Close</div>
-      <img id="lbImg" src="" alt="Preview" />
-    </div>
+    <div class="grid" id="grid"></div>
   </div>
+</main>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-inner" role="dialog" aria-label="Project preview">
+    <div class="lb-top">
+      <div id="lbTitle" data-i18n="lb.preview">Preview</div>
+      <div class="lb-actions">
+        <button class="icon" id="prev" aria-label="Prev">‹</button>
+        <button class="icon" id="next" aria-label="Next">›</button>
+        <button class="icon" id="close" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <img class="lb-img" id="lbImg" alt="Project image"/>
+  </div>
+</div>
 
 <script>
-  // Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // i18n
+  const i18n = {
+    ru:{
+      "nav.projects":"Projects",
+      "nav.team":"Team",
+      "nav.pricing":"Pricing",
+      "nav.contact":"Contact",
+      "cta.requestConcept":"Request concept",
+      "h1":"Projects",
+      "p":"Текущие тестовые серии. Дальше добавим кейсы (Jewelry / Beauty / Fashion). Сейчас задача — показать визуальную мощь.",
+      "lb.preview":"Preview"
+    },
+    uk:{
+      "nav.projects":"Проєкти",
+      "nav.team":"Команда",
+      "nav.pricing":"Пакети",
+      "nav.contact":"Контакт",
+      "cta.requestConcept":"Запитати концепт",
+      "h1":"Проєкти",
+      "p":"Поточні тестові серії. Далі додамо кейси (Jewelry / Beauty / Fashion). Зараз задача — показати візуальну силу.",
+      "lb.preview":"Перегляд"
+    }
+  };
 
-  // Language switch EN/UA (same logic as Team)
-  const langEN = document.getElementById('langEN');
-  const langUA = document.getElementById('langUA');
-  let LANG = 'en';
+  function applyLang(lang){
+    const dict = i18n[lang] || i18n.ru;
+    document.documentElement.lang = (lang === 'uk') ? 'uk' : 'ru';
 
-  function applyLang(){
-    document.querySelectorAll('[data-en]').forEach(el=>{
-      el.textContent = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
     });
-    langEN.classList.toggle('active', LANG==='en');
-    langUA.classList.toggle('active', LANG==='ua');
+
+    document.getElementById('langRU')?.classList.toggle('active', lang !== 'uk');
+    document.getElementById('langUK')?.classList.toggle('active', lang === 'uk');
+    localStorage.setItem('site_lang', lang);
   }
-  langEN.addEventListener('click', ()=>{ LANG='en'; applyLang(); });
-  langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
-  applyLang();
 
-  // Lightbox
-  const lb = document.getElementById('lb');
-  const lbImg = document.getElementById('lbImg');
-  const lbClose = document.getElementById('lbClose');
+  // init lang
+  const saved = localStorage.getItem('site_lang');
+  applyLang(saved === 'uk' ? 'uk' : 'ru');
 
-  document.querySelectorAll('.shot').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      const src = el.getAttribute('data-src');
-      lbImg.src = src;
-      lb.classList.add('show');
-    });
+  document.getElementById('langRU')?.addEventListener('click', ()=>applyLang('ru'));
+  document.getElementById('langUK')?.addEventListener('click', ()=>applyLang('uk'));
+
+  // Gallery
+  const images = [
+    "p01.jpg","p02.jpg","p03.jpg","p04.jpg","p05.jpg","p06.jpg",
+    "p07.jpg","p08.jpg","p09.jpg","p10.jpg","p11.jpg","p12.jpg"
+  ];
+
+  const grid = document.getElementById("grid");
+  const lb = document.getElementById("lb");
+  const lbImg = document.getElementById("lbImg");
+  const lbTitle = document.getElementById("lbTitle");
+  const btnPrev = document.getElementById("prev");
+  const btnNext = document.getElementById("next");
+  const btnClose = document.getElementById("close");
+
+  let idx = 0;
+
+  function openLB(i){
+    idx = i;
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden","false");
+    lbImg.src = images[idx];
+    lbTitle.textContent = `${(localStorage.getItem('site_lang')==='uk') ? 'Зображення' : 'Image'} ${String(idx+1).padStart(2,"0")} / ${images.length}`;
+    document.body.style.overflow = "hidden";
+  }
+  function closeLB(){
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden","true");
+    lbImg.src = "";
+    document.body.style.overflow = "";
+  }
+  function next(){
+    idx = (idx + 1) % images.length;
+    openLB(idx);
+  }
+  function prev(){
+    idx = (idx - 1 + images.length) % images.length;
+    openLB(idx);
+  }
+
+  images.forEach((src, i) => {
+    const tile = document.createElement("div");
+    tile.className = "tile";
+    tile.innerHTML = `
+      <img src="${src}" alt="Project ${i+1}">
+      <div class="cap">${src.replace(".jpg","").toUpperCase()}</div>
+    `;
+    tile.addEventListener("click", () => openLB(i));
+    grid.appendChild(tile);
   });
 
-  function closeLB(){
-    lb.classList.remove('show');
-    lbImg.src = "";
-  }
-  lbClose.addEventListener('click', closeLB);
-  lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key === "Escape") closeLB(); });
-</script>
+  btnClose.addEventListener("click", closeLB);
+  btnNext.addEventListener("click", next);
+  btnPrev.addEventListener("click", prev);
 
+  lb.addEventListener("click", (e) => {
+    if(e.target === lb) closeLB();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if(!lb.classList.contains("open")) return;
+    if(e.key === "Escape") closeLB();
+    if(e.key === "ArrowRight") next();
+    if(e.key === "ArrowLeft") prev();
+  });
+</script>
 </body>
 </html>

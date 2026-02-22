@@ -4,214 +4,365 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects — Signal Studio</title>
-  <meta name="description" content="Signal Studio — AI advertising visuals for fashion & beauty. Projects." />
+  <meta name="description" content="Signal Studio — selected mini-cases in Beauty, Fashion, Jewelry. Premium hybrid (editorial + luxury) visual systems." />
 
   <style>
     :root{
-      --bg:#07090c;
-      --panel:#0c1016;
-      --line:rgba(255,255,255,.10);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.60);
-      --muted2:rgba(255,255,255,.42);
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius:22px;
-      --radius2:18px;
+      --bg:#fbfaf7;              /* warm white */
+      --ink:#0b0d12;             /* near-black */
+      --muted:rgba(11,13,18,.68);
+      --muted2:rgba(11,13,18,.50);
+      --line:rgba(11,13,18,.10);
+      --panel:#ffffff;
+      --shadow: 0 18px 55px rgba(0,0,0,.10);
+      --shadow2: 0 10px 30px rgba(0,0,0,.10);
+      --r18:18px;
+      --r24:24px;
       --max:1120px;
+
+      /* hybrid accents */
+      --accent:#1a46ff;          /* electric blue */
+      --accent2:#ff2d7d;         /* soft punch pink */
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 600px at 90% 20%, rgba(255,255,255,.05), transparent 55%),
-        var(--bg);
-      color:var(--text);
+      color:var(--ink);
       font: 14px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       letter-spacing:.2px;
+      background:
+        radial-gradient(900px 600px at 10% -10%, rgba(26,70,255,.08), transparent 55%),
+        radial-gradient(700px 520px at 90% 5%, rgba(255,45,125,.06), transparent 55%),
+        radial-gradient(700px 600px at 50% 110%, rgba(0,0,0,.05), transparent 60%),
+        var(--bg);
     }
     a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
 
+    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 70px;}
+
+    /* Topbar */
     .topbar{
-      position:sticky; top:0; z-index:30;
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(7,9,12,.88), rgba(7,9,12,.50));
+      background: linear-gradient(to bottom, rgba(251,250,247,.92), rgba(251,250,247,.65));
       border-bottom:1px solid var(--line);
     }
     .topbar .inner{
-      max-width:var(--max); margin:0 auto; padding: 14px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.6px;}
-    .dot{width:10px;height:10px;border-radius:99px;background:rgba(255,255,255,.9);box-shadow:0 0 0 6px rgba(255,255,255,.08)}
-    nav{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:700}
-    nav a{padding:8px 10px;border-radius:999px;border:1px solid transparent}
-    nav a:hover{border-color:var(--line); color:var(--text)}
-    .lang{display:flex;gap:8px;align-items:center}
-    .pill{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:.6px;
+    }
+    .mark{
+      width:10px;height:10px;border-radius:999px;
+      background:var(--ink);
+      box-shadow: 0 0 0 6px rgba(11,13,18,.06);
+    }
+    nav{display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-weight:900}
+    nav a{
       padding:8px 10px;
       border-radius:999px;
-      color:var(--muted);
-      font-weight:900;
-      cursor:pointer;
-      user-select:none;
+      border:1px solid transparent;
     }
-    .pill.active{color:var(--bg); background: rgba(255,255,255,.92); border-color:transparent}
+    nav a:hover{border-color:var(--line); color:var(--ink); background:rgba(0,0,0,.02)}
+    .navActive{
+      color:var(--ink);
+      border-color:rgba(11,13,18,.14);
+      background:rgba(0,0,0,.02);
+    }
 
-    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 16px 70px;}
-    .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      color:var(--muted);
+    /* Hero */
+    .hero{
+      margin-top: 14px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: var(--panel);
+      border-radius: var(--r24);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroInner{
+      padding: 18px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .heroInner{grid-template-columns: 1fr; }
+    }
+
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
       padding:8px 12px;
       border-radius:999px;
-      font-weight:900;
-      letter-spacing:.5px;
-    }
-    h1{
-      margin:14px 0 8px;
-      font-size: clamp(28px, 4.2vw, 46px);
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-    .sub{margin:0;color:var(--muted);max-width:70ch;font-size:15px}
-
-    .case{
-      margin-top: 16px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-    }
-    .caseTop{
-      padding: 16px 16px 12px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; gap:14px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap;
-    }
-    .caseTitle{
-      display:flex; flex-direction:column; gap:4px;
-      min-width: 240px;
-    }
-    .tag{
-      display:inline-flex; width:fit-content;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.80);
-      font-weight:900;
-      font-size:12px;
+      border:1px solid rgba(11,13,18,.12);
+      background: rgba(0,0,0,.02);
+      color: var(--muted);
+      font-weight:950;
       letter-spacing:.5px;
       text-transform:uppercase;
+      font-size:12px;
     }
-    .caseTitle h2{margin:0; font-size:18px; letter-spacing:.2px}
-    .caseTitle p{margin:0; color:var(--muted); max-width: 78ch}
+    .kdot{
+      width:7px;height:7px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
 
-    .caseMeta{
-      color: var(--muted2);
-      font-weight:900;
+    h1{
+      margin: 12px 0 10px;
+      font-size: clamp(28px, 4.6vw, 46px);
+      line-height:1.02;
+      letter-spacing:-.9px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width: 90ch;
+      font-size:15px;
+      font-weight:650;
+    }
+    .ctaRow{
+      margin-top: 12px;
       display:flex;
+      flex-wrap:wrap;
       gap:10px;
       align-items:center;
     }
-    .metaPill{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(11,13,18,.16);
+      background: var(--ink);
+      color: var(--bg);
+      font-weight:1000;
+      letter-spacing:.3px;
+      cursor:pointer;
+    }
+    .btn.secondary{
+      background: rgba(0,0,0,.02);
+      color: var(--ink);
+      border:1px solid rgba(11,13,18,.14);
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn{transition: transform .18s ease, background .18s ease}
+
+    .heroRight{
+      border:1px solid rgba(11,13,18,.10);
+      background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.00));
+      border-radius: var(--r18);
+      padding: 14px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .heroRight:before{
+      content:"";
+      position:absolute; inset:-80px -60px auto auto;
+      width:220px;height:220px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(26,70,255,.18), transparent 60%);
+      filter: blur(0px);
+      pointer-events:none;
+    }
+    .heroRight:after{
+      content:"";
+      position:absolute; inset:auto auto -90px -80px;
+      width:260px;height:260px;border-radius:999px;
+      background: radial-gradient(circle at 60% 40%, rgba(255,45,125,.12), transparent 62%);
+      pointer-events:none;
+    }
+    .heroRight h2{margin:0; font-size:14px; letter-spacing:.2px}
+    .heroRight p{margin:8px 0 0; color:var(--muted); font-weight:650}
+    .miniGrid{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+    @media (max-width: 520px){ .miniGrid{grid-template-columns:1fr;} }
+    .mini{
+      border:1px solid rgba(11,13,18,.10);
+      background: rgba(255,255,255,.70);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .mini b{display:block; font-size:14px}
+    .mini span{display:block; margin-top:4px; color:var(--muted); font-weight:650}
+
+    /* Section */
+    section{margin-top: 18px}
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .sectionHead h3{margin:0; font-size:18px; letter-spacing:.2px}
+    .sectionHead p{margin:6px 0 0; color:var(--muted); font-weight:650; max-width: 95ch}
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
       padding:8px 10px;
       border-radius:999px;
-      white-space:nowrap;
+      border:1px solid rgba(11,13,18,.14);
+      background: rgba(255,255,255,.55);
+      color: var(--muted);
+      font-weight:900;
+      user-select:none;
+    }
+    .line{
+      height:1px; background: var(--line);
+      margin: 14px 0 0;
     }
 
-    .grid{
+    /* Case blocks */
+    .case{
+      border:1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--r24);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .caseTop{
+      padding: 16px 16px 12px;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      border-bottom:1px solid rgba(11,13,18,.08);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.00));
+    }
+    .tag{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(11,13,18,.14);
+      background: rgba(0,0,0,.02);
+      color: rgba(11,13,18,.82);
+      font-weight:950;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.55px;
+    }
+    .caseTop h4{
+      margin:10px 0 6px;
+      font-size:16px;
+      letter-spacing:.15px;
+    }
+    .caseTop p{
+      margin:0;
+      color:var(--muted);
+      font-weight:650;
+      max-width: 100ch;
+    }
+
+    /* Gallery */
+    .gallery{
+      padding: 12px;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:12px;
-      padding: 14px;
+      gap: 10px;
     }
+    /* make it feel editorial */
     .shot{
-      grid-column: span 4;
+      grid-column: span 3;
       border-radius: 18px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      position:relative;
+      border:1px solid rgba(11,13,18,.10);
+      background: rgba(0,0,0,.02);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
       cursor:pointer;
-      min-height: 220px;
+      position:relative;
+      aspect-ratio: 3/4;
     }
-    @media (max-width: 980px){ .shot{grid-column: span 6;} }
-    @media (max-width: 640px){ .shot{grid-column: span 12;} }
-
+    .shot.wide{grid-column: span 6; aspect-ratio: 16/10;}
     .shot img{
       width:100%; height:100%;
       object-fit: cover;
-      display:block;
-      transform: scale(1.01);
-      filter: contrast(1.03) saturate(1.02);
+      transform: scale(1.02);
+      transition: transform .28s ease;
     }
-    .shot .label{
-      position:absolute; left:10px; top:10px;
-      padding:6px 9px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.78);
-      font-weight:900;
-      font-size:12px;
+    .shot:hover img{transform: scale(1.06)}
+    @media (max-width: 980px){
+      .shot{grid-column: span 6;}
+      .shot.wide{grid-column: span 12;}
+    }
+    @media (max-width: 640px){
+      .shot{grid-column: span 12;}
     }
 
+    /* Footer */
     footer{
-      margin-top: 26px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
       color: var(--muted2);
-      font-weight:800;
-      padding-top: 18px;
-      border-top:1px solid var(--line);
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      font-weight:750;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
-    .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
+    .smalllink{
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
     /* Lightbox */
-    .lightbox{
-      position:fixed; inset:0; z-index:60;
+    .lb{
+      position:fixed; inset:0; z-index:90;
       display:none;
-      background: rgba(0,0,0,.72);
-      backdrop-filter: blur(10px);
-      align-items:center; justify-content:center;
-      padding: 18px;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      background: rgba(11,13,18,.72);
     }
-    .lightbox.open{display:flex;}
-    .lbPanel{
-      width:min(980px, 100%);
-      border-radius: 22px;
+    .lb.show{display:flex}
+    .lbInner{
+      width: min(1020px, 96vw);
+      max-height: 88vh;
+      border-radius: 18px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(10,14,20,.92);
-      box-shadow: 0 30px 120px rgba(0,0,0,.65);
+      border:1px solid rgba(255,255,255,.18);
+      background: #0b0d12;
+      box-shadow: 0 30px 100px rgba(0,0,0,.55);
+      position:relative;
     }
-    .lbTop{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 12px 14px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-      color:var(--muted);
-      font-weight:900;
-      gap:10px;
+    .lbInner img{
+      width:100%;
+      height: 88vh;
+      object-fit: contain;
+      background:#0b0d12;
     }
-    .lbTop .t{min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-    .lbBtn{
+    .lbClose{
+      position:absolute;
+      top:12px; right:12px;
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.45);
+      color: rgba(255,255,255,.92);
+      padding:9px 12px;
+      border-radius:999px;
+      font-weight:950;
       cursor:pointer;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.86);
-      padding:8px 10px;
-      border-radius: 999px;
-      font-weight:900;
-      user-select:none;
-      white-space:nowrap;
     }
-    .lbBody{background:#05070a;}
-    .lbImg{width:100%; max-height: 78vh; object-fit: contain; display:block;}
   </style>
 </head>
 
@@ -219,188 +370,210 @@
   <div class="topbar">
     <div class="inner">
       <a class="brand" href="index.html" title="Signal Studio">
-        <span class="dot"></span>
+        <span class="mark"></span>
         <span>Signal Studio</span>
       </a>
 
       <nav>
-        <a href="index.html" data-en="Home" data-ua="Головна">Home</a>
-        <a href="projects.html" data-en="Projects" data-ua="Проєкти" style="color:var(--text)">Projects</a>
-        <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
-        <a href="index.html#packages" data-en="Packages" data-ua="Пакети">Packages</a>
-        <a href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
+        <a href="projects.html" class="navActive">Projects</a>
+        <a href="team.html">Team</a>
+        <a href="index.html#packages">Packages</a>
+        <a href="index.html#contact">Contact</a>
       </nav>
-
-      <div class="lang">
-        <div class="pill active" id="langEN">EN</div>
-        <div class="pill" id="langUA">UA</div>
-      </div>
     </div>
   </div>
 
   <main class="wrap">
-    <div class="kicker" data-en="PROJECTS / 3 MINI-CASES" data-ua="ПРОЄКТИ / 3 МІНІ-КЕЙСИ">PROJECTS / 3 MINI-CASES</div>
-    <h1 data-en="Three focused cases. No filler." data-ua="Три сфокусовані кейси. Без води.">Three focused cases. No filler.</h1>
-    <p class="sub"
-       data-en="Each case is a compact set of ad-ready frames. Click any image to view it full-size."
-       data-ua="Кожен кейс — компактний набір ad-ready кадрів. Натисни на будь-яке фото, щоб відкрити повний розмір.">
-      Each case is a compact set of ad-ready frames. Click any image to view it full-size.
-    </p>
-
-    <!-- CASE 1: BEAUTY -->
-    <section class="case" data-case="beauty">
-      <div class="caseTop">
-        <div class="caseTitle">
-          <div class="tag" data-en="Beauty" data-ua="Бʼюті">Beauty</div>
-          <h2 data-en="Beauty Launch Visual System" data-ua="Візуальна система для запуску бʼюті">Beauty Launch Visual System</h2>
-          <p data-en="Product hero + texture proofs + lifestyle frames. Built to sell, not to decorate."
-             data-ua="Продуктовий hero + proof текстури + лайфстайл. Зроблено щоб продавало, а не «для краси».">
-            Product hero + texture proofs + lifestyle frames. Built to sell, not to decorate.
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="heroInner">
+        <div>
+          <div class="kicker"><span class="kdot"></span> Selected mini-cases • Beauty / Fashion / Jewelry</div>
+          <h1>Projects that look editorial — built to sell.</h1>
+          <p class="sub">
+            Here are 3 controlled mini-systems: consistent light, premium texture, clear product hero.
+            Not “random AI” — art-direction first.
           </p>
-        </div>
-        <div class="caseMeta">
-          <div class="metaPill" data-en="5 visuals" data-ua="5 візуалів">5 visuals</div>
-          <div class="metaPill" data-en="Ad-ready" data-ua="Готово під рекламу">Ad-ready</div>
-        </div>
-      </div>
 
-      <div class="grid">
-        <div class="shot" data-src="p01.jpg" data-title-en="Beauty / Shot 01" data-title-ua="Бʼюті / Кадр 01"><span class="label">p01</span><img src="p01.jpg" alt="p01" loading="lazy"></div>
-        <div class="shot" data-src="p02.jpg" data-title-en="Beauty / Shot 02" data-title-ua="Бʼюті / Кадр 02"><span class="label">p02</span><img src="p02.jpg" alt="p02" loading="lazy"></div>
-        <div class="shot" data-src="p03.jpg" data-title-en="Beauty / Shot 03" data-title-ua="Бʼюті / Кадр 03"><span class="label">p03</span><img src="p03.jpg" alt="p03" loading="lazy"></div>
-        <div class="shot" data-src="p04.jpg" data-title-en="Beauty / Shot 04" data-title-ua="Бʼюті / Кадр 04"><span class="label">p04</span><img src="p04.jpg" alt="p04" loading="lazy"></div>
-        <div class="shot" data-src="p05.jpg" data-title-en="Beauty / Shot 05" data-title-ua="Бʼюті / Кадр 05"><span class="label">p05</span><img src="p05.jpg" alt="p05" loading="lazy"></div>
+          <div class="ctaRow">
+            <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20-%20Signal%20Studio&body=Brand:%0AProduct:%0AGoal:%0ADeadline:%0ABudget%20range:%0AReferences%20(if%20any):%0A">Request a BRIEF</a>
+            <a class="btn secondary" href="index.html">Back to Home</a>
+            <a class="btn secondary" href="#beauty">Beauty</a>
+            <a class="btn secondary" href="#fashion">Fashion</a>
+            <a class="btn secondary" href="#jewelry">Jewelry</a>
+          </div>
+
+          <div class="line"></div>
+        </div>
+
+        <aside class="heroRight">
+          <h2>How to read these cases</h2>
+          <p>Each set is a repeatable visual language. Same “taste”, different angles.</p>
+
+          <div class="miniGrid">
+            <div class="mini">
+              <b>Consistency</b>
+              <span>Palette, light control, no chaos.</span>
+            </div>
+            <div class="mini">
+              <b>Luxury cues</b>
+              <span>Highlights, texture, clean composition.</span>
+            </div>
+            <div class="mini">
+              <b>Ad-ready</b>
+              <span>Built for Meta / TikTok formats.</span>
+            </div>
+            <div class="mini">
+              <b>Fast start</b>
+              <span>Entry package → scale to monthly.</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- CASE 2: FASHION -->
-    <section class="case" data-case="fashion">
-      <div class="caseTop">
-        <div class="caseTitle">
-          <div class="tag" data-en="Fashion" data-ua="Фешн">Fashion</div>
-          <h2 data-en="Fashion Editorial Series" data-ua="Фешн editorial серія">Fashion Editorial Series</h2>
-          <p data-en="A consistent story with variation: angles, poses, light — one aesthetic."
-             data-ua="Єдина естетика + варіації: ракурси, пози, світло — одна історія.">
-            A consistent story with variation: angles, poses, light — one aesthetic.
-          </p>
+    <!-- BEAUTY -->
+    <section id="beauty" style="margin-top:16px">
+      <div class="sectionHead">
+        <div>
+          <h3>Beauty</h3>
+          <p>Skin glow, product hero, premium soft light. Clean, expensive, ad-ready.</p>
         </div>
-        <div class="caseMeta">
-          <div class="metaPill" data-en="5 visuals" data-ua="5 візуалів">5 visuals</div>
-          <div class="metaPill" data-en="Editorial look" data-ua="Editorial вигляд">Editorial look</div>
-        </div>
+        <div class="pill">5 frames</div>
       </div>
 
-      <div class="grid">
-        <div class="shot" data-src="p06.jpg" data-title-en="Fashion / Shot 06" data-title-ua="Фешн / Кадр 06"><span class="label">p06</span><img src="p06.jpg" alt="p06" loading="lazy"></div>
-        <div class="shot" data-src="p07.jpg" data-title-en="Fashion / Shot 07" data-title-ua="Фешн / Кадр 07"><span class="label">p07</span><img src="p07.jpg" alt="p07" loading="lazy"></div>
-        <div class="shot" data-src="p08.jpg" data-title-en="Fashion / Shot 08" data-title-ua="Фешн / Кадр 08"><span class="label">p08</span><img src="p08.jpg" alt="p08" loading="lazy"></div>
-        <div class="shot" data-src="p09.jpg" data-title-en="Fashion / Shot 09" data-title-ua="Фешн / Кадр 09"><span class="label">p09</span><img src="p09.jpg" alt="p09" loading="lazy"></div>
-        <div class="shot" data-src="p10.jpg" data-title-en="Fashion / Shot 10" data-title-ua="Фешн / Кадр 10"><span class="label">p10</span><img src="p10.jpg" alt="p10" loading="lazy"></div>
-      </div>
+      <article class="case">
+        <div class="caseTop">
+          <div>
+            <div class="tag">Beauty system</div>
+            <h4>Controlled shine • clean highlight map • commercial finish</h4>
+            <p>
+              Goal: expensive look without “AI noise”. Result: consistent palette + controlled reflections,
+              product stays the hero.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <!-- editorial layout: first wide, then standard -->
+          <div class="shot wide" data-src="p01.jpg"><img src="p01.jpg" alt="Beauty frame 1"></div>
+          <div class="shot" data-src="p02.jpg"><img src="p02.jpg" alt="Beauty frame 2"></div>
+          <div class="shot" data-src="p03.jpg"><img src="p03.jpg" alt="Beauty frame 3"></div>
+          <div class="shot" data-src="p04.jpg"><img src="p04.jpg" alt="Beauty frame 4"></div>
+          <div class="shot" data-src="p05.jpg"><img src="p05.jpg" alt="Beauty frame 5"></div>
+        </div>
+      </article>
     </section>
 
-    <!-- CASE 3: JEWELRY -->
-    <section class="case" data-case="jewelry">
-      <div class="caseTop">
-        <div class="caseTitle">
-          <div class="tag" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
-          <h2 data-en="Jewelry Desire Frames" data-ua="Ювелірні кадри бажання">Jewelry Desire Frames</h2>
-          <p data-en="Luxury mood + close-up detail. The point is: want it now."
-             data-ua="Люкс-настрій + деталь крупним планом. Сенс простий: «хочу зараз».">
-            Luxury mood + close-up detail. The point is: want it now.
-          </p>
+    <!-- FASHION -->
+    <section id="fashion">
+      <div class="sectionHead">
+        <div>
+          <h3>Fashion</h3>
+          <p>Editorial mood, attitude, cinematic realism. One story across multiple scenes.</p>
         </div>
-        <div class="caseMeta">
-          <div class="metaPill" data-en="2 visuals" data-ua="2 візуали">2 visuals</div>
-          <div class="metaPill" data-en="High intent" data-ua="Високий намір">High intent</div>
-        </div>
+        <div class="pill">5 frames</div>
       </div>
 
-      <div class="grid">
-        <div class="shot" data-src="p11.jpg" data-title-en="Jewelry / Shot 11" data-title-ua="Ювелірка / Кадр 11"><span class="label">p11</span><img src="p11.jpg" alt="p11" loading="lazy"></div>
-        <div class="shot" data-src="p12.jpg" data-title-en="Jewelry / Shot 12" data-title-ua="Ювелірка / Кадр 12"><span class="label">p12</span><img src="p12.jpg" alt="p12" loading="lazy"></div>
+      <article class="case">
+        <div class="caseTop">
+          <div>
+            <div class="tag">Fashion story</div>
+            <h4>Editorial continuity • premium styling cues • controlled camera feel</h4>
+            <p>
+              Goal: shareable editorial frames. Result: consistent tone across scenes and angles — looks intentional.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="shot wide" data-src="p06.jpg"><img src="p06.jpg" alt="Fashion frame 1"></div>
+          <div class="shot" data-src="p07.jpg"><img src="p07.jpg" alt="Fashion frame 2"></div>
+          <div class="shot" data-src="p08.jpg"><img src="p08.jpg" alt="Fashion frame 3"></div>
+          <div class="shot" data-src="p09.jpg"><img src="p09.jpg" alt="Fashion frame 4"></div>
+          <div class="shot" data-src="p10.jpg"><img src="p10.jpg" alt="Fashion frame 5"></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- JEWELRY -->
+    <section id="jewelry">
+      <div class="sectionHead">
+        <div>
+          <h3>Jewelry</h3>
+          <p>Close-ups, texture, clean highlights. Jewelry reads premium and real.</p>
+        </div>
+        <div class="pill">2 frames</div>
       </div>
+
+      <article class="case">
+        <div class="caseTop">
+          <div>
+            <div class="tag">Jewelry focus</div>
+            <h4>Macro language • clean reflections • expensive texture</h4>
+            <p>
+              Goal: make details feel tangible. Result: close-up framing + controlled shine + premium skin/metal feel.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="shot wide" data-src="p11.jpg"><img src="p11.jpg" alt="Jewelry frame 1"></div>
+          <div class="shot wide" data-src="p12.jpg"><img src="p12.jpg" alt="Jewelry frame 2"></div>
+        </div>
+      </article>
     </section>
 
     <footer>
       <div>© <span id="year"></span> Signal Studio</div>
       <div>
-        <a class="smalllink" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF" data-en="Email: send BRIEF" data-ua="Пошта: надіслати BRIEF">Email: send BRIEF</a>
+        <a class="smalllink" href="#top">Back to top</a>
         <span style="opacity:.35"> • </span>
-        <a class="smalllink" href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
+        <a class="smalllink" href="index.html">Home</a>
+        <span style="opacity:.35"> • </span>
+        <a class="smalllink" href="team.html">Team</a>
       </div>
     </footer>
   </main>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lbPanel">
-      <div class="lbTop">
-        <div class="t" id="lbTitle">Preview</div>
-        <div style="display:flex; gap:8px; align-items:center;">
-          <div class="lbBtn" id="lbOpen" data-en="Open" data-ua="Відкрити">Open</div>
-          <div class="lbBtn" id="lbClose" data-en="Close" data-ua="Закрити">Close</div>
-        </div>
-      </div>
-      <div class="lbBody">
-        <img class="lbImg" id="lbImg" alt="preview" />
-      </div>
+  <div class="lb" id="lb" aria-hidden="true">
+    <div class="lbInner">
+      <div class="lbClose" id="lbClose">Close</div>
+      <img id="lbImg" src="" alt="Preview" />
     </div>
   </div>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Language
-    const langEN = document.getElementById('langEN');
-    const langUA = document.getElementById('langUA');
-    let LANG = 'en';
-    function applyLang(){
-      document.querySelectorAll('[data-en]').forEach(el=>{
-        el.textContent = (LANG==='en') ? el.getAttribute('data-en') : el.getAttribute('data-ua');
-      });
-      langEN.classList.toggle('active', LANG==='en');
-      langUA.classList.toggle('active', LANG==='ua');
-      // update lightbox buttons text too
-      document.getElementById('lbOpen').textContent = (LANG==='en') ? 'Open' : 'Відкрити';
-      document.getElementById('lbClose').textContent = (LANG==='en') ? 'Close' : 'Закрити';
-    }
-    langEN.addEventListener('click', ()=>{ LANG='en'; applyLang(); });
-    langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
-
     // Lightbox
-    const lb = document.getElementById('lightbox');
+    const lb = document.getElementById('lb');
     const lbImg = document.getElementById('lbImg');
-    const lbTitle = document.getElementById('lbTitle');
     const lbClose = document.getElementById('lbClose');
-    const lbOpen = document.getElementById('lbOpen');
-    let currentSrc = '';
 
-    function openLB(el){
-      currentSrc = el.dataset.src;
-      lbImg.src = currentSrc;
-      lbTitle.textContent = (LANG==='en') ? el.dataset.titleEn : el.dataset.titleUa;
-      lb.classList.add('open');
+    function openLB(src){
+      lbImg.src = src;
+      lb.classList.add('show');
       lb.setAttribute('aria-hidden', 'false');
     }
     function closeLB(){
-      lb.classList.remove('open');
+      lb.classList.remove('show');
+      lbImg.src = "";
       lb.setAttribute('aria-hidden', 'true');
-      lbImg.src = '';
-      currentSrc = '';
     }
 
-    document.querySelectorAll('.shot').forEach(s=> s.addEventListener('click', ()=> openLB(s)));
-    lbClose.addEventListener('click', closeLB);
-    lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
-
-    lbOpen.addEventListener('click', ()=>{
-      if(!currentSrc) return;
-      window.open(currentSrc, '_blank', 'noopener');
+    document.querySelectorAll('.shot').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const src = el.getAttribute('data-src');
+        openLB(src);
+      });
     });
 
-    applyLang();
+    lbClose.addEventListener('click', closeLB);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === "Escape") closeLB(); });
   </script>
 </body>
 </html>

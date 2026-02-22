@@ -1,108 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Projects — Signal Studio</title>
-<meta name="description" content="Signal Studio projects — fashion & beauty AI advertising visuals." />
-<style>
-  :root{--bg:#0b0c0f;--fg:#f6f6f7;--muted:#a7a9b2;--line:rgba(255,255,255,.12);--r:18px;--max:1200px}
-  *{box-sizing:border-box}
-  body{
-    margin:0;font-family:Arial, sans-serif;color:var(--fg);
-    background:radial-gradient(1100px 700px at 15% -10%, rgba(255,255,255,.11), transparent 55%),
-              linear-gradient(180deg,#08090c,#0b0c0f 35%,#07070a);
-  }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--max);margin:0 auto;padding:36px 18px 80px}
-  header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-  nav a{color:var(--muted);margin-left:14px;font-size:14px}
-  nav a:hover{color:var(--fg)}
-  h1{margin:28px 0 10px;font-size:42px}
-  p{margin:0;color:var(--muted);line-height:1.6}
-  .badge{
-    display:inline-flex;gap:10px;align-items:center;
-    border:1px solid var(--line); background:rgba(255,255,255,.03);
-    padding:10px 12px;border-radius:999px;margin-top:16px;color:var(--muted);font-size:14px;
-  }
-  .gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:16px;
-    margin-top:26px;
-  }
-  .gallery img{
-    width:100%; height:360px; object-fit:cover;
-    border-radius:var(--r);
-    border:1px solid rgba(255,255,255,.10);
-    background:rgba(255,255,255,.02);
-    cursor:pointer;
-    transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
-  }
-  .gallery img:hover{
-    transform:translateY(-2px) scale(1.01);
-    filter:brightness(1.03);
-    box-shadow:0 20px 60px rgba(0,0,0,.6);
-  }
-  .lightbox{
-    display:none; position:fixed; inset:0;
-    background:rgba(0,0,0,.92);
-    justify-content:center; align-items:center;
-    padding:18px;
-  }
-  .lightbox img{max-width:92vw; max-height:92vh; border-radius:14px}
-  .btn{
-    display:inline-block;margin-top:18px;
-    padding:12px 16px;border-radius:999px;
-    border:1px solid var(--line); background:rgba(255,255,255,.03);
-    font-weight:bold;
-  }
-  footer{margin-top:70px;padding-top:22px;border-top:1px solid rgba(255,255,255,.10);color:#666;font-size:14px}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Signal Studio</title>
+  <meta name="description" content="Selected projects by Signal Studio. Fashion & beauty AI advertising visuals: concept → art direction → production." />
+
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --fg:#f6f6f7;
+      --muted:#a7a9b2;
+      --line:rgba(255,255,255,.12);
+      --soft:rgba(255,255,255,.04);
+      --r:18px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;font-family:Arial, sans-serif;color:var(--fg);
+      background:
+        radial-gradient(1100px 700px at 15% -10%, rgba(255,255,255,.11), transparent 55%),
+        radial-gradient(1000px 600px at 90% 0%, rgba(255,255,255,.08), transparent 50%),
+        linear-gradient(180deg,#08090c,#0b0c0f 35%,#07070a);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 90px}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      position:sticky;top:0;z-index:50;
+      padding:14px 0;
+      background:linear-gradient(180deg, rgba(11,12,15,.92), rgba(11,12,15,.65));
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;font-weight:bold;letter-spacing:.02em;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:rgba(255,255,255,.75);
+      box-shadow:0 0 18px rgba(255,255,255,.25);
+    }
+    nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    nav a{
+      color:var(--muted);font-size:14px;
+      padding:8px 10px;border-radius:999px;border:1px solid transparent;
+    }
+    nav a:hover{color:var(--fg);border-color:rgba(255,255,255,.10);background:rgba(255,255,255,.03)}
+    .lang{
+      display:inline-flex;gap:6px;align-items:center;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      padding:6px 8px;border-radius:999px;
+    }
+    .lang button{
+      border:0;background:transparent;color:var(--muted);
+      padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:bold
+    }
+    .lang button.active{background:rgba(255,255,255,.10);color:var(--fg)}
+
+    .hero{padding:28px 0 10px}
+    h1{margin:0;font-size:44px;letter-spacing:-.02em;line-height:1.05}
+    @media (max-width:860px){h1{font-size:34px}}
+    .sub{margin:10px 0 0;color:var(--muted);line-height:1.6;max-width:900px}
+
+    .bar{
+      margin-top:18px;
+      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:12px;
+    }
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:13px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip.active{color:var(--fg);background:rgba(255,255,255,.10)}
+    .cta{
+      display:flex;gap:10px;flex-wrap:wrap
+    }
+    .btn{
+      display:inline-block;padding:10px 14px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      font-weight:bold;
+      font-size:14px;
+    }
+    .btnPrimary{background:#fff;color:#000;border-color:#fff}
+    .btn:hover{transform:translateY(-1px)}
+
+    /* Case cards */
+    .cases{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    .case{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:16px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width:980px){.case{grid-template-columns:1fr}}
+    .label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7f838e}
+    .title{margin:8px 0 10px;font-size:20px}
+    .muted{color:var(--muted);line-height:1.6}
+    .list{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.7}
+
+    /* Gallery inside case */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+    }
+    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .shot{
+      position:relative;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.02);
+      aspect-ratio: 3/4;
+    }
+    .shot img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transform:scale(1.02);
+      transition:transform .35s ease, filter .35s ease;
+      filter:saturate(1.02) contrast(1.02);
+    }
+    .shot:hover img{transform:scale(1.08);filter:saturate(1.06) contrast(1.06)}
+    .shot span{
+      position:absolute;left:8px;bottom:8px;
+      font-size:11px;color:#e7e7ea;
+      background:rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.12);
+      padding:5px 7px;border-radius:999px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Bottom CTA */
+    .bigCta{
+      margin-top:22px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:18px;
+      padding:18px;
+      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    }
+
+    footer{
+      margin-top:60px;padding-top:22px;border-top:1px solid rgba(255,255,255,.10);
+      color:#666;font-size:14px
+    }
+  </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
-      <div><b>Signal Studio</b></div>
+      <div class="brand">
+        <div class="dot"></div>
+        <div>Signal Studio</div>
+      </div>
+
       <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="mailto:signalstudio.agency@gmail.com?subject=BRIEF">Email</a>
+        <a href="index.html" data-en="Home" data-ua="Головна">Home</a>
+        <a href="projects.html" data-en="Projects" data-ua="Проєкти">Projects</a>
+        <a href="services.html" data-en="Services" data-ua="Послуги" style="opacity:.65;pointer-events:none">Services</a>
+        <a href="team.html" data-en="Team" data-ua="Команда">Team</a>
+        <a href="index.html#contact" data-en="Contact" data-ua="Контакт">Contact</a>
+
+        <div class="lang" aria-label="Language switch">
+          <button id="btnEN" class="active" type="button">EN</button>
+          <button id="btnUA" type="button">UA</button>
+        </div>
       </nav>
     </header>
 
-    <h1>Our Projects</h1>
-    <p>Selected fashion & beauty visuals. Click to view full size.</p>
-    <div class="badge">Use: Meta Ads • TikTok • Campaigns • Product Visuals</div>
+    <section class="hero">
+      <h1
+        data-en="Projects that feel premium — and are built to sell."
+        data-ua="Проєкти, які виглядають преміально — і зроблені, щоб продавати.">
+        Projects that feel premium — and are built to sell.
+      </h1>
+      <p class="sub"
+        data-en="Each case is a system: Goal → Concept → Deliverables. Not ‘AI art’. Commercial direction."
+        data-ua="Кожен кейс — це система: Ціль → Концепт → Deliverables. Не «AI-арт». Комерційна режисура.">
+        Each case is a system: Goal → Concept → Deliverables. Not ‘AI art’. Commercial direction.
+      </p>
 
-    <div class="gallery">
-      <img src="p01.jpg" alt="Project 01">
-      <img src="p02.jpg" alt="Project 02">
-      <img src="p03.jpg" alt="Project 03">
-      <img src="p04.jpg" alt="Project 04">
-      <img src="p05.jpg" alt="Project 05">
-      <img src="p06.jpg" alt="Project 06">
-      <img src="p07.jpg" alt="Project 07">
-      <img src="p08.jpg" alt="Project 08">
-      <img src="p09.jpg" alt="Project 09">
-      <img src="p10.jpg" alt="Project 10">
-      <img src="p11.jpg" alt="Project 11">
-      <img src="p12.jpg" alt="Project 12">
+      <div class="bar">
+        <div class="filters">
+          <div class="chip active" data-filter="all" data-en="All" data-ua="Усі">All</div>
+          <div class="chip" data-filter="beauty" data-en="Beauty" data-ua="Beauty">Beauty</div>
+          <div class="chip" data-filter="fashion" data-en="Fashion" data-ua="Fashion">Fashion</div>
+          <div class="chip" data-filter="jewelry" data-en="Jewelry" data-ua="Ювелірка">Jewelry</div>
+        </div>
+
+        <div class="cta">
+          <a class="btn btnPrimary" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
+          <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF"
+             data-en="Email us" data-ua="Написати на пошту">Email us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="cases" id="cases">
+      <!-- CASE 1 (Beauty) -->
+      <article class="case" data-tags="beauty">
+        <div>
+          <div class="label" data-en="Beauty • Product Visual System" data-ua="Beauty • Візуальна система продукту">Beauty • Product Visual System</div>
+          <div class="title" data-en="Euphoria-style Glow — ad-ready product visuals" data-ua="Euphoria-style Glow — візуали під рекламу">
+            Euphoria-style Glow — ad-ready product visuals
+          </div>
+
+          <p class="muted"
+            data-en="Goal: create premium skincare visuals that look like a real studio production."
+            data-ua="Ціль: зробити преміальні візуали косметики, які виглядають як реальний студійний продакшн.">
+            Goal: create premium skincare visuals that look like a real studio production.
+          </p>
+
+          <ul class="list">
+            <li data-en="Concept: warm luxury skin, controlled highlights, clean product focus"
+                data-ua="Концепт: теплий luxury-skin, контроль бликів, чистий фокус на продукті">
+              Concept: warm luxury skin, controlled highlights, clean product focus
+            </li>
+            <li data-en="Deliverables: 12 images for ads / site / socials"
+                data-ua="Deliverables: 12 зображень для реклами / сайту / соцмереж">
+              Deliverables: 12 images for ads / site / socials
+            </li>
+            <li data-en="Why it sells: feels expensive, shareable, and clear product benefit"
+                data-ua="Чому продає: виглядає дорого, хочеться шерити, і чітко показує продукт">
+              Why it sells: feels expensive, shareable, and clear product benefit
+            </li>
+          </ul>
+
+          <div class="cta" style="margin-top:12px">
+            <a class="btn btnPrimary" href="index.html#contact" data-en="Get a quote" data-ua="Отримати ціну">Get a quote</a>
+            <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20—%20Beauty"
+               data-en="Request Beauty brief" data-ua="Бриф для Beauty">Request Beauty brief</a>
+          </div>
+        </div>
+
+        <div class="grid">
+          <a class="shot" href="p01.jpg" target="_blank" rel="noopener"><img src="p01.jpg" alt="p01"><span>p01</span></a>
+          <a class="shot" href="p02.jpg" target="_blank" rel="noopener"><img src="p02.jpg" alt="p02"><span>p02</span></a>
+          <a class="shot" href="p03.jpg" target="_blank" rel="noopener"><img src="p03.jpg" alt="p03"><span>p03</span></a>
+          <a class="shot" href="p04.jpg" target="_blank" rel="noopener"><img src="p04.jpg" alt="p04"><span>p04</span></a>
+          <a class="shot" href="p05.jpg" target="_blank" rel="noopener"><img src="p05.jpg" alt="p05"><span>p05</span></a>
+          <a class="shot" href="p06.jpg" target="_blank" rel="noopener"><img src="p06.jpg" alt="p06"><span>p06</span></a>
+        </div>
+      </article>
+
+      <!-- CASE 2 (Fashion) -->
+      <article class="case" data-tags="fashion">
+        <div>
+          <div class="label" data-en="Fashion • Editorial Campaign Look" data-ua="Fashion • Editorial-кампанія">Fashion • Editorial Campaign Look</div>
+          <div class="title" data-en="Neutral Luxury — editorial frames for ads" data-ua="Neutral Luxury — editorial кадри під рекламу">
+            Neutral Luxury — editorial frames for ads
+          </div>
+
+          <p class="muted"
+            data-en="Goal: build a consistent premium fashion mood that brands can reuse across launches."
+            data-ua="Ціль: створити стабільний premium-настрій у fashion, який можна повторювати для запусків.">
+            Goal: build a consistent premium fashion mood that brands can reuse across launches.
+          </p>
+
+          <ul class="list">
+            <li data-en="Concept: minimal palette, expensive light, cinematic framing"
+                data-ua="Концепт: мінімальна палітра, дороге світло, кінематографічний кадр">
+              Concept: minimal palette, expensive light, cinematic framing
+            </li>
+            <li data-en="Deliverables: 6 hero frames + 6 close-ups (ad variations)"
+                data-ua="Deliverables: 6 hero-кадрів + 6 крупних планів (варіації для реклами)">
+              Deliverables: 6 hero frames + 6 close-ups (ad variations)
+            </li>
+            <li data-en="Why it sells: looks real, feels like a magazine, instantly trustworthy"
+                data-ua="Чому продає: виглядає реально, як журнал, одразу викликає довіру">
+              Why it sells: looks real, feels like a magazine, instantly trustworthy
+            </li>
+          </ul>
+
+          <div class="cta" style="margin-top:12px">
+            <a class="btn btnPrimary" href="index.html#contact" data-en="Get a quote" data-ua="Отримати ціну">Get a quote</a>
+            <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF%20—%20Fashion"
+               data-en="Request Fashion brief" data-ua="Бриф для Fashion">Request Fashion brief</a>
+          </div>
+        </div>
+
+        <div class="grid">
+          <a class="shot" href="p07.jpg" target="_blank" rel="noopener"><img src="p07.jpg" alt="p07"><span>p07</span></a>
+          <a class="shot" href="p08.jpg" target="_blank" rel="noopener"><img src="p08.jpg" alt="p08"><span>p08</span></a>
+          <a class="shot" href="p09.jpg" target="_blank" rel="noopener"><img src="p09.jpg" alt="p09"><span>p09</span></a>
+          <a class="shot" href="p10.jpg" target="_blank" rel="noopener"><img src="p10.jpg" alt="p10"><span>p10</span></a>
+          <a class="shot" href="p11.jpg" target="_blank" rel="noopener"><img src="p11.jpg" alt="p11"><span>p11</span></a>
+          <a class="shot" href="p12.jpg" target="_blank" rel="noopener"><img src="p12.jpg" alt="p12"><span>p12</span></a>
+        </div>
+      </article>
+
+      <!-- CASE 3 (Jewelry placeholder — пока без новых фото, но кейс уже готов) -->
+      <article class="case" data-tags="jewelry">
+        <div>
+          <div class="label" data-en="Jewelry • Concept System" data-ua="Ювелірка • Система концептів">Jewelry • Concept System</div>
+          <div class="title"
+               data-en="High-end Jewelry Concepts — built to be shared"
+               data-ua="High-end ювелірні концепти — зроблені, щоб шерили">
+            High-end Jewelry Concepts — built to be shared
+          </div>
+
+          <p class="muted"
+             data-en="Goal: create provocative, premium concepts for jewelry brands that cut through ‘same-same’ feeds."
+             data-ua="Ціль: зробити провокативні преміальні концепти для ювелірних брендів, які пробивають «однакові» стрічки.">
+            Goal: create provocative, premium concepts for jewelry brands that cut through ‘same-same’ feeds.
+          </p>
+
+          <ul class="list">
+            <li data-en="Concept: emotional trigger + product clarity + luxury finish"
+                data-ua="Концепт: емоційний тригер + зрозумілий продукт + luxury-фініш">
+              Concept: emotional trigger + product clarity + luxury finish
+            </li>
+            <li data-en="Deliverables: 3 concepts + storyboard + 10 visuals"
+                data-ua="Deliverables: 3 концепти + сторіборд + 10 візуалів">
+              Deliverables: 3 concepts + storyboard + 10 visuals
+            </li>
+            <li data-en="Why it sells: ‘I need this’, not ‘nice pic’"
+                data-ua="Чому продає: «мені це треба», а не «гарна картинка»">
+              Why it sells: ‘I need this’, not ‘nice pic’
+            </li>
+          </ul>
+
+          <div class="cta" style="margin-top:12px">
+            <a class="btn btnPrimary" href="index.html#contact" data-en="Request jewelry brief" data-ua="Бриф для ювелірки">Request jewelry brief</a>
+            <a class="btn" href="team.html" data-en="See how we think" data-ua="Подивитись як ми мислимо">See how we think</a>
+          </div>
+        </div>
+
+        <div class="grid">
+          <!-- Placeholder tiles (no images yet) -->
+          <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
+            <div data-en="Add jewelry images here later" data-ua="Пізніше додамо ювелірні фото">Add jewelry images here later</div>
+          </div>
+          <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
+            <div data-en="Concept-first case is ready" data-ua="Кейс по концептах вже готовий">Concept-first case is ready</div>
+          </div>
+          <div class="shot" style="display:flex;align-items:center;justify-content:center;padding:14px;color:#a7a9b2;">
+            <div data-en="We’ll plug visuals in next" data-ua="Далі підставимо візуали">We’ll plug visuals in next</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="bigCta">
+      <div>
+        <div class="label" data-en="Fast start" data-ua="Швидкий старт">Fast start</div>
+        <div style="font-size:18px;font-weight:bold;margin-top:6px"
+          data-en="Send a brief — we reply with timing + quote."
+          data-ua="Надішли бриф — відповімо з термінами та ціною.">
+          Send a brief — we reply with timing + quote.
+        </div>
+        <div class="muted" style="margin-top:6px"
+          data-en="Email: signalstudio.agency@gmail.com"
+          data-ua="Пошта: signalstudio.agency@gmail.com">
+          Email: signalstudio.agency@gmail.com
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn btnPrimary" href="index.html#contact" data-en="Request a brief" data-ua="Запросити бриф">Request a brief</a>
+        <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF"
+           data-en="Email now" data-ua="Написати зараз">Email now</a>
+      </div>
     </div>
 
-    <a class="btn" href="mailto:signalstudio.agency@gmail.com?subject=BRIEF">Request a Brief</a>
-
-    <footer>© 2026 Signal Studio</footer>
+    <footer>© 2026 Signal Studio — Hamburg / UA</footer>
   </div>
 
-  <div class="lightbox" id="lb"><img id="lbimg" alt=""></div>
   <script>
-    const lb=document.getElementById('lb');
-    const lbimg=document.getElementById('lbimg');
-    document.querySelectorAll('.gallery img').forEach(img=>{
-      img.addEventListener('click', ()=>{ lb.style.display='flex'; lbimg.src=img.src; });
+    // Language switch
+    const btnEN = document.getElementById('btnEN');
+    const btnUA = document.getElementById('btnUA');
+
+    function setLang(lang){
+      document.querySelectorAll('[data-en]').forEach(el=>{
+        el.textContent = (lang === 'UA') ? el.getAttribute('data-ua') : el.getAttribute('data-en');
+      });
+      btnEN.classList.toggle('active', lang === 'EN');
+      btnUA.classList.toggle('active', lang === 'UA');
+      localStorage.setItem('lang', lang);
+    }
+    btnEN.addEventListener('click', ()=>setLang('EN'));
+    btnUA.addEventListener('click', ()=>setLang('UA'));
+    setLang(localStorage.getItem('lang') || 'EN');
+
+    // Filters
+    const chips = document.querySelectorAll('.chip');
+    const cases = document.querySelectorAll('.case');
+
+    chips.forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        chips.forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const f = chip.getAttribute('data-filter');
+        cases.forEach(card=>{
+          const tags = card.getAttribute('data-tags') || '';
+          const show = (f === 'all') || tags.includes(f);
+          card.style.display = show ? 'grid' : 'none';
+        });
+      });
     });
-    lb.addEventListener('click', ()=>{ lb.style.display='none'; lbimg.src=''; });
+
+    // Safety: mark broken images (if filename mismatch)
+    document.querySelectorAll('.shot img').forEach(img=>{
+      img.addEventListener('error', ()=>{
+        img.style.display='none';
+        const p = document.createElement('div');
+        p.style.padding='14px';
+        p.style.color='#a7a9b2';
+        p.style.fontSize='12px';
+        p.textContent='Image not found (check filename)';
+        img.parentElement.appendChild(p);
+      });
+    });
   </script>
 </body>
 </html>

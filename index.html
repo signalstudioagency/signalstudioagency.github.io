@@ -14,9 +14,9 @@
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.62);
       --muted2:rgba(255,255,255,.42);
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius:22px;
-      --radius2:18px;
+      --shadow: 0 18px 70px rgba(0,0,0,.45);
+      --radius:16px;
+      --radius2:14px;
       --max:1120px;
     }
     *{box-sizing:border-box}
@@ -51,11 +51,11 @@
     .dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 0 0 6px rgba(255,255,255,.08)}
     nav{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:800}
     nav a{padding:8px 10px;border-radius:999px;border:1px solid transparent}
-    nav a:hover{border-color:var(--line); color:var(--text)}
+    nav a:hover{border-color:rgba(255,255,255,.10); color:var(--text)}
     .lang{display:flex;gap:8px;align-items:center}
     .pill{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
       padding:8px 10px;
       border-radius:999px;
       color:var(--muted);
@@ -82,18 +82,19 @@
     .kicker{
       display:inline-flex; gap:8px; align-items:center;
       color:var(--muted);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
       padding:8px 12px;
       border-radius:999px;
       font-weight:900;
       letter-spacing:.5px;
     }
     h1{
-      margin:14px 0 10px;
-      font-size: clamp(32px, 4.6vw, 54px);
-      line-height:1.02;
-      letter-spacing:-.8px;
+      margin:14px 0 12px;
+      font-size: clamp(34px, 4.6vw, 58px);
+      line-height:1.00;
+      letter-spacing:-1.2px;
+      font-weight: 900;
     }
     .sub{margin:0;color:var(--muted);max-width:80ch;font-size:15px}
     .ctaRow{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
@@ -109,9 +110,9 @@
       cursor:pointer;
     }
     .btn.secondary{
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.03);
       color: rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.12);
     }
     .miniRow{
       margin-top: 14px;
@@ -121,8 +122,8 @@
     }
     .mini{
       grid-column: span 4;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
       padding:12px 14px;
@@ -132,10 +133,10 @@
     .mini b{display:block; margin-bottom:4px}
     .mini span{color:var(--muted); font-weight:700}
 
-    /* Right panel (proof + offer) */
+    /* Right panel */
     .panel{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -143,13 +144,11 @@
     .panelTop{padding:16px; border-bottom:1px solid rgba(255,255,255,.08)}
     .panelTop h2{margin:0; font-size:16px}
     .panelTop p{margin:8px 0 0; color:var(--muted); font-weight:700}
-    .offer{
-      padding:14px 16px 16px;
-    }
+    .offer{padding:14px 16px 16px;}
     .offerBox{
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-      border-radius: 18px;
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
       padding:14px;
     }
     .offerTitle{font-weight:1000; letter-spacing:.2px}
@@ -169,8 +168,8 @@
     .stat{
       grid-column: span 6;
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      border-radius: 16px;
+      background: rgba(0,0,0,.16);
+      border-radius: 14px;
       padding:12px;
     }
     .stat b{display:block; font-size:18px; letter-spacing:.2px}
@@ -192,8 +191,8 @@
     }
     .card{
       grid-column: span 4;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding:16px;
@@ -206,8 +205,8 @@
     /* Projects mini cases */
     .case{
       grid-column: span 12;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -221,9 +220,9 @@
     .tag{
       display:inline-flex;
       padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.78);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+      color: rgba(255,255,255,.80);
       font-weight:900;
       font-size:12px;
       letter-spacing:.5px;
@@ -241,10 +240,10 @@
     @media (max-width: 640px){ .gallery{grid-template-columns: repeat(2, 1fr);} }
 
     .shot{
-      border-radius: 16px;
+      border-radius: 14px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.16);
       aspect-ratio: 3/4;
       position:relative;
       cursor:pointer;
@@ -256,15 +255,6 @@
       transition: transform .25s ease;
     }
     .shot:hover img{transform: scale(1.06)}
-    .shot small{
-      position:absolute; left:10px; bottom:10px;
-      background: rgba(0,0,0,.45);
-      border:1px solid rgba(255,255,255,.18);
-      padding:6px 8px;
-      border-radius:999px;
-      font-weight:900;
-      color: rgba(255,255,255,.85);
-    }
 
     /* Packages */
     .price{font-size: 22px; font-weight:1100; margin:8px 0 0}
@@ -283,16 +273,16 @@
     /* Contact */
     .contactBox{
       grid-column: span 12;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding:16px;
       display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
     .email{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
       padding:10px 12px;
       border-radius: 14px;
       color: rgba(255,255,255,.84);
@@ -305,7 +295,7 @@
       color: var(--muted2);
       font-weight:800;
       padding-top: 18px;
-      border-top:1px solid var(--line);
+      border-top:1px solid rgba(255,255,255,.10);
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
     .smalllink{color:var(--muted); text-decoration:underline; text-underline-offset:3px}
@@ -322,10 +312,10 @@
     .lbInner{
       max-width: min(980px, 96vw);
       max-height: 88vh;
-      border-radius: 18px;
+      border-radius: 14px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
       box-shadow: 0 30px 100px rgba(0,0,0,.7);
       position:relative;
     }
@@ -339,6 +329,7 @@
       border-radius: 999px;
       font-weight:1000;
       cursor:pointer;
+      line-height:1;
     }
   </style>
 </head>
@@ -428,12 +419,18 @@
 
           <div class="offer">
             <div class="offerBox">
-              <div class="offerTitle" data-en="Launch Discount — 20% OFF" data-ua="Запускова знижка — 20% OFF">
-                Launch Discount — 20% OFF
+              <div class="offerTitle"
+                   data-en="Entry Access — 20% Launch Privilege"
+                   data-ua="ENTRY-доступ — 20% привілей запуску">
+                Entry Access — 20% Launch Privilege
               </div>
-              <div class="offerSub" data-en="Offer resets every 24 hours." data-ua="Пропозиція оновлюється кожні 24 години.">
-                Offer resets every 24 hours.
+
+              <div class="offerSub"
+                   data-en="One-time offer for the ENTRY package. Limited launch window."
+                   data-ua="Разова пропозиція для ENTRY-пакета. Обмежене вікно запуску.">
+                One-time offer for the ENTRY package. Limited launch window.
               </div>
+
               <div class="timer" id="timer">--:--:--</div>
             </div>
 
@@ -535,11 +532,11 @@
           <a class="smalllink" href="projects.html#beauty" data-en="Details →" data-ua="Деталі →">Details →</a>
         </div>
         <div class="gallery">
-          <div class="shot" data-src="p01.jpg"><img src="p01.jpg" alt="Beauty 01"><small>p01</small></div>
-          <div class="shot" data-src="p02.jpg"><img src="p02.jpg" alt="Beauty 02"><small>p02</small></div>
-          <div class="shot" data-src="p03.jpg"><img src="p03.jpg" alt="Beauty 03"><small>p03</small></div>
-          <div class="shot" data-src="p04.jpg"><img src="p04.jpg" alt="Beauty 04"><small>p04</small></div>
-          <div class="shot" data-src="p05.jpg"><img src="p05.jpg" alt="Beauty 05"><small>p05</small></div>
+          <div class="shot" data-src="p01.jpg"><img src="p01.jpg" alt="Beauty 01"></div>
+          <div class="shot" data-src="p02.jpg"><img src="p02.jpg" alt="Beauty 02"></div>
+          <div class="shot" data-src="p03.jpg"><img src="p03.jpg" alt="Beauty 03"></div>
+          <div class="shot" data-src="p04.jpg"><img src="p04.jpg" alt="Beauty 04"></div>
+          <div class="shot" data-src="p05.jpg"><img src="p05.jpg" alt="Beauty 05"></div>
         </div>
       </article>
 
@@ -562,11 +559,11 @@
           <a class="smalllink" href="projects.html#fashion" data-en="Details →" data-ua="Деталі →">Details →</a>
         </div>
         <div class="gallery">
-          <div class="shot" data-src="p06.jpg"><img src="p06.jpg" alt="Fashion 06"><small>p06</small></div>
-          <div class="shot" data-src="p07.jpg"><img src="p07.jpg" alt="Fashion 07"><small>p07</small></div>
-          <div class="shot" data-src="p08.jpg"><img src="p08.jpg" alt="Fashion 08"><small>p08</small></div>
-          <div class="shot" data-src="p09.jpg"><img src="p09.jpg" alt="Fashion 09"><small>p09</small></div>
-          <div class="shot" data-src="p10.jpg"><img src="p10.jpg" alt="Fashion 10"><small>p10</small></div>
+          <div class="shot" data-src="p06.jpg"><img src="p06.jpg" alt="Fashion 06"></div>
+          <div class="shot" data-src="p07.jpg"><img src="p07.jpg" alt="Fashion 07"></div>
+          <div class="shot" data-src="p08.jpg"><img src="p08.jpg" alt="Fashion 08"></div>
+          <div class="shot" data-src="p09.jpg"><img src="p09.jpg" alt="Fashion 09"></div>
+          <div class="shot" data-src="p10.jpg"><img src="p10.jpg" alt="Fashion 10"></div>
         </div>
       </article>
 
@@ -589,8 +586,8 @@
           <a class="smalllink" href="projects.html#jewelry" data-en="Details →" data-ua="Деталі →">Details →</a>
         </div>
         <div class="gallery">
-          <div class="shot" data-src="p11.jpg"><img src="p11.jpg" alt="Jewelry 11"><small>p11</small></div>
-          <div class="shot" data-src="p12.jpg"><img src="p12.jpg" alt="Jewelry 12"><small>p12</small></div>
+          <div class="shot" data-src="p11.jpg"><img src="p11.jpg" alt="Jewelry 11"></div>
+          <div class="shot" data-src="p12.jpg"><img src="p12.jpg" alt="Jewelry 12"></div>
         </div>
       </article>
     </section>
@@ -632,8 +629,10 @@
                data-en="Get ENTRY" data-ua="Взяти ENTRY">Get ENTRY</a>
           </div>
 
-          <div class="note" data-en="Discount resets every 24h (timer above)." data-ua="Знижка оновлюється кожні 24 год (таймер зверху).">
-            Discount resets every 24h (timer above).
+          <div class="note"
+               data-en="ENTRY is a one-time access offer. Timer shows the launch window."
+               data-ua="ENTRY — разова пропозиція. Таймер показує вікно запуску.">
+            ENTRY is a one-time access offer. Timer shows the launch window.
           </div>
         </div>
 
@@ -737,7 +736,7 @@
   <!-- Lightbox -->
   <div class="lb" id="lb">
     <div class="lbInner">
-      <div class="lbClose" id="lbClose">Close</div>
+      <div class="lbClose" id="lbClose">✕</div>
       <img id="lbImg" src="" alt="Preview" />
     </div>
   </div>
@@ -762,7 +761,7 @@
     langUA.addEventListener('click', ()=>{ LANG='ua'; applyLang(); });
     applyLang();
 
-    // 24h timer that resets every 24h per user/device
+    // 24h timer that resets every 24h per user/device (used as "launch window")
     const KEY = "signalstudio_offer_reset_v1";
     function getResetTs(){
       const saved = localStorage.getItem(KEY);
